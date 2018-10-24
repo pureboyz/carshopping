@@ -1,24 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<style>
-	footer{
-		padding: 20px 0;	
-		margin: 10px 20px;		
-		border-top: 1px solid #ccc;
-		clear: both;
-	}
-	
-	footer address{
-		width: 700px;
-		height: 70px;
-		margin: 10px auto;
-		padding: 0 0 0 90px;	
-		text-align: center;		
-		font-style: normal;
-		line-height: 1.8em;
-	}
-</style>
+<link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
 
 <footer>
 	<address>

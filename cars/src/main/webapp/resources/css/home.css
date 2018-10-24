@@ -1,0 +1,67 @@
+.wrap-search{
+	width: 1300px;
+	height: 38px;
+	margin-bottom: 15px;
+}
+
+.searchBar{
+	width: 500px;
+	height: 30px;
+	float: left;
+	margin-left: 360px;
+}
+
+.btnSearch{
+	width: 80px;
+	height: 34px;
+	float: left;
+}
+
+.btnSearch:hover{
+	cursor: pointer;
+}
+
+.wrap-goods{
+	width: 1300px;
+	text-align: center;
+}
+
+.goods{
+	width: 1140px;
+}
+
+.goods li{
+	list-style: none;
+	width: 348px;
+	height: 400px;
+	margin: 25px 15px;
+	float: left;
+	border: 1px solid maroon;
+}
+
+.goods li:hover{
+	cursor: pointer;
+}
+
+.wrap-img{
+	width: 348px;
+	height: 230px;
+}
+
+.goods li img{
+	width: 348px;
+}
+
+.carName{
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+.carPrice{
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+.sales{
+	font-size: 0.9em;
+}

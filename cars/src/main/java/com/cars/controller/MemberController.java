@@ -17,4 +17,9 @@ public class MemberController {
 	public void join() {
 		
 	}
+	
+	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
+	public void memberInfo() {
+		
+	}
 }

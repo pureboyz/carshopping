@@ -1,0 +1,66 @@
+*{
+	margin: 0px auto;
+	padding: 0px;
+}
+
+header{
+	height:160px;
+	padding: 10px;
+}
+
+.wrap-header{
+	width: 1300px;
+	height: 150px;
+	text-align: center;
+	/* border: 1px solid black; */
+}
+
+.logo{
+	width: 696px;
+	height: 148px;
+	margin: 0px auto;
+	margin-left: 300px;
+	float: left;
+	text-align: center;
+	/* border: 1px solid blue; */
+}
+
+.logo img{
+	width: 240px;
+	height: 140px;
+}
+
+.logo img:hover{
+	cursor: pointer;
+}
+
+.member{
+	width: 300px;
+	height: 148px;
+	float: left;
+	/* border: 1px solid red; */
+}
+
+.member-sign{
+	height: 73px;
+	/* border: 1px solid green; */
+}
+
+.member-info{
+	height: 73px;
+	/* border: 1px solid green; */
+}
+
+.member-sign a{
+	margin: auto 10px auto 0;
+	float: right;
+	text-decoration: none;
+	line-height: 73px;
+}
+
+.member-info a{
+	margin: auto 10px auto 0;
+	float: right;
+	text-decoration: none;
+	line-height: 20px;
+}

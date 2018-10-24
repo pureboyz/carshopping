@@ -1,0 +1,85 @@
+article{
+	border-top: 1px solid #ccc;
+	padding-top: 70px;
+	margin-bottom: 70px;
+}
+
+.wrap-wrap-profile{
+	width: 1300px;
+}
+
+.wrap-profile{
+	width: 656px;
+}
+
+.profile{
+	margin: 0 auto;
+	margin-bottom: 30px;
+	/* border: 1px solid black; */
+}
+
+.profile h2{
+	margin: 5px 0 50px 50px;
+}
+
+.profile>div{
+	width: 654px;
+	height: 40px;
+	margin-top: 40px;
+	/* border: 1px solid red; */
+}
+
+.profile div div:first-child{
+	width: 100px;
+	height: 38px;
+	float: left;
+	margin: 0 0 0 30px;
+	/* border: 1px solid blue; */
+}
+
+.profile div div:first-child label{
+	width: 98px;
+	height: 36px;
+	line-height: 36px;
+}
+
+.profile div div:last-child{
+	width: 500px;
+	height: 38px;
+	float: left;
+	margin: 0 0 0 20px;
+	/* border: 1px solid blue; */
+}
+
+.profile div div:last-child input[type=text]{
+	width: 498px;
+	height: 36px;
+}
+
+input[type=radio]{
+	margin-top: 10px;
+}
+
+.wrap-btn{
+	width: 654px;
+	height: 70px;
+	/* border: 1px solid black; */
+}
+
+.exit{
+	width: 140px;
+	height: 40px;
+	margin: 15px 0 0 120px;
+}
+
+.cancel{
+	width: 100px;
+	height: 40px;
+	margin: 15px 0 0 15px;
+}
+
+.finish{
+	width: 140px;
+	height: 40px;
+	margin: 15px 0 0 15px;
+}
