@@ -1,34 +1,38 @@
 article{
-	width: 1300px;
+	width: 1302px;
 	margin: 0px auto;
 }
 
 .img-info{
-	width: 800px;
-	height: 450px;
+	width: 1300px;
+	height: 350px;
 	margin: 0px auto;
+	padding-top: 20px;
+	border: 1px solid #ccc;
 }
 
 .imgbox{
-	width: 398px;
+	width: 648px;
 	height: 298px;
 	padding: 5px 0px 5px 0px;
 	float: left;
+	/* border: 1px solid red; */
 }
 
 .imgbox img{
-	width: 398px;
+	width: 648px;
 }
 
 .info{
-	width: 358px;
+	width: 608px;
 	height: 298px;
 	padding: 5px 20px 5px 20px;
 	float: left;
+	/* border: 1px solid red; */
 }
 
 .info-high{
-	width: 358px;
+	width: 608px;
 	height: 98px;
 	text-align: center;
 	margin-bottom: 15px;
@@ -40,19 +44,19 @@ article{
 }
 
 .info-mid{
-	width: 358px;
+	width: 608px;
 	height: 98px;
 }
 
 .sales{
-	width: 358px;
+	width: 608px;
 	height: 25px;
 	font-size: 0.9em;
-	margin-left: 30px;
+	margin-left: 155px;
 }
 
 .selectbox{
-	width: 358px;
+	width: 608px;
 	height: 50px;
 	margin-top: 10px;
 	text-align: center;
@@ -64,7 +68,7 @@ article{
 }
 
 .info-row{
-	width: 358px;
+	width: 608px;
 	height: 98px;
 	text-align: center;
 }
@@ -79,4 +83,37 @@ article{
 	width: 80px;
 	height: 40px;
 	margin-left: 10px;
+}
+
+.info-detail{
+	width: 1300px;
+	margin: 0px auto;
+	margin-top: 30px;
+	padding: 20px 0;
+	border: 1px solid #ccc;
+}
+
+.tabs{
+	padding-left: 20px;
+}
+
+h2{
+	margin: 20px 0 10px 30px;
+}
+
+.tab_container{
+	clear: both;
+	width: 1250px;
+	border: 1px solid #ccc;
+}
+
+table tr{
+	height: 60px;
+}
+
+table tr td{
+	padding-bottom: 20px;
+	width: 600px;
+	text-align: center;
+	/* border: 1px solid red; */
 }
