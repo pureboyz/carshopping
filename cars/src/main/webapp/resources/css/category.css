@@ -1,12 +1,12 @@
 .wrapper{
-	margin: 50px 0px;
+	width: 1300px;
+	margin: 50px auto;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	background-color: pink;
 }
 
 .wrap-category{
-	width: 1300px;
 }
 
 .category{

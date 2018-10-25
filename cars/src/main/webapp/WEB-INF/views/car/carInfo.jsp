@@ -13,21 +13,23 @@
 		<div class="info">
 			<div class="info-high">
 				<label class="carName">2018 소나타 뉴 라이즈</label>
-					<br/><br/>
+					<br/><br/><br/>
 				<label class="carPrice">12,000,000 원</label>
 			</div>
 			<div class="info-mid">
 				<label class="sales">478 대 구매</label>
 					<br/>
-				<select>
-					<option>빨강</option>
-					<option>파랑</option>
-					<option>노랑</option>
-				</select>
+				<div class="selectbox">
+					<select>
+						<option>빨강</option>
+						<option>파랑</option>
+						<option>노랑</option>
+					</select>
+				</div>
 			</div>
 			<div class="info-row">
 				<input type="submit" value="구매하기"/>
-				<input type="button" value="장바구니 담기"/>
+				<input type="button" value="장바구니"/>
 			</div>
 		</div>
 	</div>

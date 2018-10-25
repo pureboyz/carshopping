@@ -13,6 +13,7 @@
 	</div>
 	<div class="wrap-goods">
 		<ul class="goods">
+
 			 <!-- 여기를 for문으로 -->
 		 	<c:forEach begin="0" end="8" items="i">
 				<li onclick="location.href='/car/carInfo'">
@@ -30,6 +31,27 @@
 					</div>
 				</li>
 			</c:forEach>
+
+		 <!-- 여기를 for문으로 -->
+			<li onclick="location.href='/car/carInfo'">
+				<div class="wrap-img">
+					<img alt="sonata" src="../../resources/img/sonata.jpg"/>
+				</div>
+				<div>
+					<label class="carName">2018 소나타 뉴 라이즈</label>
+						<br/><br/>
+					<label>HYUNDAI</label>
+						<br/><br/>
+					<label class="carPrice">12,000,000 원</label>
+						<br/>
+					<label class="sales">478 대 구매</label>
+				</div>
+			</li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li><li></li>
+
 		</ul>
 		
 	</div>
