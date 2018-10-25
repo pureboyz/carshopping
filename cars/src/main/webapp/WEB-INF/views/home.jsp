@@ -14,7 +14,7 @@
 	<div class="wrap-goods">
 		<ul class="goods">
 			<c:forEach var="carVo" items="${carList}">
-				<li onclick="location.href='/car/carInfo'">
+				<li onclick="location.href='/car/carInfo?carNo=${carVo.carNo}'">
 					<div class="wrap-img">
 						<img alt="${carVo.carName}" src="../../resources/img/${carVo.carName}.jpg"/>
 					</div>

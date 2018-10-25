@@ -6,5 +6,17 @@
 <mapper namespace="com.cars.dao.CarDao">
 	<select id="getCar" resultType="carVo">
 		SELECT * FROM car
+		ORDER BY carNo DESC
+	</select>
+	
+	<select id="getCarInfo" resultType="carVo">
+		SELECT * FROM car
+		WHERE carNo = #{carNo}
+	</select>
+	
+	<select id="searchComp" resultType="carVo">
+		SELECT * FROM car
+		WHERE carComp = #{carComp}
+		ORDER BY carNo DESC
 	</select>
 </mapper>

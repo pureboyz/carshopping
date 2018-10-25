@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../include/header.jsp"%>
 <%@include file="../include/category.jsp"%>
 
@@ -8,16 +9,16 @@
 <article>
 	<div class="img-info">
 		<div class="imgbox">
-			<img alt="goods" src="${pageContext.request.contextPath}/resources/img/${carVo.carName}.jpg">
+			<img alt="goods" src="${pageContext.request.contextPath}/resources/img/${car.carName}.jpg">
 		</div>
 		<div class="info">
 			<div class="info-high">
-				<label class="carName">2018 소나타 뉴 라이즈</label>
+				<label class="carName">${car.carComp}&nbsp;${car.carName}</label>
 					<br/><br/><br/>
-				<label class="carPrice">12,000,000 원</label>
+				<fmt:formatNumber value="${car.carPrice}" type="currency"/>
 			</div>
 			<div class="info-mid">
-				<label class="sales">478 대 구매</label>
+				<label class="sales">${car.carsale} 대 구매</label>
 					<br/>
 				<div class="selectbox">
 					<select>
@@ -38,7 +39,7 @@
 			<h2>상품 정보</h2>
 			<div class="tab_container">
 				<div id="tab1" class="tab_content">
-					<table>
+					<table class="tbl1">
 						<tr>
 							<th>구매 & 배송</th>
 							<th>안내사항</th>
@@ -69,6 +70,16 @@
 					</table>
 				</div>				
 			</div>
+			<h2>모델 제원</h2>
+			<table class="tbl2" cellspacing=0>
+				<tr><td>모델명</td><td>${car.carName}</td></tr>
+				<tr><td>모델가격</td><td><fmt:formatNumber value="${car.carPrice}" type="currency"/></td></tr>
+				<tr><td>제조사</td><td>${car.carComp}</td></tr>
+				<tr><td>배기량</td><td>${car.carCC} cc</td></tr>
+				<tr><td>연비</td><td>${car.carEff} km/l</td></tr>
+				<tr><td>등급</td><td>${car.carSize}</td></tr>
+				<tr><td>연료</td><td>${car.carFuel}</td></tr>
+			</table>
 			<h2>구매 후기</h2>
 			<div id="tab2" class="tab_content">
 				

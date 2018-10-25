@@ -13,20 +13,22 @@ article{
 
 .imgbox{
 	width: 648px;
-	height: 298px;
+	height: 330px;
 	padding: 5px 0px 5px 0px;
 	float: left;
 	/* border: 1px solid red; */
 }
 
 .imgbox img{
-	width: 648px;
+	width: 550px;
+	margin: 10px 10px 10px 50px;
+	/* border: 1px solid red; */
 }
 
 .info{
 	width: 608px;
-	height: 298px;
-	padding: 5px 20px 5px 20px;
+	height: 300px;
+	padding: 40px 20px 5px 20px;
 	float: left;
 	/* border: 1px solid red; */
 }
@@ -107,13 +109,34 @@ h2{
 	border: 1px solid #ccc;
 }
 
-table tr{
+.tbl1 tr{
 	height: 60px;
 }
 
-table tr td{
+.tbl1 tr td{
 	padding-bottom: 20px;
 	width: 600px;
 	text-align: center;
 	/* border: 1px solid red; */
+}
+
+.tbl2{
+	width: 1250px;
+	height: 550px;
+	border: 1px solid #ccc;
+}
+
+.tbl2 tr td:first-child {
+	width: 198px;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	background-color: #eee;
+	padding-left: 25px;
+	font-size: 1.1em;
+}
+
+.tbl2 tr td:last-child {
+	border-bottom: 1px solid #ccc;
+	padding-left: 35px;
+	font-size: 1.1em;
 }

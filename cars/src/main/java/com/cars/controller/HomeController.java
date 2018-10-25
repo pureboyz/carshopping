@@ -20,7 +20,6 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) throws Exception{
-		System.out.println("home");
 		List<CarVo> carList = service.getCar();
 		model.addAttribute("carList",carList);
 		return "home";

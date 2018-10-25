@@ -20,4 +20,14 @@ public class CarServiceImpl implements CarService{
 		return dao.getCar();
 	}
 
+	@Override
+	public CarVo getCarInfo(int carNo) throws Exception {
+		return dao.getCarInfo(carNo);
+	}
+
+	@Override
+	public List<CarVo> searchComp(String carComp) throws Exception {
+		return dao.searchComp(carComp);
+	}
+
 }
