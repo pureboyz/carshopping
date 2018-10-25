@@ -12,6 +12,7 @@
 	</div>
 	<div class="wrap-goods">
 		<ul class="goods">
+		 <!-- 여기를 for문으로 -->
 			<li onclick="location.href='/car/carInfo'">
 				<div class="wrap-img">
 					<img alt="sonata" src="../../resources/img/sonata.jpg"/>
@@ -26,9 +27,7 @@
 					<label class="sales">478 대 구매</label>
 				</div>
 			</li>
-			<li></li>
-			<li></li>
-			<li></li>
+			
 		</ul>
 	</div>
 </article>
