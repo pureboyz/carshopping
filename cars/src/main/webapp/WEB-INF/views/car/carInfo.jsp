@@ -8,7 +8,7 @@
 <article>
 	<div class="img-info">
 		<div class="imgbox">
-			<img alt="goods" src="${pageContext.request.contextPath}/resources/img/sonata.jpg">
+			<img alt="goods" src="${pageContext.request.contextPath}/resources/img/${carVo.carName}.jpg">
 		</div>
 		<div class="info">
 			<div class="info-high">

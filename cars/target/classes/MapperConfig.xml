@@ -5,7 +5,11 @@
   
   <configuration>
 	<typeAliases>
-		<typeAlias alias="CarVo"  type="com.cars.vo.CarVo"/>
+		<typeAlias alias="carVo"  type="com.cars.vo.CarVo"/>
 	</typeAliases>
+	
+	<mappers>
+		<mapper resource="sql/carMapper.xml"/>
+	</mappers>
 	
 </configuration>
