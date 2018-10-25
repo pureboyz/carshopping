@@ -27,7 +27,10 @@
 					<label class="sales">478 대 구매</label>
 				</div>
 			</li>
-			
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li><li></li>
 		</ul>
 	</div>
 </article>
