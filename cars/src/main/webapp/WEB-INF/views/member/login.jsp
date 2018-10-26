@@ -49,12 +49,12 @@ input[type=submit]{
 	<div class="wrap">
 		<div class="loginForm">
 			<p>로그인</p>
-			<form action="" method="post">
+			<form action="/member/loginPost" method="post">
 				<div class="loginFormGroup loginInput">
-					<input type="text" name="mId" placeholder="아이디를 입력하세요">
+					<input type="text" name="uid" placeholder="아이디를 입력하세요">
 				</div>
 				<div class="loginFormGroup loginInput">
-					<input type="password" name="mPass" placeholder="비밀번호를 입력하세요">
+					<input type="password" name="upw" placeholder="비밀번호를 입력하세요">
 				</div>
 				<div class="loginFormGroup">
 					<label> <input type="checkbox" name="mCookie">로그인정보

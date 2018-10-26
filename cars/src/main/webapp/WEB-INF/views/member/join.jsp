@@ -52,7 +52,7 @@ input[type=submit]{
 					<input type="text" name="mName" placeholder="이름을 입력하세요">
 				</div>
 				<div class="joinFormGroup ">
-					<input type="number" name="mAge" min="20" max="80">
+					나이 &nbsp;<input type="number" name="mAge" min="20" max="80">
 				</div>
 				<div class="joinFormGroup ">
 					<input type="text" name="mName" placeholder="이름을 입력하세요">

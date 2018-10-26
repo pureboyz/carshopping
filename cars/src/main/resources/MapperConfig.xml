@@ -6,10 +6,12 @@
   <configuration>
 	<typeAliases>
 		<typeAlias alias="carVo"  type="com.cars.vo.CarVo"/>
+		<typeAlias alias="memberVo"  type="com.cars.vo.MemberVo"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="sql/carMapper.xml"/>
+		<mapper resource="sql/memberMapper.xml"/>
 	</mappers>
 	
 </configuration>

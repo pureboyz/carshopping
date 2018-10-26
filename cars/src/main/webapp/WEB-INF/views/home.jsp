@@ -3,6 +3,7 @@
 <%@include file="include/header.jsp"%>
 <%@include file="include/category.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet">
 
@@ -13,17 +14,17 @@
 	</div>
 	<div class="wrap-goods">
 		<ul class="goods">
-			<c:forEach var="carVo" items="${carList}">
+			<c:forEach begin="0" end="7" var="carVo" items="${carList}">
 				<li onclick="location.href='/car/carInfo?carNo=${carVo.carNo}'">
 					<div class="wrap-img">
-						<img alt="${carVo.carName}" src="../../resources/img/${carVo.carName}.jpg"/>
+						<img alt="${carVo.carName}" src="../../resources/img/${carVo.carName}.png"/>
 					</div>
 					<div>
 						<label class="carName">${carVo.carName}</label>
 							<br/><br/>
 						<label>${carVo.carComp}</label>
 							<br/><br/>
-						<label class="carPrice">${carVo.carPrice} 원</label>
+						<label class="carPrice"><fmt:formatNumber value="${carVo.carPrice}" type="currency"/>,000 원</label>
 							<br/>
 						<label class="sales">${carVo.carsale} 대 구매</label>
 					</div>

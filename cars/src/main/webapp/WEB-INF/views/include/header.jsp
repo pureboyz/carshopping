@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,10 +19,19 @@
 			<img alt="logo" src="../../resources/img/benz.jpg" style="height:140px"  onclick="location.href='/'"/>
 		</div>
 		<div class="member">
-			<div class="member-sign">
-				<a href="/member/join" style="color:black">회원가입</a>
-				<a href="/member/login" style="color:black">로그인</a>
-			</div>
+			<c:choose>
+				<c:when test = "${!empty loginDTO}"> 
+					<div class="member-sign">
+						${loginDTO.uid}						<a href="/member/logout" style="color:black">로그아웃</a>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="member-sign">
+						<a href="/member/join" style="color:black">회원가입</a>
+						<a href="/member/login" style="color:black">로그인</a>
+					</div>
+				</c:otherwise>
+			</c:choose>
 			<div class="member-info">
 				<a href="" style="color:black">공지사항</a>
 				<a href="" style="color:black">구매내역</a>
