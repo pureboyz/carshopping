@@ -20,9 +20,13 @@
 		</div>
 		<div class="member">
 			<c:choose>
-				<c:when test = "${!empty loginDTO}"> 
+				<c:when test = "${!empty loginMember}"> 
 					<div class="member-sign">
-						${loginDTO.uid}						<a href="/member/logout" style="color:black">로그아웃</a>
+						<a href="/member/logout" style="color:black">로그아웃</a>
+						<a>${loginMember.mName}님</a>
+						<c:if test="${loginMember.mId == 'root'}">
+							<a href="" style="color:black">management&nbsp;&nbsp;&nbsp;</a>
+						</c:if>
 					</div>
 				</c:when>
 				<c:otherwise>

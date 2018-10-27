@@ -5,8 +5,10 @@ import com.cars.vo.MemberVo;
 
 public interface MemberDao {
 
-	MemberVo login(LoginDTO loginDTO);
+	MemberVo login(LoginDTO LoginDTO)throws Exception;
+
+	MemberVo getUser(String mId) throws Exception;
 	
-	MemberVo getUser(String uid);
+	
 	
 }

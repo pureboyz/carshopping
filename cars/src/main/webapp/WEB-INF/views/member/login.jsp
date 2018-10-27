@@ -57,7 +57,7 @@ input[type=submit]{
 					<input type="password" name="upw" placeholder="비밀번호를 입력하세요">
 				</div>
 				<div class="loginFormGroup">
-					<label> <input type="checkbox" name="mCookie">로그인정보
+					<label> <input type="checkbox" name="useCookie">로그인정보
 						기억하기
 					</label> <input type="submit" class="inputSubmit" value="로그인">
 				</div>
@@ -68,6 +68,16 @@ input[type=submit]{
 			</div>
 		</div>
 	</div>
+
+<script>
+	var message = "${message}";
+	
+	if(message != null && message != ""){
+		alert(message);
+	}
+</script>
+
+
 
 </body>
 </html>

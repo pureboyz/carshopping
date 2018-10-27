@@ -46,16 +46,16 @@ header{
 	/* border: 1px solid green; */
 }
 
-.member-info{
-	height: 73px;
-	/* border: 1px solid green; */
-}
-
 .member-sign a{
 	margin: auto 10px auto 0;
 	float: right;
 	text-decoration: none;
 	line-height: 73px;
+}
+
+.member-info{
+	height: 73px;
+	/* border: 1px solid green; */
 }
 
 .member-info a{
