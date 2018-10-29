@@ -85,10 +85,6 @@ article{
 	border: 1px solid #ccc;
 }
 
-.tabs{
-	padding-left: 20px;
-}
-
 h2{
 	margin: 20px 0 10px 30px;
 }
@@ -129,4 +125,75 @@ h2{
 	border-bottom: 1px solid #ccc;
 	padding-left: 35px;
 	font-size: 1.1em;
+}
+
+.replyBox{
+	width: 1250px;
+}
+
+.replyAuth{
+	width: 198px;
+	padding-left: 25px;
+	font-size: 1.1em;
+	float: left;
+}
+
+.replyComments{
+	width: 900px;
+}
+
+.btnReply{
+	width: 100px;
+}
+
+.replyBox{
+	width: 1250px;
+}
+
+.replyRegist{
+	width: 1250px;
+	height: 35px;
+	margin-bottom: 5px;
+}
+
+.replyAuth{
+	padding-top: 5px;
+}
+
+.replyComments{
+	width: 850px;
+	height: 32px;
+}
+
+.btnReply{
+	width: 150px;
+	height: 33px;
+}
+
+.templateBox{
+	height: 35px;
+}
+
+.templateBox:first-child{
+	border-top: 1px solid #ccc;
+}
+
+.auth{
+	width: 198px;
+	height: 28px;
+	border: 1px solid #ccc;
+	border-top: none;
+	padding: 5px 0 0 25px;
+	font-size: 1.1em;
+	float: left;
+}
+
+.comments{
+	width: 998px;
+	height: 28px;
+	border: 1px solid #ccc;
+	border-top: none;
+	border-left: none;
+	padding: 5px 0 0 25px;
+	float: left;
 }

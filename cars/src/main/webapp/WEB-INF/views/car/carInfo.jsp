@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <%@include file="../include/header.jsp"%>
 <%@include file="../include/category.jsp"%>
 
@@ -44,7 +46,7 @@ function loginToBuy(){
 		<div class="conatiner">
 			<h2>상품 정보</h2>
 			<div class="tab_container">
-				<div id="tab1" class="tab_content">
+				<div id="tab1">
 					<table class="tbl1">
 						<tr>
 							<th>구매 & 배송</th>
@@ -83,32 +85,60 @@ function loginToBuy(){
 				<tr><td>제조사</td><td>${car.carComp}</td></tr>
 				<tr><td>배기량</td><td>${car.carCC} cc</td></tr>
 				<tr><td>연비</td><td>${car.carEff} km/l</td></tr>
-				<tr><td>등급</td><td>${car.carSize}</td></tr>
+				<tr><td>등급</td><td>${car.carSize} 형</td></tr>
 				<tr><td>연료</td><td>${car.carFuel}</td></tr>
 			</table>
 			<h2>구매 후기</h2>
-			<div id="tab2" class="tab_content">
-				<script id="reply-template" type="text/x-handlebars-template">
-					<div>
-						<h1>{{name}}</h1>
-						<div>
-							{{comment}}
+			<div class="replyBox">
+				<c:if test="${!empty loginMember}">
+					<form action="/reply/register" method="post">
+						<input type="hidden" name=carNo value="${car.carNo}"/>
+						<div class="replyRegist">
+							<h3 class="replyAuth">${loginMember.mName}</h3>
+							<input class="replyComments" name="comment" type="text" />
+							<input class="btnReply" type="button" value="댓글작성"/>
 						</div>
-					</div>
-				</script>
-			</div>	
+					</form>
+				</c:if>
+				<div class="temp"></div>
+			</div>
 		</div>	
 	</div>
 </article>
 
+<script id="template" type="text/x-hanlebars-template">
+	{{#each.}}
+		<div class="templateBox">
+			<h3 class="auth">{{auth}}</h3>
+			<div class="comments">
+				{{comment}}
+			</div>
+		</div>
+	{{/each}}
+</script>
 <script>
-	$(document).ready(function(){
-		var source   = document.getElementById("reply-template").innerHTML;
-		var template = Handlebars.compile(source);
-		var context = {name: "토르", comment: "This is my first post!"};
-		$(".tab_content").html(template(context));
-	});
+	var template = Handlebars.compile($("#template").html());
+	var cno = ${car.carNo};
+	var data = [
+				{auth:"토르",comment:"내 망치가 짱이다!"},
+				{auth:"아이언맨",comment:"내가 이 차들 다 살까?"},
+				{auth:"스파이더맨",comment:"거미줄로 이동하면 더 빠르지"},
+				{auth:"헐크",comment:"으어어어어어어어"},
+				{auth:"앤트맨",comment:"도둑질 하지마"},
+				{auth:"바보",comment:"우헤헤"}
+				];
+	$(".temp").html(template(data));
 
+	/* var template = Handlebars.compile($("#template").html());
+	var cno = ${car.carNo};
+	$.getJSON("/reply/getReply/"+cno,function(list){
+		$(list).each(function(){
+			var fileInfo = getFileInfo(this);
+			var html = temp(fileInfo);
+			$(".temp").append(html);
+		});
+	}); */
+	
 </script>
 
 <%@include file="../include/footer.jsp"%>
