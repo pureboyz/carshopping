@@ -8,7 +8,9 @@ public interface MemberDao {
 	MemberVo login(LoginDTO LoginDTO)throws Exception;
 
 	MemberVo getUser(String mId) throws Exception;
-	
+
+	void join(MemberVo vo) throws Exception;
+
 	
 	
 }

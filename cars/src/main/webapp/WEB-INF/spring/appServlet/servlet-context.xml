@@ -23,6 +23,7 @@
 	
 	<beans:bean id="loginInterceptor" class="com.cars.interceptor.LoginInterceptor"></beans:bean>
 	<beans:bean id="cookieInterceptor" class="com.cars.interceptor.CookieInterceptor"></beans:bean>
+	<beans:bean id="joinInterceptor" class="com.cars.interceptor.JoinInterceptor"></beans:bean>
 	
 	<interceptors>
 		<interceptor>
@@ -37,6 +38,13 @@
 			<beans:ref bean="cookieInterceptor"/>			
 		</interceptor>
 	</interceptors>	
+	
+	<interceptors>
+	<interceptor>
+		<mapping path="/member/joinPost"/>
+		<beans:ref bean="joinInterceptor"/>
+	</interceptor>
+</interceptors>
 	
 	<context:component-scan base-package="com.cars.controller" />
 			

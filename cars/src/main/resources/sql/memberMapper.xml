@@ -13,4 +13,10 @@
 		select * from member
 		where mId=#{mId}
 	</select>
+	
+	<insert id="join">
+		insert into member(mId, mPass, mName, mAge, mGender)
+		values(#{mId}, #{mPass}, #{mName}, #{mAge}, #{mGender})
+	</insert>	
+	
 </mapper>

@@ -55,14 +55,11 @@ input[type=submit]{
 					나이 &nbsp;<input type="number" name="mAge" min="20" max="80">
 				</div>
 				<div class="joinFormGroup ">
-					<input type="text" name="mName" placeholder="이름을 입력하세요">
-				</div>
-				<div class="joinFormGroup ">
 					<label>성별</label>
-					<select>
+					<select name="mGender">
 						성별을 선택해주세요
-						<option value="남">남</option>
-						<option value="여">여</option>
+						<option value=1>남</option>
+						<option value=2>여</option>
 					</select>
 				</div>
 				<div class="joinFormGroup ">
@@ -73,5 +70,14 @@ input[type=submit]{
 			</form>	
 		</div>
 	</div>
+	
+	<script>
+		var message = "${message}";
+		
+		if(message != null && message != ""){
+			alert(message);
+		}
+		
+	</script>
 </body>
 </html>
