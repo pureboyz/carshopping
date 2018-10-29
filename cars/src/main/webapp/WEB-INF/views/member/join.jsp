@@ -41,7 +41,7 @@ input[type=submit]{
 	<div class="wrap">
 		<div class="joinForm">
 			<p>회원가입</p>
-			<form action="" method="post">
+			<form id="joinPOST" method="post">
 				<div class="joinFormGroup ">
 					<input type="text" id="mId" name="mId" placeholder="아이디를 입력하세요">
 				</div>
@@ -61,7 +61,6 @@ input[type=submit]{
 				<div class="joinFormGroup ">
 					나이 &nbsp;<input type="number" id="mAge" name="mAge" min="20" max="80">
 				</div>
-				<div id="mAgeCheck"></div>
 				<div class="joinFormGroup ">
 					<label>성별</label>
 					<select name="mGender">
@@ -71,7 +70,7 @@ input[type=submit]{
 					</select>
 				</div>
 				<div class="joinFormGroup ">
-					<input type="submit" value="완료">
+					<input id="btnJoin" type="button" value="완료">
 				</div>
 				
 								

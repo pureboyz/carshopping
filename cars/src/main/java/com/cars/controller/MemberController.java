@@ -5,13 +5,13 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.AlternativeJdkIdGenerator;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cars.dto.LoginDTO;
@@ -40,12 +40,23 @@ public class MemberController {
 		
 		return "/home";
 	}
-
+	
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public void join() {}
-	
+
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String joinPOST(MemberVo vo,RedirectAttributes rttr) throws Exception {
+	public void join(HttpServletRequest request, Model model) {
+		String message = (String)request.getAttribute("message");
+		System.out.println("message : "+message);
+		if(message != null) {
+			model.addAttribute("message",message);
+		}
+	}
+	
+	@RequestMapping(value = "/joinPOST", method = RequestMethod.POST)
+	public String joinPOST(HttpServletRequest request, RedirectAttributes rttr) throws Exception {
+		MemberVo vo = (MemberVo) request.getAttribute("member");
+		System.out.println(vo);
 		mService.join(vo);
 		rttr.addFlashAttribute("message", "회원가입완료");		
 		
