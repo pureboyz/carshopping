@@ -14,7 +14,8 @@
 	</div>
 	<div class="wrap-goods">
 		<ul class="goods">
-			<c:forEach begin="0" end="7" var="carVo" items="${carList}">
+		<%-- <c:forEach begin="0" end="7" var="carVo" items="${carList}"> --%>
+			<c:forEach var="carVo" items="${carList}">
 				<li onclick="location.href='/car/carInfo?carNo=${carVo.carNo}'">
 					<div class="wrap-img">
 						<img alt="${carVo.carName}" src="../../resources/img/${carVo.carName}.png"/>
@@ -30,6 +31,7 @@
 					</div>
 				</li>
 			</c:forEach>
+				
 		</ul>
 	</div>
 </article>

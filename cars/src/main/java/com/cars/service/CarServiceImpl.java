@@ -30,4 +30,9 @@ public class CarServiceImpl implements CarService{
 		return dao.searchComp(carComp);
 	}
 
+	@Override
+	public List<CarVo> allCar() throws Exception {
+		return dao.allCar();
+	}
+
 }

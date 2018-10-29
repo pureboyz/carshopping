@@ -12,4 +12,6 @@ public interface CarService {
 
 	List<CarVo> searchComp(String carComp) throws Exception;
 
+	List<CarVo> allCar() throws Exception;
+
 }

@@ -32,6 +32,13 @@ public class CarController {
 		model.addAttribute("carList",listLambo);
 		return "home";
 	}
+	
+	@RequestMapping(value="/allCar", method=RequestMethod.GET)
+	public String allCar(Model model) throws Exception{
+		List<CarVo> listLambo = service.allCar();
+		model.addAttribute("carList",listLambo);
+		return "home";
+	}
 
 }
 
