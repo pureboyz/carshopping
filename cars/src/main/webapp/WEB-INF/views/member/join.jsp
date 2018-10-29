@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
+
 <title>회원가입</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/join.js"></script>
 
 <style>
 .wrap{
@@ -40,20 +43,25 @@ input[type=submit]{
 			<p>회원가입</p>
 			<form action="" method="post">
 				<div class="joinFormGroup ">
-					<input type="text" name="mId" placeholder="아이디를 입력하세요">
+					<input type="text" id="mId" name="mId" placeholder="아이디를 입력하세요">
 				</div>
+				<div id="mIdCheck"></div>
 				<div class="joinFormGroup ">
-					<input type="password" name="mPass" placeholder="비밀번호를 입력하세요">
+					<input type="password" id="mPass" name="mPass" placeholder="비밀번호를 입력하세요">
 				</div>				
+				<div id="mPassCheck"></div>
 				<div class="joinFormGroup ">
-					<input type="password" name="mPass2" placeholder="비밀번호를 입력하세요">
+					<input type="password" id="mPass2" name="mPass2" placeholder="비밀번호를 입력하세요">
 				</div>
+				<div id="mPass2Check"></div>
 				<div class="joinFormGroup ">
-					<input type="text" name="mName" placeholder="이름을 입력하세요">
+					<input type="text" id="mName" name="mName" placeholder="이름을 입력하세요">
 				</div>
+				<div id="mNameCheck"></div>
 				<div class="joinFormGroup ">
-					나이 &nbsp;<input type="number" name="mAge" min="20" max="80">
+					나이 &nbsp;<input type="number" id="mAge" name="mAge" min="20" max="80">
 				</div>
+				<div id="mAgeCheck"></div>
 				<div class="joinFormGroup ">
 					<label>성별</label>
 					<select name="mGender">

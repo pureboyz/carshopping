@@ -127,73 +127,51 @@ h2{
 	font-size: 1.1em;
 }
 
-.replyBox{
-	width: 1250px;
-}
-
-.replyAuth{
-	width: 198px;
-	padding-left: 25px;
-	font-size: 1.1em;
-	float: left;
-}
-
-.replyComments{
-	width: 900px;
-}
-
-.btnReply{
-	width: 100px;
-}
-
-.replyBox{
-	width: 1250px;
-}
-
-.replyRegist{
-	width: 1250px;
-	height: 35px;
-	margin-bottom: 5px;
-}
-
-.replyAuth{
-	padding-top: 5px;
-}
-
-.replyComments{
-	width: 850px;
-	height: 32px;
-}
-
-.btnReply{
-	width: 150px;
-	height: 33px;
-}
-
 .templateBox{
-	height: 35px;
+	width: 1200px;
+	height: 30px;
+	padding-top: 4px;
+	padding-left: 20px;
+	border: 1px solid #ccc;
+	border-top: none;
 }
 
 .templateBox:first-child{
 	border-top: 1px solid #ccc;
 }
 
-.auth{
-	width: 198px;
-	height: 28px;
-	border: 1px solid #ccc;
-	border-top: none;
-	padding: 5px 0 0 25px;
-	font-size: 1.1em;
+.replyRegist{
+	width: 1200px;
+	height: 30px;
+	padding-left: 55px;
+	margin: 5px 5px 15px 5px;
+}
+
+.replyAuth{
 	float: left;
+	width: 150px;
+	padding-top: 5px;
+}
+
+.replyComments{
+	margin: 0px;
+	padding: 0px;
+	width: 950px;
+	height: 26px;
+}
+
+.btnReply{
+	margin: 0px;
+	padding: 0px;
+	width: 90px;
+	height: 31px;
+}
+
+.auth{
+	float: left;
+	width: 150px;
 }
 
 .comments{
-	width: 998px;
-	height: 28px;
-	border: 1px solid #ccc;
-	border-top: none;
-	border-left: none;
-	padding: 5px 0 0 25px;
-	float: left;
+	floaf: left;
 }
