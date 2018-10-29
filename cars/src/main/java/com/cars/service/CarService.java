@@ -14,4 +14,6 @@ public interface CarService {
 
 	List<CarVo> allCar() throws Exception;
 
+	void buyCar(int carNo, int mNo) throws Exception;
+
 }

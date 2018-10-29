@@ -1,11 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="../include/header.jsp"%>
 <%@include file="../include/category.jsp"%>
 
 <link href="${pageContext.request.contextPath}/resources/css/carInfo.css" rel="stylesheet">
-
+<script type="text/javascript">
+function loginToBuy(){
+	alert("로그인이 필요합니다.");
+	location.href="/member/login";
+}
+</script>
 <article>
 	<div class="img-info">
 		<div class="imgbox">
@@ -18,19 +24,19 @@
 				<fmt:formatNumber value="${car.carPrice}" type="currency"/>,000
 			</div>
 			<div class="info-mid">
-				<label class="sales">${car.carsale} 대 구매</label>
-					<br/>
-				<div class="selectbox">
-					<select>
-						<option>빨강</option>
-						<option>파랑</option>
-						<option>노랑</option>
-					</select>
-				</div>
+				<label class="sales">${car.carsale} 대 구매</label><br/>
 			</div>
 			<div class="info-row">
-				<input type="submit" value="구매하기"/>
-				<input type="button" value="장바구니"/>
+				<c:choose>
+					<c:when test="${!empty loginMember.mNo}">
+						<input onclick="location.href='/car/buyCar?carNo=${car.carNo}&mNo=${loginMember.mNo}'" type="submit" value="구매하기"/>
+						<input type="button" value="장바구니"/>
+					</c:when>
+					<c:otherwise>
+						<input onclick="loginToBuy()" id="btnBuy" type="button" value="구매하기"/>
+						<input type="button" value="장바구니"/>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>

@@ -24,4 +24,9 @@
 		WHERE carComp = #{carComp}
 		ORDER BY carNo DESC
 	</select>
+	
+	<insert id="buyCar">
+		INSERT INTO buy(mNo,carNo)
+		VALUES(#{mNo},#{carNo})
+	</insert>
 </mapper>

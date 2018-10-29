@@ -1,6 +1,8 @@
 package com.cars.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -33,6 +35,19 @@ public class CarServiceImpl implements CarService{
 	@Override
 	public List<CarVo> allCar() throws Exception {
 		return dao.allCar();
+	}
+
+	@Override
+	public void buyCar(int carNo, int mNo) throws Exception {
+		System.out.println(carNo);
+		System.out.println(mNo);
+		Map<String,Integer> map = new HashMap<>();
+		map.put("mNo", mNo);
+		map.put("carNo", carNo);
+		System.out.println("map의 mno : "+map.get("mNo"));
+		System.out.println("map의 carno : "+map.get("carNo"));
+		dao.buyCar(map);
+		
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.cars.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.cars.vo.CarVo;
 
@@ -13,5 +14,8 @@ public interface CarDao {
 	List<CarVo> searchComp(String carComp) throws Exception;
 
 	List<CarVo> allCar() throws Exception;
+
+	void buyCar(Map<String, Integer> map) throws Exception;
+
 
 }

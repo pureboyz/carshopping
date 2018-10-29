@@ -26,12 +26,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();
 		if(session.getAttribute("loginMember")!=null) {
 			session.removeAttribute("loginMember");
-		}
+		}*/
 		
-		
+		System.out.println("인터셉터 진입");
 		return true;
 	}
 
@@ -43,26 +43,30 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		ModelMap modelMap = modelAndView.getModelMap();
 		LoginDTO loginDTO = (LoginDTO)modelMap.get("loginDTO");
 		
-		MemberVo vo = service.login(loginDTO);
-		
-		if(vo != null) {
-			session.setAttribute("loginMember", vo);
-			
-			if(loginDTO.isUseCookie()) {
-				Cookie cookie = new Cookie("loginCookie", vo.getmId());
-				cookie.setPath("/");
-				cookie.setMaxAge(60*60*24*7);
-				response.addCookie(cookie);
+		if(loginDTO != null){
+			MemberVo vo = service.login(loginDTO);
+			System.out.println(vo);
+			if(vo != null) {
+				session.setAttribute("loginMember", vo);
+				System.out.println(session.getAttribute("loginMember"));
+				if(loginDTO.isUseCookie()) {
+					Cookie cookie = new Cookie("loginCookie", vo.getmId());
+					cookie.setPath("/");
+					cookie.setMaxAge(60*60*24*7);
+					response.addCookie(cookie);
+				}
+				
+			}else {
+				RequestDispatcher rd = request.getRequestDispatcher("/member/login");
+				request.setAttribute("message", "아이디와 패스워드가 일치하지 않습니다.");
+				rd.forward(request, response);
+				
 			}
-			
-		}else {
-			RequestDispatcher rd = request.getRequestDispatcher("/member/login");
-			request.setAttribute("message", "아이디와 패스워드가 일치하지 않습니다.");
-			rd.forward(request, response);
 		}
-			
-		Object dest = session.getAttribute("dest");
-		response.sendRedirect(dest != null ? (String)dest : "/");
+		
+		
+		
+		
 			
 	}
 	

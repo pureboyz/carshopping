@@ -2,6 +2,7 @@ package com.cars.vo;
 
 public class MemberVo {
 	
+	int mNo;
 	String mId;
 	String mPass;
 	String mName;
@@ -9,6 +10,14 @@ public class MemberVo {
 	int mGender;
 	int mGrade;
 	
+	
+	
+	public int getmNo() {
+		return mNo;
+	}
+	public void setmNo(int mNo) {
+		this.mNo = mNo;
+	}
 	public String getmId() {
 		return mId;
 	}
@@ -46,11 +55,14 @@ public class MemberVo {
 		this.mGrade = mGrade;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "MemberVo [mId=" + mId + ", mPass=" + mPass + ", mName=" + mName + ", mAge=" + mAge + ", mGender="
-				+ mGender + ", mGrade=" + mGrade + "]";
+		return "MemberVo [mNo=" + mNo + ", mId=" + mId + ", mPass=" + mPass + ", mName=" + mName + ", mAge=" + mAge
+				+ ", mGender=" + mGender + ", mGrade=" + mGrade + "]";
 	}
+	
+	
 	
 	
 

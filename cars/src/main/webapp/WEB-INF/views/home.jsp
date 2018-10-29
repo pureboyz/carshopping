@@ -35,7 +35,13 @@
 		</ul>
 	</div>
 </article>
-
+<script>
+	var message = "${message}";
+	
+	if(message != null && message != ""){
+		alert(message);
+	}
+</script>
 
 
 <%@include file="include/footer.jsp"%>
