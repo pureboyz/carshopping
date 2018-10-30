@@ -34,4 +34,14 @@
 		UPDATE car SET carsale = carsale + 1
 		WHERE carNo = #{carNo}
 	</update>
+	
+	<select id="getBuyInfo" resultType="BuyInfoVo">
+		SELECT car.*,orderdate FROM car,buy
+		WHERE car.carNo = buy.carNo and buy.mNo = #{mno}
+	</select>
 </mapper>
+
+
+
+
+

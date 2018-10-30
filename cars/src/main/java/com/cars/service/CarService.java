@@ -2,6 +2,7 @@ package com.cars.service;
 
 import java.util.List;
 
+import com.cars.vo.BuyInfoVo;
 import com.cars.vo.CarVo;
 
 public interface CarService {
@@ -15,5 +16,7 @@ public interface CarService {
 	List<CarVo> allCar() throws Exception;
 
 	void buyCar(int carNo, int mNo) throws Exception;
+
+	List<BuyInfoVo> getBuyCar(int mno) throws Exception;
 
 }

@@ -7,6 +7,8 @@
 	<typeAliases>
 		<typeAlias alias="carVo"  type="com.cars.vo.CarVo"/>
 		<typeAlias alias="memberVo"  type="com.cars.vo.MemberVo"/>
+		<typeAlias alias="buyVo"  type="com.cars.vo.BuyVo"/>
+		<typeAlias alias="buyInfoVo"  type="com.cars.vo.BuyInfoVo"/>
 	</typeAliases>
 	
 	<mappers>
