@@ -24,8 +24,8 @@
 					<div class="member-sign">
 						<a href="/member/logout" style="color:black">로그아웃</a>
 						<a>${loginMember.mName}님</a>
-						<c:if test="${loginMember.mId == 'root'}">
-							<a href="" style="color:black">management&nbsp;&nbsp;&nbsp;</a>
+						<c:if test="${loginMember.mGrade == '2'}">
+							<a href="/admin/admin" style="color:black">management&nbsp;&nbsp;&nbsp;</a>
 						</c:if>
 					</div>
 				</c:when>
@@ -38,7 +38,7 @@
 			</c:choose>
 			<div class="member-info">
 				<a href="" style="color:black">공지사항</a>
-				<a href="" style="color:black">구매내역</a>
+				<a href="/car/buyInfo" style="color:black">구매내역</a>
 				<a href="/member/memberInfo" style="color:black">정보수정</a>
 			</div>
 		</div>

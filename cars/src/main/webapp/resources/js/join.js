@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	
 	var id = /^[0-9a-zA-Z]{4,12}$/;
-	var pass1 = /^.*(?=.{6,12})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
+	var pass1 = /^.*(?=.{4,12})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
 	var name = /^[\uac00-\ud7a3a-zA-Z\s0-9]{2,12}$/;
 	
 	var boolId = false;
@@ -69,7 +69,7 @@ $(document).ready(function(){
 	$("#mPass").on("input",function(){
 		var tempVal = $('#mPass').val();
 		var divId = "mPassCheck";
-		var messageError = "영문,숫자를 혼합하여 6~12자 이내만 가능합니다.";
+		var messageError = "영문,숫자를 혼합하여 4~12자 이내만 가능합니다.";
 		boolPass = checkReg(divId, tempVal, pass1, messageError); 
 	});
 	
