@@ -55,6 +55,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "/joinPOST", method = RequestMethod.POST)
 	public String joinPOST(HttpServletRequest request, RedirectAttributes rttr) throws Exception {
+		System.out.println("joinPOST 입장");
 		MemberVo vo = (MemberVo) request.getAttribute("member");
 		System.out.println(vo);
 		mService.join(vo);

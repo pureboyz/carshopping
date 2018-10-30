@@ -47,6 +47,7 @@ public class CarServiceImpl implements CarService{
 		System.out.println("map의 mno : "+map.get("mNo"));
 		System.out.println("map의 carno : "+map.get("carNo"));
 		dao.buyCar(map);
+		dao.saleCountUp(carNo);
 		
 	}
 

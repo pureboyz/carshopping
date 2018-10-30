@@ -35,11 +35,20 @@ public class JoinInterceptor extends HandlerInterceptorAdapter{
 		}
 		return true;*/
 		
-		/*String id = request.getParameter("mId");
+		String id = request.getParameter("mId");
 		String pass = request.getParameter("mPass");
 		String pass2 = request.getParameter("mPass2");
 		String name = request.getParameter("mName");
 		int gender = Integer.parseInt(request.getParameter("mGender"));
+		
+		MemberVo vo = service.getUser(id);
+		if(vo!=null) {
+			System.out.println("JoinInterceptor : " + vo);
+			RequestDispatcher rd = request.getRequestDispatcher("/member/join");
+			request.setAttribute("message", id + "는 이미 존재합니다.");
+			rd.forward(request, response);
+			return false;
+		}
 		
 		MemberVo memberVo = new MemberVo();
 		memberVo.setmId(id);
@@ -48,18 +57,11 @@ public class JoinInterceptor extends HandlerInterceptorAdapter{
 		memberVo.setmAge(Integer.parseInt(request.getParameter("mAge")));
 		memberVo.setmGender(gender);
 		System.out.println(memberVo);
-		request.setAttribute("member", memberVo);*/
+		request.setAttribute("member", memberVo);
 		return true;
 		
 		
 	}
-
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-		
-	}
-	
 	
 	
 }

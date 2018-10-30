@@ -17,5 +17,7 @@ public interface CarDao {
 
 	void buyCar(Map<String, Integer> map) throws Exception;
 
+	void saleCountUp(int carNo) throws Exception;
+
 
 }

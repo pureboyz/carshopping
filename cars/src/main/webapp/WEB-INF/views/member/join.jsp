@@ -72,8 +72,6 @@ input[type=submit]{
 				<div class="joinFormGroup ">
 					<input id="btnJoin" type="button" value="완료">
 				</div>
-				
-								
 			</form>	
 		</div>
 	</div>

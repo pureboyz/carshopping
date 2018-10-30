@@ -6,7 +6,7 @@
 <mapper namespace="com.cars.dao.CarDao">
 	<select id="getCar" resultType="carVo">
 		SELECT * FROM car
-		ORDER BY carsale limit 8
+		ORDER BY carsale DESC limit 8
 	</select>
 	
 	<select id="allCar" resultType="carVo">
@@ -29,4 +29,9 @@
 		INSERT INTO buy(mNo,carNo)
 		VALUES(#{mNo},#{carNo})
 	</insert>
+	
+	<update id="saleCountUp">
+		UPDATE car SET carsale = carsale + 1
+		WHERE carNo = #{carNo}
+	</update>
 </mapper>
