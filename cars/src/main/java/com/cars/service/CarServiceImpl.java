@@ -1,5 +1,6 @@
 package com.cars.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.cars.dao.CarDao;
+import com.cars.vo.BuyInfoVo;
 import com.cars.vo.CarVo;
 
 @Service
@@ -49,6 +51,11 @@ public class CarServiceImpl implements CarService{
 		dao.buyCar(map);
 		dao.saleCountUp(carNo);
 		
+	}
+
+	@Override
+	public List<BuyInfoVo> getBuyCar(int mno) throws Exception {
+		return dao.getBuyInfo(mno);
 	}
 
 }

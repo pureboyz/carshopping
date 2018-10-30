@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cars.service.CarService;
+import com.cars.vo.BuyInfoVo;
 import com.cars.vo.CarVo;
 import com.cars.vo.D3Data;
 import com.cars.vo.FreqData;
+import com.cars.vo.MemberVo;
 
 @Controller
 @RequestMapping("/car/*")
@@ -64,7 +67,14 @@ public class CarController {
 	}
 	
 	@RequestMapping(value="/buyInfo", method=RequestMethod.GET)
-	public void buyInfo() {}
+	public void buyInfo(HttpSession session) throws Exception{
+		MemberVo memberVo =  (MemberVo)session.getAttribute("loginMember");
+		int mno = memberVo.getmNo();
+		System.out.println(mno);
+		List<BuyInfoVo> cList = service.getBuyCar(mno);
+		System.out.println(cList.get(1));
+		session.setAttribute("cList", cList);
+	}
 	
 	@ResponseBody
 	@RequestMapping("/d3Data")

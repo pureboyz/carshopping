@@ -4,15 +4,60 @@ article{
 }
 
 h1{
-	margin: 0 0 20px 100px;
+	margin: 0 0 20px 70px;
 }
 
 .buyList{
-	width: 1200px;
+	width: 1300px;
 	height: 150px;
-	border: 1px solid black;
+	/* border: 1px solid black; */
 }
 
 .imgBox{
-	width: 
+	width: 218px;
+	height: 148px;
+	float: left;
+	border: 1px solid #ccc;
+}
+
+.imgBox img{
+	width: 218px;
+}
+
+.infoBox{
+	width: 948px;
+	height: 148px;
+	float: left;
+	border: 1px solid #ccc;
+	border-left: none;
+	border-right: none;
+}
+
+.infoBox h2{
+	margin: 15px 0 0 100px;
+	font-size: 1.8em;
+}
+
+.infoBox-low{
+	width: 896px;
+	height: 60px;
+	padding: 25px 0 0 50px;
+	/* border: 1px solid blue; */
+}
+
+.btnBox{
+	width: 128px;
+	height: 148px;
+	float: left;
+	border: 1px solid #ccc;
+}
+
+#btnDelete{
+	width: 84px;
+	margin: 45px 21px 5px 21px;
+}
+
+#btnInfo{
+	width: 84px;
+	margin: 5px 21px 0 21px;
 }
