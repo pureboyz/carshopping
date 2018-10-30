@@ -9,8 +9,10 @@
 
 <article>
 	<div class="wrap-search">
-		<input type="text" class="searchBar" placeholder="검색어를 입력하세요."/>
-		<input type="button" class="btnSearch" value="검색">
+		<form action="/car/search" method="get">
+			<input name="keyword" type="text" class="searchBar" placeholder="검색어를 입력하세요."/>
+			<input type="submit" class="btnSearch" value="검색">
+		</form>
 	</div>
 	<div class="wrap-goods">
 		<ul class="goods">

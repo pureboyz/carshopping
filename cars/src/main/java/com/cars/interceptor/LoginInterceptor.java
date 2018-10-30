@@ -26,12 +26,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		/*HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember")!=null) {
-			session.removeAttribute("loginMember");
-		}*/
 		
-		System.out.println("인터셉터 진입");
 		return true;
 	}
 
@@ -55,12 +50,17 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 					cookie.setMaxAge(60*60*24*7);
 					response.addCookie(cookie);
 				}
-				
 			}else {
 				RequestDispatcher rd = request.getRequestDispatcher("/member/login");
 				request.setAttribute("message", "아이디와 패스워드가 일치하지 않습니다.");
 				rd.forward(request, response);
-				
+			}
+		}else {
+			MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+			if(loginMember == null) {
+				RequestDispatcher rd = request.getRequestDispatcher("/member/login");
+				request.setAttribute("message", "로그인이 필요합니다.");
+				rd.forward(request, response);
 			}
 		}
 		

@@ -3,11 +3,12 @@
 <%@include file="../include/header.jsp"%>
 <%@include file="../include/category.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <link href="${pageContext.request.contextPath}/resources/css/buyInfo.css" rel="stylesheet">
 
 <article>
-	<h1>구매 내역</h1>
-	<div>
+	<div id="buyListBox">
+		<h1>구매 내역</h1>
 		<c:forEach var="vo" items="${cList}">
 			<div class="buyList">
 				<div class="imgBox">
@@ -24,11 +25,21 @@
 						</div>
 					</div>
 				<div class="btnBox">
+					<label class="orderDate"><fmt:formatDate value="${vo.orderDate}"/></label>
 					<input id="btnDelete" type="button" value="구매내역삭제"/>
 					<input id="btnInfo" type="button" value="상품정보보기"/>
 				</div>
 			</div>
 		</c:forEach>
+		<div id="pagination">
+			<ul class="pageUl">
+				<li class="pageLi">이전</li>
+				<c:forEach var="i" begin="1" end="10">
+					<li class="pageLi">${i}</li>
+				</c:forEach>
+				<li class="pageLi">다음</li>
+			</ul>
+		</div>
 	</div>
 </article>
 

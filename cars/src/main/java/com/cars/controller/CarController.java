@@ -37,43 +37,48 @@ public class CarController {
 	
 	@RequestMapping(value="/searchComp", method=RequestMethod.GET)
 	public String searchComp(@RequestParam("carComp") String carComp, Model model) throws Exception{
-		List<CarVo> listLambo = service.searchComp(carComp);
-		model.addAttribute("carList",listLambo);
+		List<CarVo> carList = service.searchComp(carComp);
+		model.addAttribute("carList",carList);
 		return "home";
 	}
 	
 	@RequestMapping(value="/allCar", method=RequestMethod.GET)
 	public String allCar(Model model) throws Exception{
-		List<CarVo> listLambo = service.allCar();
-		model.addAttribute("carList",listLambo);
+		List<CarVo> carList = service.allCar();
+		model.addAttribute("carList",carList);
 		return "home";
 	}
 	
 	
 	@RequestMapping(value="/buyCar", method=RequestMethod.GET)
 	public String buyCar(@RequestParam("carNo") int carNo, @RequestParam("mNo") int mNo, RedirectAttributes rttr, Model model) throws Exception{
-		
-		System.out.println("buyCar");
-		System.out.println(carNo);
-		System.out.println(mNo);
 		service.buyCar(carNo,mNo);
-		
 		rttr.addFlashAttribute("message", "구매 완료!!!");
-		
-		/*List<CarVo> list = service.getCar();
-		rttr.addAttribute("carList",list);*/
-		
 		return "redirect:/car/buyInfo";
 	}
 	
 	@RequestMapping(value="/buyInfo", method=RequestMethod.GET)
 	public void buyInfo(HttpSession session) throws Exception{
 		MemberVo memberVo =  (MemberVo)session.getAttribute("loginMember");
-		int mno = memberVo.getmNo();
-		System.out.println(mno);
-		List<BuyInfoVo> cList = service.getBuyCar(mno);
-		System.out.println(cList.get(1));
-		session.setAttribute("cList", cList);
+		if(memberVo != null) {
+			int mno = memberVo.getmNo();
+			List<BuyInfoVo> cList = service.getBuyCar(mno);
+			if(cList.size() > 0) {
+				session.setAttribute("cList", cList);
+			}
+		}
+	}
+	
+	@RequestMapping(value="/search", method=RequestMethod.GET)
+	public String search(@RequestParam("keyword") String keyword, Model model) throws Exception{
+		List<CarVo> searchCar = service.searchCar(keyword);
+		System.out.println(searchCar.size());
+		if(searchCar.size() > 0) {
+			model.addAttribute("carList",searchCar);
+		}else {
+			model.addAttribute("message","검색결과가 없습니다.");
+		}
+		return "home";
 	}
 	
 	@ResponseBody

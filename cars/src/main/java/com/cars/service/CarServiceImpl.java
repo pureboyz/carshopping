@@ -58,4 +58,9 @@ public class CarServiceImpl implements CarService{
 		return dao.getBuyInfo(mno);
 	}
 
+	@Override
+	public List<CarVo> searchCar(String keyword) throws Exception {
+		return dao.searchCar(keyword);
+	}
+
 }
