@@ -51,6 +51,11 @@ public class MemberServiceImpl implements MemberService{
 	public void join(MemberVo vo) throws Exception {
 		dao.join(vo);		
 	}
+
+	@Override
+	public void modify(MemberVo memberVo) throws Exception {
+		dao.modify(memberVo);		
+	}
 	
 	
 	

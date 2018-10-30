@@ -6,11 +6,12 @@
 
 <article>
 	<div class="wrap-wrap-profile">
-		<form>
+		<form id="modifyInfo" method="post">
 			<div class="wrap-profile">
 				<div class="profile">
 					<h2>나의 정보 수정</h2>
 					<div>
+						<input type="hidden" value=""/>
 						<div><label>등급</label></div>
 						<div><input type="text" value="일반회원"/></div>
 					</div>

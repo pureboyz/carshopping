@@ -62,11 +62,7 @@ public class MemberController {
 		rttr.addFlashAttribute("message", "회원가입완료");		
 		
 		return "redirect:/member/login";
-	}
-	
-	
-	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
-	public void memberInfo() {}
+	}	
 	
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String logout(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception{
@@ -77,4 +73,16 @@ public class MemberController {
 		
 		return "home";
 	}
+	
+	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
+	public void memberInfo() {}
+	
+	@RequestMapping(value="/modifyInfo", method=RequestMethod.POST)
+	public String modifyInfo(MemberVo memberVo, RedirectAttributes rttr) throws Exception {
+		mService.modify(memberVo);
+		rttr.addFlashAttribute("message", "회원 정보 수정 완료");
+		return "redirect:/home";
+	}
+	
+	
 }

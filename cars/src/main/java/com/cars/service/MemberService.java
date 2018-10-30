@@ -18,4 +18,6 @@ public interface MemberService {
 
 	void join(MemberVo vo) throws Exception;
 
+	void modify(MemberVo memberVo) throws Exception;
+
 }

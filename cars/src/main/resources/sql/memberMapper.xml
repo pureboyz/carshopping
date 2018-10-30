@@ -19,4 +19,14 @@
 		values(#{mId}, #{mPass}, #{mName}, #{mAge}, #{mGender})
 	</insert>	
 	
+	<select id="getMemberList" resultType="memberVo">
+		select * from member;			
+	</select>
+	
+	<update id="modify">
+		update member set mPass=#{mPass}, mName=#{mName},
+		mAge=#{mAge}, mGender=#{mGender}
+		where mNo = #{mNo}
+	</update>
+	
 </mapper>
