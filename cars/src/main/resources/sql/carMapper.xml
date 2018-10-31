@@ -39,6 +39,14 @@
 		SELECT car.*,orderdate FROM car,buy
 		WHERE car.carNo = buy.carNo and buy.mNo = #{mno}
 	</select>
+	
+	<select id="searchCar" resultType="carVo">
+		SELECT * FROM car
+		WHERE (carName LIKE CONCAT('%',#{keyword},'%')
+		OR carComp LIKE CONCAT('%',#{keyword},'%')
+		OR carSize LIKE CONCAT('%',#{keyword},'%')
+		OR carFuel LIKE CONCAT('%',#{keyword},'%'))
+	</select>
 </mapper>
 
 

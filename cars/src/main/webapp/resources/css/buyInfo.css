@@ -1,15 +1,22 @@
 article{
 	width: 1300px;
 	margin: 0 auto;
+	padding: 10px 0 10px 0;
+	border: 1px solid #ccc;
+}
+
+.buyListBox{
+	width: 1250px;
 }
 
 h1{
-	margin: 0 0 20px 70px;
+	margin: 10px 0 20px 70px;
 }
 
 .buyList{
-	width: 1300px;
+	width: 1248px;
 	height: 150px;
+	margin-bottom: 15px;
 	/* border: 1px solid black; */
 }
 
@@ -25,7 +32,7 @@ h1{
 }
 
 .infoBox{
-	width: 948px;
+	width: 898px;
 	height: 148px;
 	float: left;
 	border: 1px solid #ccc;
@@ -34,12 +41,12 @@ h1{
 }
 
 .infoBox h2{
-	margin: 15px 0 0 100px;
-	font-size: 1.8em;
+	margin: 20px 0 0 100px;
+	font-size: 1.7em;
 }
 
 .infoBox-low{
-	width: 896px;
+	width: 846px;
 	height: 60px;
 	padding: 25px 0 0 50px;
 	/* border: 1px solid blue; */
@@ -47,17 +54,49 @@ h1{
 
 .btnBox{
 	width: 128px;
-	height: 148px;
+	height: 133px;
 	float: left;
+	padding-top: 15px;
 	border: 1px solid #ccc;
+}
+
+.orderDate{
+	width: 100px;
+	height: 20px;
+	padding-left: 20px;
 }
 
 #btnDelete{
 	width: 84px;
-	margin: 45px 21px 5px 21px;
+	margin: 25px 21px 5px 21px;
 }
 
 #btnInfo{
 	width: 84px;
 	margin: 5px 21px 0 21px;
+}
+
+.pagination{
+	width: 1250px;
+	height: 30px;
+	text-align: center;
+}
+
+.pageUl{
+	width: 1250px;
+	height: 40px;
+	margin-left: 430px;
+}
+
+.pageLi{
+	position: relative;
+	float: left;
+	padding: 6px 12px;
+	margin-left: -1px;
+	line-height: 1.4;
+	color: #337ab7;
+	text-decoration: none;
+	border: 1px solid #ddd;
+	list-style: none;
+	cursor: pointer;
 }

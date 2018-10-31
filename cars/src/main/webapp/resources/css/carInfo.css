@@ -21,7 +21,8 @@ article{
 
 .imgbox img{
 	width: 550px;
-	margin: 10px 10px 10px 50px;
+	height: 340px;
+	margin: 0px 10px 10px 50px;
 	/* border: 1px solid red; */
 }
 

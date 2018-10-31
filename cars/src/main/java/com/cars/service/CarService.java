@@ -19,4 +19,6 @@ public interface CarService {
 
 	List<BuyInfoVo> getBuyCar(int mno) throws Exception;
 
+	List<CarVo> searchCar(String keyword) throws Exception;
+
 }

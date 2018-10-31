@@ -22,5 +22,7 @@ public interface CarDao {
 
 	List<BuyInfoVo> getBuyInfo(int mno) throws Exception;
 
+	List<CarVo> searchCar(String keyword) throws Exception;
+
 
 }
