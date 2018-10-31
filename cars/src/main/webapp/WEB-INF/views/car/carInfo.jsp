@@ -96,7 +96,7 @@ function loginToBuy(){
 						<div class="replyRegist">
 							<h3 class="replyAuth">${loginMember.mName}</h3>
 							<input class="replyComments" name="comment" type="text" />
-							<input class="btnReply" type="button" value="댓글작성"/>
+							<input class="btnReply" type="submit" value="댓글작성"/>
 						</div>
 					</form>
 				</c:if>
@@ -117,7 +117,7 @@ function loginToBuy(){
 	{{/each}}
 </script>
 <script>
-	var template = Handlebars.compile($("#template").html());
+	/* var template = Handlebars.compile($("#template").html());
 	var cno = ${car.carNo};
 	var data = [
 				{auth:"토르",comment:"내 망치가 짱이다!"},
@@ -127,17 +127,16 @@ function loginToBuy(){
 				{auth:"앤트맨",comment:"도둑질 하지마"},
 				{auth:"바보",comment:"우헤헤"}
 				];
-	$(".temp").html(template(data));
+	$(".temp").html(template(data)); */
 
-	/* var template = Handlebars.compile($("#template").html());
+	var template = Handlebars.compile($("#template").html());
 	var cno = ${car.carNo};
 	$.getJSON("/reply/getReply/"+cno,function(list){
 		$(list).each(function(){
-			var fileInfo = getFileInfo(this);
-			var html = temp(fileInfo);
+			var html = temp(list);
 			$(".temp").append(html);
 		});
-	}); */
+	});
 	
 </script>
 
