@@ -54,7 +54,14 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public void modify(MemberVo memberVo) throws Exception {
+		System.out.println("서비스임플 테스트 : " + memberVo);
 		dao.modify(memberVo);		
+	}
+
+	@Override
+	public MemberVo getMember(MemberVo vo) throws Exception {
+		
+		return dao.getMember(vo);
 	}
 	
 	

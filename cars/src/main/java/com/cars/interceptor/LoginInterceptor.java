@@ -17,8 +17,6 @@ import com.cars.vo.MemberVo;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter{
 	
-	/*private String login = "login";*/
-	
 	@Inject
 	MemberService service;
 
@@ -63,15 +61,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 				rd.forward(request, response);
 			}
 		}
-		
-		
-		
-		
 			
 	}
-	
-	
-	
-	
 	
 }

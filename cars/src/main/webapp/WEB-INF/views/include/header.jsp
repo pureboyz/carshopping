@@ -16,7 +16,7 @@
 <header>
 	<div class="wrap-header">
 		<div class="logo">
-			<img alt="logo" src="../../resources/img/benz.jpg" style="height:140px"  onclick="location.href='/'"/>
+			<img alt="logo" src="../../resources/img/logo.png" style="height:140px"  onclick="location.href='/'"/>
 		</div>
 		<div class="member">
 			<c:choose>

@@ -17,7 +17,12 @@
 	<insert id="join">
 		insert into member(mId, mPass, mName, mAge, mGender)
 		values(#{mId}, #{mPass}, #{mName}, #{mAge}, #{mGender})
-	</insert>	
+	</insert>
+	
+	<select id="getMember" resultType="memberVo">
+		select * from member
+		where mId=#{mId}
+	</select>	
 	
 	<select id="getMemberList" resultType="memberVo">
 		select * from member;			

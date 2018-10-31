@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -75,13 +76,21 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
-	public void memberInfo() {}
+	public void memberInfo(Model model,HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		MemberVo vo = (MemberVo)session.getAttribute("loginMember");
+		MemberVo memberVo = mService.getMember(vo);
+		model.addAttribute("memberVo", memberVo);
+	}
 	
-	@RequestMapping(value="/modifyInfo", method=RequestMethod.POST)
-	public String modifyInfo(MemberVo memberVo, RedirectAttributes rttr) throws Exception {
-		mService.modify(memberVo);
-		rttr.addFlashAttribute("message", "회원 정보 수정 완료");
-		return "redirect:/home";
+	@RequestMapping(value="/modifyInfo")
+	public String modifyInfo(MemberVo memberVo,Model model) throws Exception {
+		
+		System.out.println("컨트롤러 테스트 : " + memberVo);
+		mService.modify(memberVo);		
+		model.addAttribute("message", "회원 정보 수정 완료");
+		/*rttr.addFlashAttribute("message", "회원 정보 수정 완료");*/
+		return "home";
 	}
 	
 	

@@ -26,7 +26,12 @@ public class AdminController {
 	@RequestMapping(value="/memberManagement", method=RequestMethod.GET)
 	public void memberManagement(Model model) throws Exception {
 		List<MemberVo> memberList = service.getMemberList();
-		model.addAttribute("memberList",memberList);
+		model.addAttribute("memberList",memberList);		
+	}
+	
+	@RequestMapping(value="/modifyMember", method=RequestMethod.POST)
+	public void modifymMember() {
 		
 	}
+	
 }

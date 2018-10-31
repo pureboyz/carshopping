@@ -22,19 +22,7 @@ public class JoinInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		/*String mId = request.getParameter("mId");
-		
-		MemberVo vo = service.getUser(mId);
-		
-		if(vo!=null) {
-			System.out.println("JoinInterceptor : " + vo);
-			RequestDispatcher rd = request.getRequestDispatcher("/member/login");
-			request.setAttribute("message", mId + "는 이미 존재합니다.");
-			rd.forward(request, response);
-			return false;
-		}
-		return true;*/
-		
+				
 		String id = request.getParameter("mId");
 		String pass = request.getParameter("mPass");
 		String pass2 = request.getParameter("mPass2");

@@ -51,10 +51,15 @@ article{
 	/* border: 1px solid blue; */
 }
 
-.profile div div:last-child input[type=text]{
+.profile div div:last-child input[type=text], input[type=password]{
 	width: 498px;
 	height: 36px;
 }
+
+/*.profile div div:last-child input[type=password]{
+	width: 498px;
+	height: 36px;
+}*/
 
 input[type=radio]{
 	margin-top: 10px;

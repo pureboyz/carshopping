@@ -17,6 +17,8 @@ public interface MemberDao {
 
 	void modify(MemberVo memberVo) throws Exception;
 
+	MemberVo getMember(MemberVo vo) throws Exception;
+
 	
 	
 }

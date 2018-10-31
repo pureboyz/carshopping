@@ -34,7 +34,7 @@ th, td {
  -->
 <div>
 	<div class="wrap_table">
-		<form id="modifyMember" method="post">
+		<form id="modifyMember" action="/admin/modifyMember" method="post">
 			<table>
 				<tr>
 					<th class="titleMenu memberNo">회원번호</th>
@@ -52,22 +52,25 @@ th, td {
 						<td>${memberVo.mAge}</td>
 						<td><c:choose>
 								<c:when test="${memberVo.mGender == 1}">
-								남
-							</c:when>
+									남
+								</c:when>
+								<c:when test="${memberVo.mGender == 2}">
+									여
+								</c:when>
 								<c:otherwise>
-								여
-							</c:otherwise>
+									괴물
+								</c:otherwise>
 							</c:choose></td>
 						<td><select name="mGrade">
 								<c:choose>
 									<c:when test="${memberVo.mGrade == 2}">
-										<option>관리자</option>
+										<option value="2">관리자</option>
 									</c:when>
 									<c:when test="${memberVo.mGrade == 1}">
-										<option>일반회원</option>
+										<option value="1">일반회원</option>
 									</c:when>
 									<c:otherwise>
-										<option>불량회원</option>
+										<option value="0">불량회원</option>
 									</c:otherwise>
 								</c:choose>
 								<c:if test="${memberVo.mGrade != 2}">
@@ -85,13 +88,8 @@ th, td {
 			</table>
 		</form>
 
-
 	</div>
 </div>
-
-
-
-
 
 
 <%@include file="../include/footer.jsp"%>
