@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.cars.vo.BuyInfoVo;
+import com.cars.vo.BuyVo;
 import com.cars.vo.CarVo;
 
 public interface CarDao {
@@ -16,13 +17,15 @@ public interface CarDao {
 
 	List<CarVo> allCar() throws Exception;
 
-	void buyCar(Map<String, Integer> map) throws Exception;
+	int buyCar(Map<String, Integer> map) throws Exception;
 
 	void saleCountUp(int carNo) throws Exception;
 
 	List<BuyInfoVo> getBuyInfo(int mno) throws Exception;
 
 	List<CarVo> searchCar(String keyword) throws Exception;
+
+	int deleteBuy(BuyVo buyVo) throws Exception;
 
 
 }

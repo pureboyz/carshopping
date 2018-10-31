@@ -37,7 +37,7 @@
 	
 	<select id="getBuyInfo" resultType="BuyInfoVo">
 		SELECT car.*,orderdate FROM car,buy
-		WHERE car.carNo = buy.carNo and buy.mNo = #{mno}
+		WHERE car.carNo = buy.carNo and buy.mNo = #{mno} ORDER BY buy.orderdate DESC 
 	</select>
 	
 	<select id="searchCar" resultType="carVo">
@@ -47,6 +47,11 @@
 		OR carSize LIKE CONCAT('%',#{keyword},'%')
 		OR carFuel LIKE CONCAT('%',#{keyword},'%'))
 	</select>
+	
+	<delete id="deleteBuy">
+		DELETE FROM buy
+		WHERE mNo=#{mNo} AND carNo=#{carNo}
+	</delete>
 </mapper>
 
 

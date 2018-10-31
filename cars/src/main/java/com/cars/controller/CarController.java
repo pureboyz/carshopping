@@ -1,10 +1,8 @@
 package com.cars.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -12,14 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cars.service.CarService;
 import com.cars.vo.BuyInfoVo;
+import com.cars.vo.BuyVo;
 import com.cars.vo.CarVo;
-import com.cars.vo.D3Data;
-import com.cars.vo.FreqData;
 import com.cars.vo.MemberVo;
 
 @Controller
@@ -52,8 +48,10 @@ public class CarController {
 	
 	@RequestMapping(value="/buyCar", method=RequestMethod.GET)
 	public String buyCar(@RequestParam("carNo") int carNo, @RequestParam("mNo") int mNo, RedirectAttributes rttr, Model model) throws Exception{
-		service.buyCar(carNo,mNo);
-		rttr.addFlashAttribute("message", "구매 완료!!!");
+		int success = service.buyCar(carNo,mNo);
+		if(success == 1) {
+			rttr.addFlashAttribute("message", "구매 완료!!!");
+		}
 		return "redirect:/car/buyInfo";
 	}
 	
@@ -63,16 +61,13 @@ public class CarController {
 		if(memberVo != null) {
 			int mno = memberVo.getmNo();
 			List<BuyInfoVo> cList = service.getBuyCar(mno);
-			if(cList.size() > 0) {
-				session.setAttribute("cList", cList);
-			}
+			session.setAttribute("cList", cList);
 		}
 	}
 	
 	@RequestMapping(value="/search", method=RequestMethod.GET)
 	public String search(@RequestParam("keyword") String keyword, Model model) throws Exception{
 		List<CarVo> searchCar = service.searchCar(keyword);
-		System.out.println(searchCar.size());
 		if(searchCar.size() > 0) {
 			model.addAttribute("carList",searchCar);
 		}else {
@@ -81,7 +76,20 @@ public class CarController {
 		return "home";
 	}
 	
-	@ResponseBody
+	@RequestMapping(value="/deleteBuy", method=RequestMethod.POST)
+	public String deleteBuy(@RequestParam("carNo") int carNo, @RequestParam("mNo") int mno, RedirectAttributes rttr) throws Exception{
+		BuyVo buyVo = new BuyVo();
+		buyVo.setmNo(mno);
+		buyVo.setCarNo(carNo);
+		
+		int success = service.deleteBuy(buyVo);
+		if(success == 1) {
+			rttr.addFlashAttribute("message","구매내역이 삭제 되었습니다.");
+		}
+		return "redirect:/car/buyInfo";
+	}
+	
+	/*@ResponseBody
 	@RequestMapping("/d3Data")
 	public ArrayList<D3Data> testD3(){
 		ArrayList<D3Data> list = new ArrayList<>();
@@ -94,7 +102,7 @@ public class CarController {
 		d3.setFreq(data);
 		list.add(d3);
 		return list;
-	}
+	}*/
 	
 
 }

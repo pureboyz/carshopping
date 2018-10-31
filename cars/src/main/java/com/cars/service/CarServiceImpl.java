@@ -1,6 +1,5 @@
 package com.cars.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.cars.dao.CarDao;
 import com.cars.vo.BuyInfoVo;
+import com.cars.vo.BuyVo;
 import com.cars.vo.CarVo;
 
 @Service
@@ -40,17 +40,15 @@ public class CarServiceImpl implements CarService{
 	}
 
 	@Override
-	public void buyCar(int carNo, int mNo) throws Exception {
-		System.out.println(carNo);
-		System.out.println(mNo);
+	public int buyCar(int carNo, int mNo) throws Exception {
 		Map<String,Integer> map = new HashMap<>();
 		map.put("mNo", mNo);
 		map.put("carNo", carNo);
-		System.out.println("map의 mno : "+map.get("mNo"));
-		System.out.println("map의 carno : "+map.get("carNo"));
-		dao.buyCar(map);
+		
+		int success = dao.buyCar(map);
 		dao.saleCountUp(carNo);
 		
+		return success;
 	}
 
 	@Override
@@ -60,7 +58,25 @@ public class CarServiceImpl implements CarService{
 
 	@Override
 	public List<CarVo> searchCar(String keyword) throws Exception {
+		if(keyword.equals("람보르기니")) {
+			keyword = "lamborghini";
+		}else if(keyword.equals("벤츠")) {
+			keyword = "benz";
+		}else if(keyword.equals("아우디")) {
+			keyword = "audi";
+		}else if(keyword.equals("도요타")) {
+			keyword = "toyota";
+		}else if(keyword.equals("현대")) {
+			keyword = "hyundai";
+		}
+		System.out.println(keyword);
 		return dao.searchCar(keyword);
+	}
+
+	@Override
+	public int deleteBuy(BuyVo buyVo) throws Exception {
+		int success = dao.deleteBuy(buyVo);
+		return success;
 	}
 
 }

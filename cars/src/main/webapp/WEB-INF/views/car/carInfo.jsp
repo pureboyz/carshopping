@@ -96,7 +96,7 @@ function loginToBuy(){
 						<div class="replyRegist">
 							<h3 class="replyAuth">${loginMember.mName}</h3>
 							<input class="replyComments" name="comment" type="text" />
-							<input class="btnReply" type="submit" value="댓글작성"/>
+							<input class="btnReply" type="button" value="댓글작성"/>
 						</div>
 					</form>
 				</c:if>
@@ -117,27 +117,41 @@ function loginToBuy(){
 	{{/each}}
 </script>
 <script>
-	/* var template = Handlebars.compile($("#template").html());
-	var cno = ${car.carNo};
-	var data = [
-				{auth:"토르",comment:"내 망치가 짱이다!"},
-				{auth:"아이언맨",comment:"내가 이 차들 다 살까?"},
-				{auth:"스파이더맨",comment:"거미줄로 이동하면 더 빠르지"},
-				{auth:"헐크",comment:"으어어어어어어어"},
-				{auth:"앤트맨",comment:"도둑질 하지마"},
-				{auth:"바보",comment:"우헤헤"}
-				];
-	$(".temp").html(template(data)); */
-
-	var template = Handlebars.compile($("#template").html());
-	var cno = ${car.carNo};
-	$.getJSON("/reply/getReply/"+cno,function(list){
-		$(list).each(function(){
-			var html = temp(list);
-			$(".temp").append(html);
+	$(document).ready(function(){
+		var template = Handlebars.compile($("#template").html());
+		var cno = ${car.carNo};
+		$.getJSON("/reply/getReply/"+cno,function(list){
+			$(this).each(function(){
+				var html = template(list);
+				$(".temp").append(html);
+			});
 		});
 	});
 	
+	$(".btnReply").on("click",function(){
+		var auth = "${loginMember.mName}";
+		var comment = $(".replyComments").val();
+		var cno = "${car.carNo}";
+		
+		$.ajax({
+			type: 'post',
+			url : '/reply/register',
+			headers : {
+				"Content-Type" : "application/json",
+				"X-HTTP-Method-Override": "POST"
+			},
+			dataType : "text",
+			data : JSON.stringify({cno:cno,comment:comment,auth:auth}),
+			success : function(result){
+				if(result == "SUCCESS"){
+					alert("댓글 등록 완료");
+					$(".replyComments").val("");
+				}				
+			}
+		});
+		
+		location.href="/car/carInfo?carNo="+${car.carNo};
+	});
 </script>
 
 <%@include file="../include/footer.jsp"%>

@@ -12,7 +12,9 @@
 .category{
 	width: 836px;
 	height: 142px;
-	text-align: center;
+	margin-left: 232px;
+	padding-left: 17px;
+	/* text-align: center; */
 	/* border: 1px solid green;
 }
 

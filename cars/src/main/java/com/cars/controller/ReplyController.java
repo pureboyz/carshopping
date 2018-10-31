@@ -3,17 +3,17 @@ package com.cars.controller;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cars.service.ReplyService;
-import com.cars.vo.MemberVo;
 import com.cars.vo.ReplyVo;
 
 @Controller
@@ -30,8 +30,25 @@ public class ReplyController {
 		return list;
 	}
 	
-	@RequestMapping(value="/register")
-	public void register(HttpServletRequest request) throws Exception{
+	@RequestMapping(value="/register", method= RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<String> register(@RequestBody ReplyVo replyVo){
+		
+		ResponseEntity<String> entity = null;
+		
+		try {
+			service.register(replyVo);
+			entity = new ResponseEntity<String>("SUCCESS",HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
+	
+	/*@RequestMapping(value="/register")
+	public String register(HttpServletRequest request, RedirectAttributes rttr) throws Exception{
 		HttpSession session = request.getSession();
 		MemberVo vo = (MemberVo)session.getAttribute("loginMember");
 		
@@ -45,7 +62,11 @@ public class ReplyController {
 		replyVo.setComment(comment);
 		
 		service.register(replyVo);
-	}
+		
+		rttr.addAttribute("carNo", carNo);
+		
+		return "redirect:/car/carInfo";
+	}*/
 	
 
 }

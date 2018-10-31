@@ -4,6 +4,7 @@
 <%@include file="../include/category.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <link href="${pageContext.request.contextPath}/resources/css/buyInfo.css" rel="stylesheet">
 
 <article>
@@ -26,6 +27,10 @@
 					</div>
 				<div class="btnBox">
 					<label class="orderDate"><fmt:formatDate value="${vo.orderDate}"/></label>
+					<form id="infoForm">
+						<input type="hidden" name="carNo" value="${vo.carNo}"/>
+						<input type="hidden" name="mNo" value="${loginMember.mNo}"/>
+					</form>
 					<input id="btnDelete" type="button" value="구매내역삭제"/>
 					<input id="btnInfo" type="button" value="상품정보보기"/>
 				</div>
@@ -49,5 +54,21 @@
 	if(message != null && message != ""){
 		alert(message);
 	}
+	
+	var formObj = $("#infoForm");
+	
+	$(document).ready(function(){
+		$("#btnDelete").on("click",function(){
+			formObj.attr("action","/car/deleteBuy");
+			formObj.attr("method","post");
+			formObj.submit();
+		});
+		
+		$("#btnInfo").on("click",function(){
+			formObj.attr("action","/car/carInfo");
+			formObj.attr("method","get");
+			formObj.submit();
+		});
+	});
 </script>
 <%@include file="../include/footer.jsp"%>
