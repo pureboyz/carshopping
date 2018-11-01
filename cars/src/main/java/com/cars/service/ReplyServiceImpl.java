@@ -25,4 +25,6 @@ public class ReplyServiceImpl implements ReplyService{
 		dao.register(replyVo);
 	}
 
+	
+
 }

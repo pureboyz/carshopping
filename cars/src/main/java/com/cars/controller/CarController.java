@@ -17,6 +17,7 @@ import com.cars.vo.BuyInfoVo;
 import com.cars.vo.BuyVo;
 import com.cars.vo.CarVo;
 import com.cars.vo.MemberVo;
+import com.cars.vo.PageMaker;
 
 @Controller
 @RequestMapping("/car/*")
@@ -60,6 +61,10 @@ public class CarController {
 		MemberVo memberVo =  (MemberVo)session.getAttribute("loginMember");
 		if(memberVo != null) {
 			int mno = memberVo.getmNo();
+			
+			/*PageMaker pageMaker = service.getPageMaker();
+			pageMaker.setMno(mno);*/
+			
 			List<BuyInfoVo> cList = service.getBuyCar(mno);
 			session.setAttribute("cList", cList);
 		}

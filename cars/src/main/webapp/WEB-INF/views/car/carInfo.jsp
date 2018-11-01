@@ -120,6 +120,7 @@ function loginToBuy(){
 	$(document).ready(function(){
 		var template = Handlebars.compile($("#template").html());
 		var cno = ${car.carNo};
+		
 		$.getJSON("/reply/getReply/"+cno,function(list){
 			$(this).each(function(){
 				var html = template(list);
@@ -145,12 +146,10 @@ function loginToBuy(){
 			success : function(result){
 				if(result == "SUCCESS"){
 					alert("댓글 등록 완료");
-					$(".replyComments").val("");
+					location.href="/car/carInfo?carNo="+${car.carNo};
 				}				
 			}
 		});
-		
-		location.href="/car/carInfo?carNo="+${car.carNo};
 	});
 </script>
 
