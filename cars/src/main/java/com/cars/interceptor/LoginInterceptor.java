@@ -38,10 +38,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		
 		if(loginDTO != null){
 			MemberVo vo = service.login(loginDTO);
-			System.out.println(vo);
+			//System.out.println(vo);
 			if(vo != null) {
 				session.setAttribute("loginMember", vo);
-				System.out.println(session.getAttribute("loginMember"));
+				System.out.println("로그인 정보 : " + session.getAttribute("loginMember"));
 				if(loginDTO.isUseCookie()) {
 					Cookie cookie = new Cookie("loginCookie", vo.getmId());
 					cookie.setPath("/");

@@ -8,4 +8,6 @@ public interface AdminService {
 
 	List<MemberVo> getMemberList() throws Exception;
 
+	void modifyMember(MemberVo memberVo) throws Exception;
+
 }

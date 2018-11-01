@@ -16,10 +16,10 @@ header{
 }
 
 .logo{
-	width: 696px;
+	width: 496px;
 	height: 148px;
 	margin: 0px auto;
-	margin-left: 300px;
+	margin-left: 400px;
 	float: left;
 	text-align: center;
 	/* border: 1px solid blue; */
@@ -34,7 +34,7 @@ header{
 }
 
 .member{
-	width: 300px;
+	width: 400px;
 	height: 148px;
 	float: left;
 	/* border: 1px solid red; */

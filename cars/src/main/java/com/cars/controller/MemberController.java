@@ -89,6 +89,8 @@ public class MemberController {
 		System.out.println("컨트롤러 테스트 : " + memberVo);
 		mService.modify(memberVo);		
 		model.addAttribute("message", "회원 정보 수정 완료");
+		List<CarVo> carList = cService.allCar();
+		model.addAttribute("carList",carList);
 		/*rttr.addFlashAttribute("message", "회원 정보 수정 완료");*/
 		return "home";
 	}

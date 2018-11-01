@@ -34,4 +34,9 @@
 		where mNo = #{mNo}
 	</update>
 	
+	<update id="modifyMember">
+		update member set mGrade=#{mGrade}
+		where mNo=#{mNo}	
+	</update>
+	
 </mapper>

@@ -21,5 +21,11 @@ public class AdminServiceImpl implements AdminService{
 		return dao.getMemberList();
 	}
 
+	@Override
+	public void modifyMember(MemberVo memberVo) throws Exception {
+		dao.modifyMember(memberVo);		
+	}
+	
+
 	
 }

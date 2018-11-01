@@ -5,10 +5,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+
+
 <style>
 .wrap_table {
 	border: 1px solid skyblue;
-	width: 400px;
+	width: 650px;
 }
 
 table {
@@ -18,8 +20,31 @@ table {
 th, td {
 	padding: 3px;
 }
-</style>
 
+input[type="text"] {
+	width: 30px;
+}
+
+.memberNo {
+	width: 80px;
+}
+
+.memberId {
+	width: 160px;
+}
+
+.memberName {
+	width: 160px;
+}
+
+.memberAge, .memberGender {
+	width: 50px;
+}
+
+.memberGrade {
+	width: 100px;
+}
+</style>
 
 <!-- 
 <div class="wrap">
@@ -34,7 +59,7 @@ th, td {
  -->
 <div>
 	<div class="wrap_table">
-		<form id="modifyMember" action="/admin/modifyMember" method="post">
+		<form id="modifyMember" action="/admin/modifyMember" method="get">
 			<table>
 				<tr>
 					<th class="titleMenu memberNo">회원번호</th>
@@ -43,10 +68,12 @@ th, td {
 					<th class="titleMenu memberAge">나이</th>
 					<th class="titleMenu memberGender">성별</th>
 					<th class="titleMenu memberGrade">회원등급</th>
+					<th></th>
 				</tr>
 				<c:forEach var="memberVo" items="${memberList}">
 					<tr>
-						<td>${memberVo.mNo}</td>
+						<td><input type="text" name="mNo" value="${memberVo.mNo}"
+							style="border-style: none" readonly></td>
 						<td>${memberVo.mId}</td>
 						<td>${memberVo.mName}</td>
 						<td>${memberVo.mAge}</td>
@@ -61,19 +88,25 @@ th, td {
 									괴물
 								</c:otherwise>
 							</c:choose></td>
-						<td><select name="mGrade">
+						<td><select id="memberGrade" name="mGrade">
 								<c:choose>
 									<c:when test="${memberVo.mGrade == 2}">
-										<option value="2">관리자</option>
+										<option value="2" selected="selected">관리자</option>
+										<option value="1" >일반회원</option>
+										<option value="0" >불량회원</option>
 									</c:when>
 									<c:when test="${memberVo.mGrade == 1}">
-										<option value="1">일반회원</option>
+										<option value="2" >관리자</option>
+										<option value="1" selected="selected">일반회원</option>
+										<option value="0" >불량회원</option>
 									</c:when>
-									<c:otherwise>
-										<option value="0">불량회원</option>
-									</c:otherwise>
+									<c:when test="${memberVo.mGrade == 0}">
+										<option value="2" >관리자</option>
+										<option value="1" >일반회원</option>
+										<option value="0" selected="selected">불량회원</option>
+									</c:when>
 								</c:choose>
-								<c:if test="${memberVo.mGrade != 2}">
+								<!--<c:if test="${memberVo.mGrade != 2}">
 									<option value="2">관리자</option>
 								</c:if>
 								<c:if test="${memberVo.mGrade != 1}">
@@ -81,8 +114,10 @@ th, td {
 								</c:if>
 								<c:if test="${memberVo.mGrade != 0}">
 									<option value="0">불량회원</option>
-								</c:if>
+								</c:if>-->
 						</select></td>
+						<td><input type="button" id="btnModify" value="수정" onclick="location.href='/admin/modifyMember?mNo='+${memberVo.mNo}+'&mGrade='+${memberVo.mGrade}">
+						</td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -91,5 +126,7 @@ th, td {
 	</div>
 </div>
 
-
+<script>
+	
+</script>
 <%@include file="../include/footer.jsp"%>
