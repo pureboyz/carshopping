@@ -58,10 +58,22 @@ public class CarController {
 	
 	
 	@RequestMapping(value="/buyCar", method=RequestMethod.GET)
-	public String buyCar(@RequestParam("carNo") int carNo, @RequestParam("mNo") int mNo, RedirectAttributes rttr, Model model) throws Exception{
+	public String buyCar(@RequestParam("carNo") int carNo, @RequestParam("mNo") int mNo, RedirectAttributes rttr) throws Exception{
 		int success = service.buyCar(carNo,mNo);
 		if(success == 1) {
 			rttr.addFlashAttribute("message", "구매 완료!!!");
+		}
+		return "redirect:/car/buyInfo?currentPage=1";
+	}
+	
+	@RequestMapping(value="/basketCar", method=RequestMethod.GET)
+	public String basketCar(@RequestParam("carNo") int carNo, @RequestParam("mNo") int mNo, RedirectAttributes rttr) throws Exception {
+		BuyVo buyVo = new BuyVo();
+		buyVo.setmNo(mNo);
+		buyVo.setCarNo(carNo);
+		int success = service.basketCar(buyVo);
+		if(success == 1) {
+			rttr.addFlashAttribute("message", "장바구니에 상품을 담았습니다.");
 		}
 		return "redirect:/car/buyInfo?currentPage=1";
 	}
@@ -77,8 +89,19 @@ public class CarController {
 			System.out.println("pageMaker : "+pageMaker);
 			session.setAttribute("pageMaker", pageMaker);
 			List<BuyInfoVo> cList = service.getBuyCar(pageMaker);
+			List<BuyInfoVo> basketList = service.getBasketCar(pageMaker);
 			session.setAttribute("cList", cList);
+			session.setAttribute("basketList", basketList);
 		}
+	}
+	
+	@RequestMapping(value="/basketToBuy", method=RequestMethod.GET)
+	public String basketToBuy(@RequestParam("orderNo") int orderNo, RedirectAttributes rttr) throws Exception{
+		int success = service.basketToBuy(orderNo);
+		if(success == 1) {
+			rttr.addFlashAttribute("message", "구매 완료!!!");
+		}
+		return "redirect:/car/buyInfo?currentPage=1";
 	}
 	
 	@RequestMapping(value="/search", method=RequestMethod.GET)
@@ -101,6 +124,15 @@ public class CarController {
 		int success = service.deleteBuy(buyVo);
 		if(success == 1) {
 			rttr.addFlashAttribute("message","구매내역이 삭제 되었습니다.");
+		}
+		return "redirect:/car/buyInfo?currentPage=1";
+	}
+	
+	@RequestMapping(value="/deleteBasket", method=RequestMethod.GET)
+	public String deleteBasket(@RequestParam("orderNo") int orderNo, RedirectAttributes rttr) throws Exception{
+		int success = service.deleteBasket(orderNo);
+		if(success == 1) {
+			rttr.addFlashAttribute("message", "취소 완료!!!");
 		}
 		return "redirect:/car/buyInfo?currentPage=1";
 	}

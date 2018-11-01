@@ -64,6 +64,11 @@ public class CarServiceImpl implements CarService{
 	}
 
 	@Override
+	public List<BuyInfoVo> getBasketCar(PageMaker pageMaker) throws Exception {
+		return dao.getBasketCar(pageMaker);
+	}
+
+	@Override
 	public List<CarVo> searchCar(String keyword) throws Exception {
 		if(keyword.equals("람보르기니")) {
 			keyword = "lamborghini";
@@ -90,7 +95,11 @@ public class CarServiceImpl implements CarService{
 	public PageMaker getPageMaker(int currentPage, int countPerPage, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		MemberVo vo = (MemberVo)session.getAttribute("loginMember");
-		int mno = vo.getmNo();
+		
+		int mno = 0;
+		if(vo != null){
+			mno = vo.getmNo();
+		}
 		
 		int cno = 0;
 		if(request.getAttribute("carNo") != null) {
@@ -143,6 +152,21 @@ public class CarServiceImpl implements CarService{
 		}
 		
 		return pageMaker;
+	}
+
+	@Override
+	public int basketCar(BuyVo buyVo) throws Exception {
+		return dao.basketCar(buyVo);
+	}
+
+	@Override
+	public int basketToBuy(int orderNo) throws Exception {
+		return dao.basketToBuy(orderNo);
+	}
+
+	@Override
+	public int deleteBasket(int orderNo) throws Exception {
+		return dao.deleteBasket(orderNo);
 	}
 
 }

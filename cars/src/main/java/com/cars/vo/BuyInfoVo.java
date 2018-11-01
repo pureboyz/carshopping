@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class BuyInfoVo {
 
+	int orderNo;
 	int carNo;
 	String carName;
 	int carPrice;
@@ -15,6 +16,13 @@ public class BuyInfoVo {
 	int carsale;
 	Date orderDate;
 	
+	
+	public int getOrderNo() {
+		return orderNo;
+	}
+	public void setOrderNo(int orderNo) {
+		this.orderNo = orderNo;
+	}
 	public int getCarNo() {
 		return carNo;
 	}
@@ -77,12 +85,10 @@ public class BuyInfoVo {
 	}
 	@Override
 	public String toString() {
-		return "BuyInfoVo [carNo=" + carNo + ", carName=" + carName + ", carPrice=" + carPrice + ", carComp=" + carComp
-				+ ", carCC=" + carCC + ", carEff=" + carEff + ", carSize=" + carSize + ", carFuel=" + carFuel
-				+ ", carsale=" + carsale + ", orderDate=" + orderDate + "]";
+		return "BuyInfoVo [orderNo=" + orderNo + ", carNo=" + carNo + ", carName=" + carName + ", carPrice=" + carPrice
+				+ ", carComp=" + carComp + ", carCC=" + carCC + ", carEff=" + carEff + ", carSize=" + carSize
+				+ ", carFuel=" + carFuel + ", carsale=" + carsale + ", orderDate=" + orderDate + "]";
 	}
-	
-	
 	
 	
 }

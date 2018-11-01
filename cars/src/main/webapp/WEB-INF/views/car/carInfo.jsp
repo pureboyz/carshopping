@@ -32,11 +32,11 @@ function loginToBuy(){
 				<c:choose>
 					<c:when test="${!empty loginMember.mNo}">
 						<input onclick="location.href='/car/buyCar?carNo=${car.carNo}&mNo=${loginMember.mNo}'" type="submit" value="구매하기"/>
-						<input type="button" value="장바구니"/>
+						<input onclick="location.href='/car/basketCar?carNo=${car.carNo}&mNo=${loginMember.mNo}'" type="button" value="장바구니"/>
 					</c:when>
 					<c:otherwise>
 						<input onclick="loginToBuy()" id="btnBuy" type="button" value="구매하기"/>
-						<input type="button" value="장바구니"/>
+						<input onclick="loginToBuy()" type="button" value="장바구니"/>
 					</c:otherwise>
 				</c:choose>
 			</div>

@@ -8,7 +8,14 @@ public class BuyVo {
 	int carNo;
 	int mNo;
 	Date orderDate;
+	int isBuy;
 	
+	public int getIsBuy() {
+		return isBuy;
+	}
+	public void setIsBuy(int isBuy) {
+		this.isBuy = isBuy;
+	}
 	public int getOrderNo() {
 		return orderNo;
 	}
@@ -36,9 +43,9 @@ public class BuyVo {
 	
 	@Override
 	public String toString() {
-		return "BuyVo [orderNo=" + orderNo + ", carNo=" + carNo + ", mNo=" + mNo + ", orderDate=" + orderDate + "]";
+		return "BuyVo [orderNo=" + orderNo + ", carNo=" + carNo + ", mNo=" + mNo + ", orderDate=" + orderDate
+				+ ", isBuy=" + isBuy + "]";
 	}
 	
 	
-
 }

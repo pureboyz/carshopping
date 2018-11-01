@@ -68,10 +68,15 @@ h1{
 
 #btnDelete{
 	width: 84px;
-	margin: 25px 21px 5px 21px;
+	margin: 25px 21px 0 21px;
 }
 
 #btnInfo{
+	width: 84px;
+	margin: 5px 21px 0 21px;
+}
+
+#btnBuy{
 	width: 84px;
 	margin: 5px 21px 0 21px;
 }

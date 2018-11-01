@@ -30,5 +30,13 @@ public interface CarDao {
 
 	int getTotalCount(int mno) throws Exception;
 
+	int basketCar(BuyVo buyVo) throws Exception;
 
+	List<BuyInfoVo> getBasketCar(PageMaker pageMaker) throws Exception;
+
+	int basketToBuy(int orderNo) throws Exception;
+
+	int deleteBasket(int orderNo) throws Exception;
+	
+	
 }

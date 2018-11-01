@@ -26,8 +26,13 @@
 	</select>
 	
 	<insert id="buyCar">
-		INSERT INTO buy(mNo,carNo)
-		VALUES(#{mNo},#{carNo})
+		INSERT INTO buy(mNo,carNo,isBuy)
+		VALUES(#{mNo},#{carNo},1)
+	</insert>
+	
+	<insert id="basketCar">
+		INSERT INTO buy(mNo,carNo,isBuy)
+		VALUES(#{mNo},#{carNo},0)
 	</insert>
 	
 	<update id="saleCountUp">
@@ -37,7 +42,15 @@
 	
 	<select id="getBuyInfo" resultType="BuyInfoVo">
 		SELECT car.*,orderdate FROM car,buy
-		WHERE car.carNo = buy.carNo and buy.mNo = #{mno} ORDER BY buy.orderdate DESC
+		WHERE (car.carNo = buy.carNo and buy.mNo = #{mno}) AND isBuy = 1
+		ORDER BY buy.orderdate DESC
+		limit #{start},#{countPerPage}
+	</select>
+	
+	<select id="getBasketCar" resultType="BuyInfoVo">
+		SELECT car.*,buy.* FROM car,buy
+		WHERE (car.carNo = buy.carNo and buy.mNo = #{mno}) AND isBuy = 0
+		ORDER BY buy.orderdate DESC
 		limit #{start},#{countPerPage}
 	</select>
 	
@@ -58,6 +71,16 @@
 		SELECT count(A.orderdate) FROM (SELECT car.*,orderdate FROM car,buy
 		WHERE car.carNo = buy.carNo and buy.mNo = #{mno}) A
 	</select>
+	
+	<update id="basketToBuy">
+		UPDATE buy SET isBuy = isBuy + 1, orderDate = now()
+		WHERE orderNo = #{orderNo}
+	</update>
+	
+	<delete id="deleteBasket">
+		DELETE FROM buy
+		WHERE orderNo = #{orderNo}
+	</delete>
 </mapper>
 
 
