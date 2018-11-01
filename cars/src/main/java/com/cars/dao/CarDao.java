@@ -6,6 +6,7 @@ import java.util.Map;
 import com.cars.vo.BuyInfoVo;
 import com.cars.vo.BuyVo;
 import com.cars.vo.CarVo;
+import com.cars.vo.PageMaker;
 
 public interface CarDao {
 
@@ -21,11 +22,13 @@ public interface CarDao {
 
 	void saleCountUp(int carNo) throws Exception;
 
-	List<BuyInfoVo> getBuyInfo(int mno) throws Exception;
+	List<BuyInfoVo> getBuyInfo(PageMaker pageMaker) throws Exception;
 
 	List<CarVo> searchCar(String keyword) throws Exception;
 
 	int deleteBuy(BuyVo buyVo) throws Exception;
+
+	int getTotalCount(int mno) throws Exception;
 
 
 }

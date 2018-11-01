@@ -5,19 +5,26 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
 import com.cars.dao.CarDao;
+import com.cars.dao.ReplyDao;
 import com.cars.vo.BuyInfoVo;
 import com.cars.vo.BuyVo;
 import com.cars.vo.CarVo;
+import com.cars.vo.MemberVo;
+import com.cars.vo.PageMaker;
 
 @Service
 public class CarServiceImpl implements CarService{
 
 	@Inject
 	CarDao dao;
+	@Inject
+	ReplyDao replyDao;
 	
 	@Override
 	public List<CarVo> getCar() throws Exception {
@@ -52,8 +59,8 @@ public class CarServiceImpl implements CarService{
 	}
 
 	@Override
-	public List<BuyInfoVo> getBuyCar(int mno) throws Exception {
-		return dao.getBuyInfo(mno);
+	public List<BuyInfoVo> getBuyCar(PageMaker pageMaker) throws Exception {
+		return dao.getBuyInfo(pageMaker);
 	}
 
 	@Override
@@ -77,6 +84,65 @@ public class CarServiceImpl implements CarService{
 	public int deleteBuy(BuyVo buyVo) throws Exception {
 		int success = dao.deleteBuy(buyVo);
 		return success;
+	}
+
+	@Override
+	public PageMaker getPageMaker(int currentPage, int countPerPage, HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		MemberVo vo = (MemberVo)session.getAttribute("loginMember");
+		int mno = vo.getmNo();
+		
+		int cno = 0;
+		if(request.getAttribute("carNo") != null) {
+			cno = (int) request.getAttribute("carNo");
+		}
+		
+		int displayPageNum = 10;
+		
+		PageMaker pageMaker = new PageMaker();
+		
+		
+		int totalCount = 0;
+		if(cno == 0) {
+			totalCount = dao.getTotalCount(mno);
+			pageMaker.setTotalCount(totalCount);
+		}else{
+			totalCount = replyDao.getTotalCount(cno);
+			pageMaker.setTotalCount(totalCount);
+		}
+		System.out.println("cno : "+cno + "mno : "+mno);
+		
+		pageMaker.setCountPerPage(countPerPage);
+		pageMaker.setCurrentPage(currentPage);
+		
+		int startPage = ((currentPage-1)/displayPageNum*displayPageNum)+1;
+		pageMaker.setStartPage(startPage);
+		
+		int endPage = startPage+displayPageNum-1;
+		if(endPage >= (((totalCount-1)/countPerPage)+1)) {
+			pageMaker.setEndPage(((totalCount-1)/countPerPage)+1);
+		}else {
+			pageMaker.setEndPage(startPage+displayPageNum-1);
+		}
+		
+		int start = ((currentPage-1)*countPerPage);
+		pageMaker.setStart(start);
+		
+		pageMaker.setDisplayPageNum(displayPageNum);
+		
+		if(1 < currentPage) {
+			pageMaker.setPrev(true);
+		}else {
+			pageMaker.setPrev(false);
+		}
+		
+		if(currentPage < pageMaker.getEndPage()) {
+			pageMaker.setNext(true);
+		}else {
+			pageMaker.setNext(false);
+		}
+		
+		return pageMaker;
 	}
 
 }

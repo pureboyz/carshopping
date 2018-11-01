@@ -27,22 +27,22 @@
 					</div>
 				<div class="btnBox">
 					<label class="orderDate"><fmt:formatDate value="${vo.orderDate}"/></label>
-					<form id="infoForm">
-						<input type="hidden" name="carNo" value="${vo.carNo}"/>
-						<input type="hidden" name="mNo" value="${loginMember.mNo}"/>
-					</form>
-					<input id="btnDelete" type="button" value="구매내역삭제"/>
-					<input id="btnInfo" type="button" value="상품정보보기"/>
+					<input id="btnDelete" type="button" value="구매내역삭제" onclick="location.href='/car/deleteBuy?carNo='+${vo.carNo}+'&mNo='+${loginMember.mNo}"/>
+					<input id="btnInfo" type="button" value="상품정보보기" onclick="location.href='/car/carInfo?carNo='+${vo.carNo}+'&currentPage=1'"/>
 				</div>
 			</div>
 		</c:forEach>
 		<div id="pagination">
 			<ul class="pageUl">
-				<li class="pageLi">이전</li>
-				<c:forEach var="i" begin="1" end="10">
-					<li class="pageLi">${i}</li>
+				<c:if test="${pageMaker.prev}">
+					<li class="pageLi"onclick="location.href='/car/buyInfo?currentPage=${pageMaker.currentPage-1}'">이전</li>
+				</c:if>
+				<c:forEach var="i" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+					<li onclick="location.href='/car/buyInfo?currentPage=${i}'" class="pageLi">${i}</li>
 				</c:forEach>
-				<li class="pageLi">다음</li>
+				<c:if test="${pageMaker.next}">
+					<li class="pageLi" onclick="location.href='/car/buyInfo?currentPage=${pageMaker.currentPage+1}'">다음</li>
+				</c:if>
 			</ul>
 		</div>
 	</div>
@@ -54,21 +54,5 @@
 	if(message != null && message != ""){
 		alert(message);
 	}
-	
-	var formObj = $("#infoForm");
-	
-	$(document).ready(function(){
-		$("#btnDelete").on("click",function(){
-			formObj.attr("action","/car/deleteBuy");
-			formObj.attr("method","post");
-			formObj.submit();
-		});
-		
-		$("#btnInfo").on("click",function(){
-			formObj.attr("action","/car/carInfo");
-			formObj.attr("method","get");
-			formObj.submit();
-		});
-	});
 </script>
 <%@include file="../include/footer.jsp"%>

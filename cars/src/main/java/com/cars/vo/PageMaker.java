@@ -2,17 +2,32 @@ package com.cars.vo;
 
 public class PageMaker {
 	
+	int currentPage;
+	int countPerPage;
 	int totalCount;
 	int startPage;
 	int endPage;
 	int displayPageNum;
-	int currentPage;
-	int countPerPage;
-	boolean prev;
-	boolean next;
+	int start;
+	boolean prev = false;
+	boolean next = false;
 	
 	int mno;
+	int cno;
 	
+	
+	public int getCno() {
+		return cno;
+	}
+	public void setCno(int cno) {
+		this.cno = cno;
+	}
+	public int getStart() {
+		return start;
+	}
+	public void setStart(int start) {
+		this.start = start;
+	}
 	public int getTotalCount() {
 		return totalCount;
 	}
@@ -70,10 +85,14 @@ public class PageMaker {
 	
 	@Override
 	public String toString() {
-		return "PageMaker [totalCount=" + totalCount + ", startPage=" + startPage + ", endPage=" + endPage
-				+ ", displayPageNum=" + displayPageNum + ", currentPage=" + currentPage + ", countPerPage="
-				+ countPerPage + ", prev=" + prev + ", next=" + next + ", mno=" + mno + "]";
+		return "PageMaker [currentPage=" + currentPage + ", countPerPage=" + countPerPage + ", totalCount=" + totalCount
+				+ ", startPage=" + startPage + ", endPage=" + endPage + ", displayPageNum=" + displayPageNum
+				+ ", start=" + start + ", prev=" + prev + ", next=" + next + ", mno=" + mno + ", cno=" + cno + "]";
 	}
+	
+	
+	
+	
 	
 	
 	

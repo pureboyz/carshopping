@@ -101,6 +101,19 @@ function loginToBuy(){
 					</form>
 				</c:if>
 				<div class="temp"></div>
+				<div id="pagination">
+					<ul class="pageUl">
+						<c:if test="${replyPageMaker.prev}">
+							<li class="pageLi" onclick="location.href='/car/carInfo?carNo=${car.carNo}&currentPage=${replyPageMaker.currentPage-1}'">이전</li>
+						</c:if>
+						<c:forEach var="i" begin="${replyPageMaker.startPage}" end="${replyPageMaker.endPage}">
+							<li onclick="location.href='/car/carInfo?carNo=${car.carNo}&currentPage=${i}'" class="pageLi">${i}</li>
+						</c:forEach>
+						<c:if test="${replyPageMaker.next}">
+							<li class="pageLi" onclick="location.href='/car/carInfo?carNo=${car.carNo}&currentPage=${replyPageMaker.currentPage+1}'">다음</li>
+						</c:if>
+					</ul>
+				</div>
 			</div>
 		</div>	
 	</div>
@@ -146,7 +159,7 @@ function loginToBuy(){
 			success : function(result){
 				if(result == "SUCCESS"){
 					alert("댓글 등록 완료");
-					location.href="/car/carInfo?carNo="+${car.carNo};
+					location.href="/car/carInfo?currentPage="+${replyPageMaker.currentPage}+"&carNo="+${car.carNo};
 				}				
 			}
 		});

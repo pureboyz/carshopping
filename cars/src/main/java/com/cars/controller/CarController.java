@@ -3,6 +3,7 @@ package com.cars.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,16 @@ public class CarController {
 	CarService service;
 	
 	@RequestMapping(value="/carInfo", method=RequestMethod.GET)
-	public void carInfo(@RequestParam("carNo") int carNo, Model model) throws Exception{
+	public void carInfo(@RequestParam("currentPage") int currentPage, @RequestParam("carNo") int carNo, Model model, HttpServletRequest request) throws Exception{
+		System.out.println(currentPage);
+		int countPerPage = 10;
+		request.setAttribute("carNo", carNo);
+		PageMaker pageMaker = service.getPageMaker(currentPage,countPerPage,request);
+		pageMaker.setCno(carNo);
+		System.out.println("replyPageMaker : "+pageMaker);
+		HttpSession session = request.getSession();
+		session.setAttribute("replyPageMaker", pageMaker);
+		
 		CarVo carVo = service.getCarInfo(carNo);
 		model.addAttribute("car",carVo);
 	}
@@ -53,19 +63,20 @@ public class CarController {
 		if(success == 1) {
 			rttr.addFlashAttribute("message", "구매 완료!!!");
 		}
-		return "redirect:/car/buyInfo";
+		return "redirect:/car/buyInfo?currentPage=1";
 	}
 	
 	@RequestMapping(value="/buyInfo", method=RequestMethod.GET)
-	public void buyInfo(HttpSession session) throws Exception{
+	public void buyInfo(@RequestParam("currentPage") int currentPage, HttpSession session, HttpServletRequest request) throws Exception{
 		MemberVo memberVo =  (MemberVo)session.getAttribute("loginMember");
 		if(memberVo != null) {
 			int mno = memberVo.getmNo();
-			
-			/*PageMaker pageMaker = service.getPageMaker();
-			pageMaker.setMno(mno);*/
-			
-			List<BuyInfoVo> cList = service.getBuyCar(mno);
+			int countPerPage = 5;
+			PageMaker pageMaker = service.getPageMaker(currentPage,countPerPage,request);
+			pageMaker.setMno(mno);
+			System.out.println("pageMaker : "+pageMaker);
+			session.setAttribute("pageMaker", pageMaker);
+			List<BuyInfoVo> cList = service.getBuyCar(pageMaker);
 			session.setAttribute("cList", cList);
 		}
 	}
@@ -81,7 +92,7 @@ public class CarController {
 		return "home";
 	}
 	
-	@RequestMapping(value="/deleteBuy", method=RequestMethod.POST)
+	@RequestMapping(value="/deleteBuy", method=RequestMethod.GET)
 	public String deleteBuy(@RequestParam("carNo") int carNo, @RequestParam("mNo") int mno, RedirectAttributes rttr) throws Exception{
 		BuyVo buyVo = new BuyVo();
 		buyVo.setmNo(mno);
@@ -91,7 +102,7 @@ public class CarController {
 		if(success == 1) {
 			rttr.addFlashAttribute("message","구매내역이 삭제 되었습니다.");
 		}
-		return "redirect:/car/buyInfo";
+		return "redirect:/car/buyInfo?currentPage=1";
 	}
 	
 	/*@ResponseBody

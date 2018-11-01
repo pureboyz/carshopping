@@ -38,7 +38,7 @@
 			</c:choose>
 			<div class="member-info">
 				<a href="" style="color:black">공지사항</a>
-				<a href="/car/buyInfo" style="color:black">구매내역</a>
+				<a href="/car/buyInfo?currentPage=1" style="color:black">구매내역</a>
 				<a href="/member/memberInfo" style="color:black">정보수정</a>
 			</div>
 		</div>

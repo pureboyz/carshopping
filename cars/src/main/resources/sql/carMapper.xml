@@ -37,7 +37,8 @@
 	
 	<select id="getBuyInfo" resultType="BuyInfoVo">
 		SELECT car.*,orderdate FROM car,buy
-		WHERE car.carNo = buy.carNo and buy.mNo = #{mno} ORDER BY buy.orderdate DESC 
+		WHERE car.carNo = buy.carNo and buy.mNo = #{mno} ORDER BY buy.orderdate DESC
+		limit #{start},#{countPerPage}
 	</select>
 	
 	<select id="searchCar" resultType="carVo">
@@ -52,6 +53,11 @@
 		DELETE FROM buy
 		WHERE mNo=#{mNo} AND carNo=#{carNo}
 	</delete>
+	
+	<select id="getTotalCount" resultType="int">
+		SELECT count(A.orderdate) FROM (SELECT car.*,orderdate FROM car,buy
+		WHERE car.carNo = buy.carNo and buy.mNo = #{mno}) A
+	</select>
 </mapper>
 
 
