@@ -5,6 +5,11 @@ article{
 	border: 1px solid #ccc;
 }
 
+.emptyList{
+	width: 350px;
+	margin: 0 auto;
+}
+
 .buyListBox{
 	width: 1250px;
 }
