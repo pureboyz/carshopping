@@ -116,7 +116,8 @@ input[type="text"] {
 									<option value="0">불량회원</option>
 								</c:if>-->
 						</select></td>
-						<td><input type="button" id="btnModify" value="수정" onclick="location.href='/admin/modifyMember?mNo='+${memberVo.mNo}+'&mGrade='+${memberVo.mGrade}">
+						<td><input type="button" id="btnModify" value="수정" 
+						onclick="location.href='/admin/modifyMember?mNo='+${memberVo.mNo}+'&mGrade='+${memberVo.mGrade}">
 						</td>
 					</tr>
 				</c:forEach>

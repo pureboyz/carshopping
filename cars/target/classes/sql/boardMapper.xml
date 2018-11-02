@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cars.dao.BoardDao">
+
+	<select id="boardList" resultType="boardVo">
+		select * from board
+		order by bGrade desc, 
+		bNo desc;
+	</select>
+	
+	<select id="readPage" resultType="boardVo">
+		select * from board
+		where bNo=#{bNo};
+	</select>
+	
+	<update id="viewCntUp">
+		update board set viewCnt=viewCnt+1
+		where bNo=#{bNo};
+	</update>
+
+</mapper>

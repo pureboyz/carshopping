@@ -10,12 +10,14 @@
 		<typeAlias alias="buyVo"  type="com.cars.vo.BuyVo"/>
 		<typeAlias alias="buyInfoVo"  type="com.cars.vo.BuyInfoVo"/>
 		<typeAlias alias="replyVo"  type="com.cars.vo.ReplyVo"/>
+		<typeAlias alias="boardVo"  type="com.cars.vo.BoardVo"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="sql/carMapper.xml"/>
 		<mapper resource="sql/memberMapper.xml"/>
 		<mapper resource="sql/replyMapper.xml"/>
+		<mapper resource="sql/boardMapper.xml"/>
 	</mappers>
 	
 </configuration>
