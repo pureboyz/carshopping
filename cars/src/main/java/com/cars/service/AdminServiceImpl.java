@@ -114,12 +114,9 @@ public class AdminServiceImpl implements AdminService{
 		list.add(4, toyota);
 		list.add(5, hyundai);
 		
-		System.out.println(list.get(0));
-		System.out.println(list.get(1));
-		System.out.println(list.get(2));
-		System.out.println(list.get(3));
-		System.out.println(list.get(4));
-		System.out.println(list.get(5));
+		for(int i=0; i<list.size(); i++) {
+			System.out.println(list.get(i));
+		}
 		
 		return list;
 	}

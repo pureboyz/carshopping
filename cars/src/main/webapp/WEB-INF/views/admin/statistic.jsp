@@ -29,6 +29,15 @@ $.getJSON("/admin/statisticList",function(list){
 	dashboard('#dashboard',list);
 });
 
+/* var list=[
+{State:'LAMBORGHINI',freq:{twenties:3, thirties:1, forties:1, fifties:1, overSixty:1}}
+,{State:'BENZ',freq:{twenties:1, thirties:2, forties:5, fifties:2, overSixty:1}}
+,{State:'AUDI',freq:{twenties:3, thirties:4, forties:2, fifties:1, overSixty:1}}
+,{State:'BMW',freq:{twenties:1, thirties:1, forties:1, fifties:5, overSixty:1}}
+,{State:'TOYOTA',freq:{twenties:1, thirties:1, forties:2, fifties:1, overSixty:1}}
+,{State:'HYUNDAI',freq:{twenties:1, thirties:1, forties:2, fifties:2, overSixty:2}}
+];
+dashboard('#dashboard',list); */
 
 </script>
 
