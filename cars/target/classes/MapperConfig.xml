@@ -18,6 +18,7 @@
 		<mapper resource="sql/memberMapper.xml"/>
 		<mapper resource="sql/replyMapper.xml"/>
 		<mapper resource="sql/boardMapper.xml"/>
+		<mapper resource="sql/adminMapper.xml"/>
 	</mappers>
 	
 </configuration>

@@ -159,14 +159,7 @@ function loginToBuy(){
 			success : function(result){
 				if(result == "SUCCESS"){
 					alert("댓글 등록 완료");
-					/* location.href="/car/carInfo?currentPage="+${replyPageMaker.currentPage}+"&carNo="+${car.carNo}; */
-					var template = Handlebars.compile($("#template").html());
-					$.getJSON("/reply/getReply/"+cno,function(list){
-						$(this).each(function(){
-							var html = template(list);
-							$(".temp").append(html);
-						});
-					});
+					location.href="/car/carInfo?currentPage="+${replyPageMaker.currentPage}+"&carNo="+${car.carNo};
 				}				
 			}
 		});

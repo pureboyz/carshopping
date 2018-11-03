@@ -6,7 +6,7 @@
 <mapper namespace="com.cars.dao.ReplyDao">
 	<select id="getReply" resultType="replyVo">
 		SELECT * FROM carreply
-		WHERE cno = #{cno}
+		WHERE cno = #{cno} ORDER BY replyNo DESC
 		limit #{start},#{countPerPage}
 	</select>
 	

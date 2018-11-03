@@ -2,34 +2,47 @@ package com.cars.vo;
 
 public class FreqData {
 	
-	int low;
-	int mid;
-	int high;
-	public int getLow() {
-		return low;
+	int twenties;
+	int thirties;
+	int forties;
+	int fifties;
+	int overSixty;
+	
+	public int getTwenties() {
+		return twenties;
 	}
-	public void setLow(int low) {
-		this.low = low;
+	public void setTwenties(int twenties) {
+		this.twenties = twenties;
 	}
-	public int getMid() {
-		return mid;
+	public int getThirties() {
+		return thirties;
 	}
-	public void setMid(int mid) {
-		this.mid = mid;
+	public void setThirties(int thirties) {
+		this.thirties = thirties;
 	}
-	public int getHigh() {
-		return high;
+	public int getForties() {
+		return forties;
 	}
-	public void setHigh(int high) {
-		this.high = high;
+	public void setForties(int forties) {
+		this.forties = forties;
+	}
+	public int getFifties() {
+		return fifties;
+	}
+	public void setFifties(int fifties) {
+		this.fifties = fifties;
+	}
+	public int getOverSixty() {
+		return overSixty;
+	}
+	public void setOverSixty(int overSixty) {
+		this.overSixty = overSixty;
 	}
 	
 	@Override
 	public String toString() {
-		return "FreqData [low=" + low + ", mid=" + mid + ", high=" + high + "]";
+		return "FreqData [twenties=" + twenties + ", thirties=" + thirties + ", forties=" + forties + ", fifties="
+				+ fifties + ", overSixty=" + overSixty + "]";
 	}
 	
-	
-	
-
 }

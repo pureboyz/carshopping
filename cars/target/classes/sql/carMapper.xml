@@ -81,6 +81,17 @@
 		DELETE FROM buy
 		WHERE orderNo = #{orderNo}
 	</delete>
+	
+	<select id="getBuyOfAges" resultType="int">
+		SELECT count(A.orderNo) FROM
+		(SELECT buy.* FROM buy, member
+		WHERE buy.isBuy = 1 AND buy.mNo = member.mNo AND member.mAge LIKE CONCAT(#{i},'%')) A
+	</select>
+	
+	<select id="buyTotal" resultType="int">
+		SELECT count(*) FROM buy
+		WHERE isBuy = 1
+	</select>
 </mapper>
 
 

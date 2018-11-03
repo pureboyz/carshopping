@@ -6,12 +6,12 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cars.service.AdminService;
-import com.cars.vo.CarVo;
+import com.cars.vo.D3Data;
 import com.cars.vo.MemberVo;
 
 @Controller
@@ -37,6 +37,16 @@ public class AdminController {
 		service.modifyMember(memberVo);
 		model.addAttribute("message", "등급 수정 완료");
 		return "redirect:/admin/memberManagement";
+	}
+	
+	@RequestMapping(value="/statistic")
+	public void statistic() {}
+	
+	@RequestMapping(value="/statisticList")
+	@ResponseBody
+	public List<D3Data> statisticList() throws Exception{
+		List<D3Data> d3Data = service.getD3Data();
+		return d3Data;
 	}
 	
 }
