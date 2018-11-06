@@ -39,14 +39,14 @@
 			</c:forEach>
 			<div id="pagination">
 				<ul class="pageUl">
-					<c:if test="${pageMaker.prev}">
-						<li class="pageLi"onclick="location.href='/car/buyInfo?currentPage=${pageMaker.currentPage-1}'">이전</li>
+					<c:if test="${basketPageMaker.prev}">
+						<li class="pageLi"onclick="location.href='/car/buyInfo?currentPage=1&basketCurrentPage=${basketPageMaker.currentPage-1}'">이전</li>
 					</c:if>
-					<c:forEach var="i" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-						<li onclick="location.href='/car/buyInfo?currentPage=${i}'" class="pageLi">${i}</li>
+					<c:forEach var="i" begin="${basketPageMaker.startPage}" end="${basketPageMaker.endPage}">
+						<li onclick="location.href='/car/buyInfo?currentPage=1&basketCurrentPage=${i}'" class="pageLi">${i}</li>
 					</c:forEach>
-					<c:if test="${pageMaker.next}">
-						<li class="pageLi" onclick="location.href='/car/buyInfo?currentPage=${pageMaker.currentPage+1}'">다음</li>
+					<c:if test="${basketPageMaker.next}">
+						<li class="pageLi" onclick="location.href='/car/buyInfo?currentPage=1&basketCurrentPage=${basketPageMaker.currentPage+1}'">다음</li>
 					</c:if>
 				</ul>
 			</div>
@@ -72,7 +72,7 @@
 						</div>
 					<div class="btnBox">
 						<label class="orderDate"><fmt:formatDate value="${vo.orderDate}"/></label>
-						<input id="btnDelete" type="button" value="구매내역삭제" onclick="location.href='/car/deleteBuy?carNo='+${vo.carNo}+'&mNo='+${loginMember.mNo}"/>
+						<input id="btnDelete" type="button" value="구매내역삭제" onclick="location.href='/car/deleteBuy?orderNo='+${vo.orderNo}"/>
 						<input id="btnInfo" type="button" value="상품정보보기" onclick="location.href='/car/carInfo?carNo='+${vo.carNo}+'&currentPage=1'"/>
 					</div>
 				</div>
@@ -80,13 +80,13 @@
 			<div id="pagination">
 				<ul class="pageUl">
 					<c:if test="${pageMaker.prev}">
-						<li class="pageLi"onclick="location.href='/car/buyInfo?currentPage=${pageMaker.currentPage-1}'">이전</li>
+						<li class="pageLi"onclick="location.href='/car/buyInfo?basketCurrentPage=1&currentPage=${pageMaker.currentPage-1}'">이전</li>
 					</c:if>
 					<c:forEach var="i" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-						<li onclick="location.href='/car/buyInfo?currentPage=${i}'" class="pageLi">${i}</li>
+						<li onclick="location.href='/car/buyInfo?basketCurrentPage=1&currentPage=${i}'" class="pageLi">${i}</li>
 					</c:forEach>
 					<c:if test="${pageMaker.next}">
-						<li class="pageLi" onclick="location.href='/car/buyInfo?currentPage=${pageMaker.currentPage+1}'">다음</li>
+						<li class="pageLi" onclick="location.href='/car/buyInfo?basketCurrentPage=1&currentPage=${pageMaker.currentPage+1}'">다음</li>
 					</c:if>
 				</ul>
 			</div>

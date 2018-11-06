@@ -25,7 +25,7 @@ public interface CarService {
 
 	List<CarVo> searchCar(String keyword) throws Exception;
 
-	int deleteBuy(BuyVo buyVo) throws Exception;
+	int deleteBuy(int orderNo) throws Exception;
 
 	PageMaker getPageMaker(int currentPage, int countPerPage, HttpServletRequest request) throws Exception;
 
@@ -36,5 +36,7 @@ public interface CarService {
 	int basketToBuy(int orderNo) throws Exception;
 
 	int deleteBasket(int orderNo) throws Exception;
+
+	PageMaker getBasketPageMaker(int currentPage, int countPerPage, HttpServletRequest request) throws Exception;
 
 }

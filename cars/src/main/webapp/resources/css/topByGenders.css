@@ -1,0 +1,39 @@
+.bar--positive {
+  fill: darkorange;
+}
+
+.bar--negative {
+  fill: steelblue;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+article{
+	width: 1300px;
+	height: 650px;
+	border: 1px solid #ccc;
+}
+
+article h2{
+	text-align: center;
+	margin: 40px 0 10px 0;
+}
+
+.wrap-chart{
+	width: 960px;
+	height: 500px;
+}
+
+article label{
+	float: left;
+	font-size: 20px;
+	margin: 0 0 0 400px;
+}

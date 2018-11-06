@@ -41,7 +41,7 @@
 	</update>
 	
 	<select id="getBuyInfo" resultType="BuyInfoVo">
-		SELECT car.*,orderdate FROM car,buy
+		SELECT car.*,orderdate,orderNo FROM car,buy
 		WHERE (car.carNo = buy.carNo and buy.mNo = #{mno}) AND isBuy = 1
 		ORDER BY buy.orderdate DESC
 		limit #{start},#{countPerPage}
@@ -62,14 +62,26 @@
 		OR carFuel LIKE CONCAT('%',#{keyword},'%'))
 	</select>
 	
-	<delete id="deleteBuy">
+	<!-- <delete id="deleteBuy">
 		DELETE FROM buy
 		WHERE mNo=#{mNo} AND carNo=#{carNo}
-	</delete>
+	</delete> -->
+	
+	<update id="deleteBuy">
+		UPDATE buy SET isBuy = 2
+		WHERE orderNo = #{orderNo}
+	</update>
 	
 	<select id="getTotalCount" resultType="int">
 		SELECT count(A.orderdate) FROM (SELECT car.*,orderdate FROM car,buy
-		WHERE car.carNo = buy.carNo and buy.mNo = #{mno}) A
+		WHERE car.carNo = buy.carNo
+		AND buy.isBuy = 1 AND buy.mNo = #{mno}) A
+	</select>
+	
+	<select id="getBasketTotalCount" resultType="int">
+		SELECT count(A.orderdate) FROM (SELECT car.*,orderdate FROM car,buy
+		WHERE car.carNo = buy.carNo
+		AND buy.isBuy = 0 AND buy.mNo = #{mno}) A
 	</select>
 	
 	<update id="basketToBuy">

@@ -26,7 +26,7 @@ public interface CarDao {
 
 	List<CarVo> searchCar(String keyword) throws Exception;
 
-	int deleteBuy(BuyVo buyVo) throws Exception;
+	int deleteBuy(int orderNo) throws Exception;
 
 	int getTotalCount(int mno) throws Exception;
 
@@ -37,6 +37,8 @@ public interface CarDao {
 	int basketToBuy(int orderNo) throws Exception;
 
 	int deleteBasket(int orderNo) throws Exception;
+
+	int getBasketTotalCount(int mno) throws Exception;
 	
 	
 }

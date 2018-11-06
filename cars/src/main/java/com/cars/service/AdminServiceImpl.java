@@ -1,5 +1,7 @@
 package com.cars.service;
 
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.cars.dao.AdminDao;
 import com.cars.dao.MemberDao;
+import com.cars.vo.CarVo;
 import com.cars.vo.D3Data;
 import com.cars.vo.FreqData;
 import com.cars.vo.MemberVo;
@@ -122,5 +125,43 @@ public class AdminServiceImpl implements AdminService{
 	}
 	
 
-	
+	@Override
+	public void topByGenders() throws Exception {
+		List<CarVo> cv1 = new ArrayList<>();
+		List<CarVo> cv2 = new ArrayList<>();
+		
+		for(int i=1; i<=2; i++) {
+			if(i == 1) {
+				cv1 = aDao.genderCompany(i);
+				System.out.println(cv1);
+			}else if(i == 2){
+				cv2 = aDao.genderCompany(i);
+				System.out.println(cv2);
+			}
+		}
+		
+		FileOutputStream fos;
+		PrintStream ps;
+		
+		try {
+			fos = new FileOutputStream("C:\\Users\\user\\git\\carshopping\\cars\\src\\main\\webapp\\resources\\data\\topByGenders.tsv");
+			ps = new PrintStream(fos);
+			ps.println("name\tvalue");
+			ps.println(cv1.get(0).getCarName()+"\t"+((-1)*cv1.get(0).getCarsale()));
+			ps.println(cv1.get(1).getCarName()+"\t"+((-1)*cv1.get(1).getCarsale()));
+			ps.println(cv1.get(2).getCarName()+"\t"+((-1)*cv1.get(2).getCarsale()));
+			ps.println(cv1.get(3).getCarName()+"\t"+((-1)*cv1.get(3).getCarsale()));
+			ps.println(cv2.get(0).getCarName()+"\t"+(cv2.get(0).getCarsale()));
+			ps.println(cv2.get(1).getCarName()+"\t"+(cv2.get(1).getCarsale()));
+			ps.println(cv2.get(2).getCarName()+"\t"+(cv2.get(2).getCarsale()));
+			ps.println(cv2.get(3).getCarName()+"\t"+(cv2.get(3).getCarsale()));
+			
+			ps.close();
+			fos.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 }

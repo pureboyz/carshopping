@@ -79,19 +79,24 @@ public class CarController {
 	}
 	
 	@RequestMapping(value="/buyInfo", method=RequestMethod.GET)
-	public void buyInfo(@RequestParam("currentPage") int currentPage, HttpSession session, HttpServletRequest request) throws Exception{
+	public void buyInfo(@RequestParam("currentPage") int currentPage, @RequestParam("basketCurrentPage") int basketCurrentPage, HttpSession session, HttpServletRequest request) throws Exception{
 		MemberVo memberVo =  (MemberVo)session.getAttribute("loginMember");
 		if(memberVo != null) {
 			int mno = memberVo.getmNo();
 			int countPerPage = 5;
+			
+			PageMaker basketPageMaker = service.getBasketPageMaker(basketCurrentPage,countPerPage,request);
+			basketPageMaker.setMno(mno);
+			List<BuyInfoVo> basketList = service.getBasketCar(basketPageMaker);
+			session.setAttribute("basketList", basketList);
+			session.setAttribute("basketPageMaker", basketPageMaker);
+			
 			PageMaker pageMaker = service.getPageMaker(currentPage,countPerPage,request);
 			pageMaker.setMno(mno);
 			System.out.println("pageMaker : "+pageMaker);
 			session.setAttribute("pageMaker", pageMaker);
 			List<BuyInfoVo> cList = service.getBuyCar(pageMaker);
-			List<BuyInfoVo> basketList = service.getBasketCar(pageMaker);
 			session.setAttribute("cList", cList);
-			session.setAttribute("basketList", basketList);
 		}
 	}
 	
@@ -116,12 +121,8 @@ public class CarController {
 	}
 	
 	@RequestMapping(value="/deleteBuy", method=RequestMethod.GET)
-	public String deleteBuy(@RequestParam("carNo") int carNo, @RequestParam("mNo") int mno, RedirectAttributes rttr) throws Exception{
-		BuyVo buyVo = new BuyVo();
-		buyVo.setmNo(mno);
-		buyVo.setCarNo(carNo);
-		
-		int success = service.deleteBuy(buyVo);
+	public String deleteBuy(@RequestParam("orderNo") int orderNo, RedirectAttributes rttr) throws Exception{
+		int success = service.deleteBuy(orderNo);
 		if(success == 1) {
 			rttr.addFlashAttribute("message","구매내역이 삭제 되었습니다.");
 		}

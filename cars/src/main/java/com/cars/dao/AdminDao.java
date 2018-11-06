@@ -1,5 +1,9 @@
 package com.cars.dao;
 
+import java.util.List;
+
+import com.cars.vo.CarVo;
+
 public interface AdminDao {
 
 	int lamborghiniByAges(int i) throws Exception;
@@ -25,5 +29,7 @@ public interface AdminDao {
 	int toyotaTotal() throws Exception;
 
 	int hyundaiTotal() throws Exception;
+
+	List<CarVo> genderCompany(int i) throws Exception;
 
 }

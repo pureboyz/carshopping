@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cars.service.AdminService;
@@ -40,13 +41,23 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/statistic")
-	public void statistic() {}
+	public void statistic(Model model,@RequestParam("comp") String comp) {
+		model.addAttribute("comp", comp);
+	}
+	
 	
 	@RequestMapping(value="/statisticList")
 	@ResponseBody
 	public List<D3Data> statisticList() throws Exception{
-		List<D3Data> d3Data = service.getD3Data();
-		return d3Data;
+		List<D3Data> list = service.getD3Data();
+		return list;
 	}
+	
+	@RequestMapping(value="/topByGenders")
+	public void topByGenders() throws Exception{
+		service.topByGenders();
+	}
+	
+	
 	
 }

@@ -17,7 +17,8 @@
 
 
 <div class="menuDiv" onclick="location.href='/admin/memberManagement'">회원관리</div>
-<div class="menuDiv" onclick="location.href='/admin/statistic'">통계</div>
+<div class="menuDiv" onclick="location.href='/admin/statistic?comp=all'">통계</div>
+<div class="menuDiv" onclick="location.href='/admin/topByGenders'">성별top4</div>
 
 
 

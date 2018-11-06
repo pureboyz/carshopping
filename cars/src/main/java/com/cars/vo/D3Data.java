@@ -7,8 +7,8 @@ public class D3Data {
 	public String getState() {
 		return State;
 	}
-	public void setState(String state) {
-		State = state;
+	public void setState(String State) {
+		this.State = State;
 	}
 	public FreqData getFreq() {
 		return freq;

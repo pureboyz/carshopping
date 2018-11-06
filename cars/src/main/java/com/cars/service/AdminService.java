@@ -13,4 +13,6 @@ public interface AdminService {
 
 	List<D3Data> getD3Data() throws Exception;
 
+	void topByGenders() throws Exception;
+
 }
