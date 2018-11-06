@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,29 +31,60 @@ public class BoardController {
 		return "/board/boardList";
 	}
 	
+	/*
+	//처음 새로고침 시 조회수 올라가는 상태
 	@RequestMapping(value="/readPage",method=RequestMethod.GET)
-	public String readPage(@RequestParam("bno")int bno,/*RedirectAttributes rttr*/ Model model) throws Exception{
-		
-		System.out.println("글번호 : " + bno);
-		
+	public String readPage(@RequestParam("bno")int bno,
+			Model model) throws Exception{
+		System.out.println("글번호 : " + bno);		
 		service.viewCntUp(bno);
 		BoardVo boardVo =  service.readPage(bno);
+		model.addAttribute("boardVo", boardVo);
+		System.out.println("readPage" + boardVo);//boardVo 확인
+		return "/board/readPage";
+	}*/
+	
+	
+	//readPage readDetail로 분리하여 시도 실패
+	@RequestMapping(value="/readPage",method=RequestMethod.GET)
+	public String readPage(@RequestParam("bno")int bno,
+			/*@ModelAttribute("boardVo") BoardVo boardVo,*/
+			RedirectAttributes rttr /*Model model*/) throws Exception{		
+		System.out.println("글번호 : " + bno);		
+		service.viewCntUp(bno);
 		
-		model.addAttribute("boardVo", boardVo);		
-		/*
-		rttr.addFlashAttribute("bNo", boardVo.getbNo());
-		rttr.addFlashAttribute("title", boardVo.getTitle());
+		/*BoardVo boardVo =  service.readPage(bno);
+		model.addAttribute("boardVo", boardVo);*/
+		
+		rttr.addAttribute("bNo", bno);
+		/*rttr.addFlashAttribute("title", boardVo.getTitle());
 		rttr.addFlashAttribute("content", boardVo.getContent());
 		rttr.addFlashAttribute("writer", boardVo.getWriter());
 		rttr.addFlashAttribute("mNo", boardVo.getmNo());
 		rttr.addFlashAttribute("regDate", boardVo.getRegDate());
 		rttr.addFlashAttribute("viewCnt", boardVo.getViewCnt());
-		rttr.addFlashAttribute("bGrade", boardVo.getbGrade());		
-		*/
-		System.out.println(boardVo);//boardVo 확인
+		rttr.addFlashAttribute("bGrade", boardVo.getbGrade());*/		
+		
+//		System.out.println("readPage" + boardVo);//boardVo 확인		
+//		return "/board/readPage";
+//		return "redirect:/board/readPage?bno="+bno;
+		return "redirect:/board/readDetail";
+	}
+	
+	@RequestMapping(value="/readDetail", method=RequestMethod.GET)
+	public String readDetail(/*@ModelAttribute("bno")int bno,*/
+			@RequestParam("bNo")int bno,
+			Model model) throws Exception {
+		
+		BoardVo boardVo = service.readPage(bno);
+		model.addAttribute("boardVo", boardVo);
+		
+		System.out.println("readDetail" + boardVo);//boardVo 확인
 		
 		return "/board/readPage";
-		//return "redirect:/board/readPage?bno="+bno;
 	}
+	
+	
+	
 	
 }

@@ -4,7 +4,7 @@
 <%@include file="../include/categoryadmin.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 
 
 <style>
@@ -59,7 +59,11 @@ input[type="text"] {
  -->
 <div>
 	<div class="wrap_table">
-		<form id="modifyMember" action="/admin/modifyMember" method="get">
+		<form id="modifyMember" action="/admin/modifyMemberPOST" method="post">
+			<!-- <form id="modifyMember" action="/admin/modifyMember" method="get"> -->
+			<input type="hidden" id="mNo" name="mNo">
+			<input type="hidden" id="mGrade" name="mGrade">
+		</form>			
 			<table>
 				<tr>
 					<th class="titleMenu memberNo">회원번호</th>
@@ -72,8 +76,8 @@ input[type="text"] {
 				</tr>
 				<c:forEach var="memberVo" items="${memberList}">
 					<tr>
-						<td><input type="text" name="mNo" value="${memberVo.mNo}"
-							style="border-style: none" readonly></td>
+						<td><input type="text" id="mNo${memberVo.mNo}" name="mNo"
+							value="${memberVo.mNo}" style="border-style: none" readonly></td>
 						<td>${memberVo.mId}</td>
 						<td>${memberVo.mName}</td>
 						<td>${memberVo.mAge}</td>
@@ -88,46 +92,81 @@ input[type="text"] {
 									괴물
 								</c:otherwise>
 							</c:choose></td>
-						<td><select id="memberGrade" name="mGrade">
-								<c:choose>
-									<c:when test="${memberVo.mGrade == 2}">
-										<option value="2" selected="selected">관리자</option>
-										<option value="1" >일반회원</option>
-										<option value="0" >불량회원</option>
-									</c:when>
-									<c:when test="${memberVo.mGrade == 1}">
-										<option value="2" >관리자</option>
-										<option value="1" selected="selected">일반회원</option>
-										<option value="0" >불량회원</option>
-									</c:when>
-									<c:when test="${memberVo.mGrade == 0}">
-										<option value="2" >관리자</option>
-										<option value="1" >일반회원</option>
-										<option value="0" selected="selected">불량회원</option>
-									</c:when>
-								</c:choose>
-								<!--<c:if test="${memberVo.mGrade != 2}">
-									<option value="2">관리자</option>
-								</c:if>
-								<c:if test="${memberVo.mGrade != 1}">
-									<option value="1">일반회원</option>
-								</c:if>
-								<c:if test="${memberVo.mGrade != 0}">
-									<option value="0">불량회원</option>
-								</c:if>-->
-						</select></td>
-						<td><input type="button" id="btnModify" value="수정" 
+						<td><c:if test="${loginMember.mNo == memberVo.mNo}">
+								<select id="memberGrade${memberVo.mNo}" name="mGrade" disabled="disabled">
+									<c:choose>
+										<c:when test="${memberVo.mGrade == 2}">
+											<option value="2" selected="selected">관리자</option>
+											<option value="1">일반회원</option>
+											<option value="0">불량회원</option>
+										</c:when>
+										<c:when test="${memberVo.mGrade == 1}">
+											<option value="2">관리자</option>
+											<option value="1" selected="selected">일반회원</option>
+											<option value="0">불량회원</option>
+										</c:when>
+										<c:when test="${memberVo.mGrade == 0}">
+											<option value="2">관리자</option>
+											<option value="1">일반회원</option>
+											<option value="0" selected="selected">불량회원</option>
+										</c:when>
+									</c:choose>
+								</select>
+							</c:if> <c:if test="${loginMember.mNo != memberVo.mNo}">
+								<select id="memberGrade${memberVo.mNo}" name="mGrade">
+									<c:choose>
+										<c:when test="${memberVo.mGrade == 2}">
+											<option value="2" selected="selected">관리자</option>
+											<option value="1">일반회원</option>
+											<option value="0">불량회원</option>
+										</c:when>
+										<c:when test="${memberVo.mGrade == 1}">
+											<option value="2">관리자</option>
+											<option value="1" selected="selected">일반회원</option>
+											<option value="0">불량회원</option>
+										</c:when>
+										<c:when test="${memberVo.mGrade == 0}">
+											<option value="2">관리자</option>
+											<option value="1">일반회원</option>
+											<option value="0" selected="selected">불량회원</option>
+										</c:when>
+									</c:choose>
+								</select>
+							</c:if> </select></td>
+						<%-- <td><input type="button" id="btnModify" value="수정" 
 						onclick="location.href='/admin/modifyMember?mNo='+${memberVo.mNo}+'&mGrade='+${memberVo.mGrade}">
-						</td>
+						</td> --%>
+						<td><input type="button" onclick="javascript:formSubmit('${memberVo.mNo}');" id="btnModify${memberVo.mNo}" value="수정" /></td>
 					</tr>
 				</c:forEach>
+				
 			</table>
-		</form>
-
+		
 	</div>
 </div>
 
 <script>
+	function formSubmit(mNo){		
+		//alert($("#mNo"+mNo).val());
+		var mno = $("#mNo"+mNo).val();
+		var mgrade = $("#memberGrade"+mNo).val();		
+		//alert("mno : "+mno+" mGrade : "+mgrade);
+		$("#mNo").val(mno);
+		$("#mGrade").val(mgrade);		
+		$("#modifyMember").submit();		
+	}	
 	
+	var message = "${message}";
+	
+	if(message != null && message != ""){
+		alert(message);
+	}
 </script>
+<script>
+	/* $("#btnModify").on("click",function(){
+		//location.href="/admin/modifyMember?mNo="+mno+"mGrade="+mGrade;
+	});*/
+</script>
+
+
 <%@include file="../include/footer.jsp"%>

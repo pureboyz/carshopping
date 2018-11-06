@@ -63,7 +63,7 @@ public class CarController {
 		if(success == 1) {
 			rttr.addFlashAttribute("message", "구매 완료!!!");
 		}
-		return "redirect:/car/buyInfo?currentPage=1";
+		return "redirect:/car/buyInfo?basketCurrentPage=1&currentPage=1";
 	}
 	
 	@RequestMapping(value="/basketCar", method=RequestMethod.GET)
@@ -75,7 +75,7 @@ public class CarController {
 		if(success == 1) {
 			rttr.addFlashAttribute("message", "장바구니에 상품을 담았습니다.");
 		}
-		return "redirect:/car/buyInfo?currentPage=1";
+		return "redirect:/car/buyInfo?basketCurrentPage=1&currentPage=1";
 	}
 	
 	@RequestMapping(value="/buyInfo", method=RequestMethod.GET)
@@ -106,7 +106,7 @@ public class CarController {
 		if(success == 1) {
 			rttr.addFlashAttribute("message", "구매 완료!!!");
 		}
-		return "redirect:/car/buyInfo?currentPage=1";
+		return "redirect:/car/buyInfo?basketCurrentPage=1&currentPage=1";
 	}
 	
 	@RequestMapping(value="/search", method=RequestMethod.GET)
@@ -126,7 +126,7 @@ public class CarController {
 		if(success == 1) {
 			rttr.addFlashAttribute("message","구매내역이 삭제 되었습니다.");
 		}
-		return "redirect:/car/buyInfo?currentPage=1";
+		return "redirect:/car/buyInfo?basketCurrentPage=1&currentPage=1";
 	}
 	
 	@RequestMapping(value="/deleteBasket", method=RequestMethod.GET)
@@ -135,7 +135,7 @@ public class CarController {
 		if(success == 1) {
 			rttr.addFlashAttribute("message", "취소 완료!!!");
 		}
-		return "redirect:/car/buyInfo?currentPage=1";
+		return "redirect:/car/buyInfo?basketCurrentPage=1&currentPage=1";
 	}
 	
 	/*@ResponseBody
