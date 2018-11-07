@@ -1,18 +1,18 @@
 .wrapper{
-	width: 1300px;
+	/* width: 1300px; */
 	margin: 50px auto;
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	background-color: pink;
+	border-top: 1px solid #dfdfdf;
+	border-bottom: 1px solid #bbb;
+	/* background-color: pink; */
 }
 
 .wrap-category{
 }
 
 .category{
-	width: 836px;
+	/* width: 836px; */
 	height: 142px;
-	margin-left: 232px;
+	margin-left: 365px;
 	padding-left: 17px;
 	/* text-align: center; */
 	/* border: 1px solid green;
@@ -27,8 +27,7 @@
 .company li{
 	list-style: none;
 	float: left;
-	margin: 10px;
-	margin-top:31px;
+	margin: 21px 30px 20px 30px;
 	height: 80px;
 	width: 80px;
 	line-height: 100%;
@@ -41,5 +40,5 @@
 }
 
 img{
-	width: 78px;
+	width: 100px;
 }

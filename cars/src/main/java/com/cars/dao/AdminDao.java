@@ -32,4 +32,8 @@ public interface AdminDao {
 
 	List<CarVo> genderCompany(int i) throws Exception;
 
+	int allCount() throws Exception;
+
+	int getCountByFuel(String s) throws Exception;
+
 }

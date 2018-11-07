@@ -22,22 +22,22 @@
 }
 
 .wrap-goods{
-	width: 1300px;
+	width: 1580px;
+	padding-left: 120px;
 	text-align: center;
 }
 
 .goods{
-	width: 1300px;
+	width: 1580px;
 }
 
 .goods li{
 	list-style: none;
 	width: 300px;
 	height: 400px;
-	margin: 25px 15px;
-	
+	margin: 25px 50px;
 	float: left;
-	border: 1px solid maroon;
+	/* border: 1px solid maroon; */
 }
 
 .goods li:nth-child(4n+1){

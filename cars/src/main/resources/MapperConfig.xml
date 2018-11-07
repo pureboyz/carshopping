@@ -11,6 +11,7 @@
 		<typeAlias alias="buyInfoVo"  type="com.cars.vo.BuyInfoVo"/>
 		<typeAlias alias="replyVo"  type="com.cars.vo.ReplyVo"/>
 		<typeAlias alias="boardVo"  type="com.cars.vo.BoardVo"/>
+		<typeAlias alias="fuelAndSizeVo"  type="com.cars.vo.FuelAndSizeVo"/>
 	</typeAliases>
 	
 	<mappers>

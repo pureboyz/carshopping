@@ -14,6 +14,7 @@ import com.cars.dao.MemberDao;
 import com.cars.vo.CarVo;
 import com.cars.vo.D3Data;
 import com.cars.vo.FreqData;
+import com.cars.vo.FuelAndSizeVo;
 import com.cars.vo.MemberVo;
 
 @Service
@@ -162,6 +163,38 @@ public class AdminServiceImpl implements AdminService{
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public List<FuelAndSizeVo> getCountByFuel() throws Exception {
+		List<FuelAndSizeVo> fasList = new ArrayList<>();
+		
+		FuelAndSizeVo fasDiesel = new FuelAndSizeVo();
+		FuelAndSizeVo fasGasoline = new FuelAndSizeVo();
+		FuelAndSizeVo fasEtc = new FuelAndSizeVo();
+		
+		int allCount = aDao.allCount();
+		System.out.println("allCount : "+allCount);
+		int dieselCount = aDao.getCountByFuel("디젤");
+		System.out.println(dieselCount);
+		int gasolineCount = aDao.getCountByFuel("가솔린");
+		System.out.println(gasolineCount);
+		int etcCount = allCount - dieselCount - gasolineCount;
+		System.out.println(etcCount);
+		
+		fasDiesel.setName("Diesel");
+		fasDiesel.setCount(dieselCount);
+		fasGasoline.setName("Gasoline");
+		fasGasoline.setCount(gasolineCount);
+		fasEtc.setName("Etc");
+		fasEtc.setCount(etcCount);
+		
+		fasList.add(fasDiesel);
+		fasList.add(fasGasoline);
+		fasList.add(fasEtc);
+		System.out.println(fasList.size());
+		
+		return fasList;
 	}
 
 }

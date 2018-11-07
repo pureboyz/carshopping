@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cars.service.AdminService;
 import com.cars.vo.D3Data;
+import com.cars.vo.FuelAndSizeVo;
 import com.cars.vo.MemberVo;
 
 @Controller
@@ -74,6 +75,17 @@ public class AdminController {
 		service.topByGenders();
 	}
 	
+	@RequestMapping(value="/fuelAndSize", method=RequestMethod.GET)
+	public void fuelAndSize() {
+		System.out.println("안녕?");
+	}
 	
+	@RequestMapping(value="/getFuelAndSize")
+	@ResponseBody
+	public List<FuelAndSizeVo> getFuelAndSize() throws Exception{
+		List<FuelAndSizeVo> fas = service.getCountByFuel();
+		
+		return fas;
+	}
 	
 }

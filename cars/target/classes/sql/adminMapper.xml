@@ -98,4 +98,16 @@
 		limit 4
 	</select>
 	
+	<select id="allCount" resultType="int">
+		SELECT count(*) FROM buy
+		WHERE isBuy = 1 OR isBuy = 2
+	</select>
+	
+	<select id="getCountByFuel" resultType="int">
+		SELECT count(buy.orderNo) FROM buy, car
+		WHERE (buy.isBuy = 1 OR buy.isBuy = 1)
+		AND buy.carNo = car.carNo
+		AND car.carFuel = #{s}
+	</select>
+	
 </mapper>
