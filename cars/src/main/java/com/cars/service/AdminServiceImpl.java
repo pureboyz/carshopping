@@ -171,6 +171,7 @@ public class AdminServiceImpl implements AdminService{
 		
 		FuelAndSizeVo fasDiesel = new FuelAndSizeVo();
 		FuelAndSizeVo fasGasoline = new FuelAndSizeVo();
+		FuelAndSizeVo fasHy = new FuelAndSizeVo();
 		FuelAndSizeVo fasEtc = new FuelAndSizeVo();
 		
 		int allCount = aDao.allCount();
@@ -179,19 +180,25 @@ public class AdminServiceImpl implements AdminService{
 		System.out.println(dieselCount);
 		int gasolineCount = aDao.getCountByFuel("가솔린");
 		System.out.println(gasolineCount);
-		int etcCount = allCount - dieselCount - gasolineCount;
+		int hyCount = aDao.getCountByFuel("하이브리드");
+		System.out.println(hyCount);
+		int etcCount = allCount - dieselCount - gasolineCount - hyCount;
 		System.out.println(etcCount);
 		
-		fasDiesel.setName("Diesel");
+		fasDiesel.setName("경유");
 		fasDiesel.setCount(dieselCount);
-		fasGasoline.setName("Gasoline");
+		fasGasoline.setName("휘발유");
 		fasGasoline.setCount(gasolineCount);
-		fasEtc.setName("Etc");
+		fasHy.setName("하이브리드");
+		fasHy.setCount(hyCount);
+		fasEtc.setName("기타");
 		fasEtc.setCount(etcCount);
 		
-		fasList.add(fasDiesel);
 		fasList.add(fasGasoline);
+		fasList.add(fasDiesel);
+		fasList.add(fasHy);
 		fasList.add(fasEtc);
+		
 		System.out.println(fasList.size());
 		
 		return fasList;

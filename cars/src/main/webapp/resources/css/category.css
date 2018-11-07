@@ -10,9 +10,9 @@
 }
 
 .category{
-	/* width: 836px; */
+	width: 1150px;
 	height: 142px;
-	margin-left: 365px;
+	margin: 0px auto;
 	padding-left: 17px;
 	/* text-align: center; */
 	/* border: 1px solid green;
