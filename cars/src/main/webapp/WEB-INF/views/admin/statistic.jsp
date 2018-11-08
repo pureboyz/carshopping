@@ -23,28 +23,5 @@ $.getJSON("/admin/statisticList",function(list){
 });
 
 </script>
-<%-- <c:choose>
-<c:when test="${comp eq 'all'}">
-<script>
-
-$.getJSON("/admin/statisticList",function(list){
-	console.log(list);
-	dashboard('#dashboard',list);
-});
-
-</script>
-</c:when>
-<c:when test="${comp eq 'lamborghini'}">
-<script>
-
-$.getJSON("/admin/lamborghini",function(list){
-	
-	console.log(list);
-	dashboard('#dashboard',list);
-});
-
-</script>
-</c:when>
-</c:choose> --%>
 
 <%@include file="../include/footer.jsp"%>

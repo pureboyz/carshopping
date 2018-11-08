@@ -36,4 +36,12 @@ public interface AdminDao {
 
 	int getCountByFuel(String s) throws Exception;
 
+	int getCountBySize(String s) throws Exception;
+
+	int getCountByLook(String s) throws Exception;
+
+	int getCountByEff(double i) throws Exception;
+
+	String getSales(String string) throws Exception;
+
 }

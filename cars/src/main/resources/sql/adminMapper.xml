@@ -105,9 +105,39 @@
 	
 	<select id="getCountByFuel" resultType="int">
 		SELECT count(buy.orderNo) FROM buy, car
-		WHERE (buy.isBuy = 1 OR buy.isBuy = 1)
+		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
 		AND buy.carNo = car.carNo
 		AND car.carFuel = #{s}
+	</select>
+	
+	<select id="getCountBySize" resultType="int">
+		SELECT count(buy.orderNo) FROM buy, car
+		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
+		AND buy.carNo = car.carNo
+		AND car.carSize = #{s}
+	</select>
+	
+	<select id="getCountByLook" resultType="int">
+		SELECT count(buy.orderNo) FROM buy, car
+		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
+		AND buy.carNo = car.carNo
+		AND car.carLook = #{s}
+	</select>
+	
+	<select id="getCountByEff" resultType="int">
+		<![CDATA[
+			SELECT count(buy.orderNo) FROM buy, car
+			WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
+			AND buy.carNo = car.carNo
+			AND car.carEff <= #{i}
+		]]>
+	</select>
+	
+	<select id="getSales" resultType="String">
+		SELECT sum(A.carPrice) FROM (select car.carPrice, buy.*
+		FROM car, buy
+		WHERE car.carNo = buy.carNo
+		AND buy.orderDate like CONCAT(#{string},'%')) A
 	</select>
 	
 </mapper>

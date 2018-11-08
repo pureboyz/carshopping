@@ -1,0 +1,39 @@
+.wrap-piechart{
+	width: 1802px;
+	height: 580px;
+	/* border: 1px solid #ccc; */
+}
+
+#piechart_3d1{
+	 width: 700px;
+	 height: 500px;
+	 clear: left;
+	 float: left;
+	 margin-left: 250px;
+}
+
+#piechart_3d2{
+	width: 700px;
+	height: 500px;
+	float: left;
+}
+
+#piechart_3d3{
+	 width: 700px;
+	 height: 500px;
+	 clear: left;
+	 float: left;
+	 margin-left: 250px;
+}
+
+#piechart_3d4{
+	width: 700px;
+	height: 500px;
+	float: left;
+}
+
+h2{
+	width: 220px;
+	margin: 30px 50px 0 430px;
+	float: left;
+}

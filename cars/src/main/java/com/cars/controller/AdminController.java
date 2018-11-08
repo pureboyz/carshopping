@@ -76,15 +76,43 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/fuelAndSize", method=RequestMethod.GET)
-	public void fuelAndSize() {
-		System.out.println("안녕?");
+	public void fuelAndSize() {}
+	
+	@RequestMapping(value="/getCountByFuel")
+	@ResponseBody
+	public List<FuelAndSizeVo> getCountByFuel() throws Exception{
+		List<FuelAndSizeVo> fas = service.getCountByFuel();
+		return fas;
 	}
 	
-	@RequestMapping(value="/getFuelAndSize")
+	@RequestMapping(value="/getCountBySize")
 	@ResponseBody
-	public List<FuelAndSizeVo> getFuelAndSize() throws Exception{
-		List<FuelAndSizeVo> fas = service.getCountByFuel();
-		
+	public List<FuelAndSizeVo> getCountBySize() throws Exception{
+		List<FuelAndSizeVo> fas = service.getCountBySize();
+		return fas;
+	}
+	
+	@RequestMapping(value="/getCountByEff")
+	@ResponseBody
+	public List<FuelAndSizeVo> getCountByEff() throws Exception{
+		List<FuelAndSizeVo> fas = service.getCountByEff();
+		return fas;
+	}
+	
+	@RequestMapping(value="/getCountByLook")
+	@ResponseBody
+	public List<FuelAndSizeVo> getCountByLook() throws Exception{
+		List<FuelAndSizeVo> fas = service.getCountByLook();
+		return fas;
+	}
+	
+	@RequestMapping(value="/sales", method=RequestMethod.GET)
+	public void sales() {}
+	
+	@RequestMapping(value="/getSales")
+	@ResponseBody
+	public List<FuelAndSizeVo> getSales(HttpSession session) throws Exception{
+		List<FuelAndSizeVo> fas = service.getSales(session);
 		return fas;
 	}
 	

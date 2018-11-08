@@ -2,10 +2,14 @@ package com.cars.service;
 
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
@@ -202,6 +206,241 @@ public class AdminServiceImpl implements AdminService{
 		System.out.println(fasList.size());
 		
 		return fasList;
+	}
+
+	@Override
+	public List<FuelAndSizeVo> getCountBySize() throws Exception {
+		List<FuelAndSizeVo> fasList = new ArrayList<>();
+		
+		FuelAndSizeVo fasBig = new FuelAndSizeVo();
+		FuelAndSizeVo fasMid = new FuelAndSizeVo();
+		FuelAndSizeVo fasSmall = new FuelAndSizeVo();
+		FuelAndSizeVo fasSport = new FuelAndSizeVo();
+		
+		int allCount = aDao.allCount();
+		System.out.println("allCount : "+allCount);
+		int bigCount = aDao.getCountBySize("대");
+		System.out.println("대형 : "+bigCount);
+		int midCount = aDao.getCountBySize("중");
+		System.out.println("중형 : "+midCount);
+		int smallCount = aDao.getCountBySize("소");
+		System.out.println("소형 : "+smallCount);
+		int sportCount = aDao.getCountBySize("스포츠");
+		System.out.println("스포츠 : "+sportCount);
+		
+		fasBig.setName("대형");
+		fasBig.setCount(bigCount);
+		fasMid.setName("중형");
+		fasMid.setCount(midCount);
+		fasSmall.setName("소형");
+		fasSmall.setCount(smallCount);
+		fasSport.setName("스포츠");
+		fasSport.setCount(sportCount);
+		
+		fasList.add(fasBig);
+		fasList.add(fasMid);
+		fasList.add(fasSmall);
+		fasList.add(fasSport);
+		
+		System.out.println(fasList.size());
+		
+		return fasList;
+	}
+
+	@Override
+	public List<FuelAndSizeVo> getCountByEff() throws Exception {
+		List<FuelAndSizeVo> fasList = new ArrayList<>();
+		
+		FuelAndSizeVo fasTen = new FuelAndSizeVo();
+		FuelAndSizeVo fasFif = new FuelAndSizeVo();
+		FuelAndSizeVo fasTwen = new FuelAndSizeVo();
+		FuelAndSizeVo fasOverTwen = new FuelAndSizeVo();
+		
+		int allCount = aDao.allCount();
+		System.out.println("allCount : "+allCount);
+		int tenCount = aDao.getCountByEff(10.0);
+		System.out.println("연비 5이하 : "+tenCount);
+		int fifCount = aDao.getCountByEff(15.0) - tenCount;
+		System.out.println("연비 10~15 : "+fifCount);
+		int twenCount = aDao.getCountByEff(20.0) - fifCount - tenCount;
+		System.out.println("연비 15~20 : "+twenCount);
+		int overTwenCount = allCount - twenCount  - fifCount - tenCount;
+		System.out.println("연비 20이상 : "+overTwenCount);
+		
+		fasTen.setName("연비 5이하");
+		fasTen.setCount(tenCount);
+		fasFif.setName("연비 10~15");
+		fasFif.setCount(fifCount);
+		fasTwen.setName("연비 15~20");
+		fasTwen.setCount(twenCount);
+		fasOverTwen.setName("연비 20이상");
+		fasOverTwen.setCount(overTwenCount);
+		
+		fasList.add(fasTen);
+		fasList.add(fasFif);
+		fasList.add(fasTwen);
+		fasList.add(fasOverTwen);
+		
+		System.out.println(fasList.size());
+		
+		return fasList;
+	}
+
+	@Override
+	public List<FuelAndSizeVo> getCountByLook() throws Exception {
+		List<FuelAndSizeVo> fasList = new ArrayList<>();
+		
+		FuelAndSizeVo fasSedan = new FuelAndSizeVo();
+		FuelAndSizeVo fasSUV = new FuelAndSizeVo();
+		FuelAndSizeVo fasSport = new FuelAndSizeVo();
+		
+		int allCount = aDao.allCount();
+		System.out.println("allCount : "+allCount);
+		int sedanCount = aDao.getCountByLook("세단");
+		System.out.println("세단 : "+sedanCount);
+		int suvCount = aDao.getCountByLook("SUV");
+		System.out.println("SUV : "+suvCount);
+		int sportCount = aDao.getCountByLook("스포츠카");
+		System.out.println("스포츠카 : "+sportCount);
+		
+		fasSedan.setName("세단");
+		fasSedan.setCount(sedanCount);
+		fasSUV.setName("SUV");
+		fasSUV.setCount(suvCount);
+		fasSport.setName("스포츠카");
+		fasSport.setCount(sportCount);
+		
+		fasList.add(fasSedan);
+		fasList.add(fasSUV);
+		fasList.add(fasSport);
+		
+		System.out.println(fasList.size());
+		
+		return fasList;
+	}
+
+	@Override
+	public List<FuelAndSizeVo> getSales(HttpSession session) throws Exception {
+		List<FuelAndSizeVo> fas = new ArrayList<FuelAndSizeVo>();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd");
+		Date date = new Date();
+		String today = sdf.format(date);
+		System.out.println(today);
+		
+		int sum = 0;
+		boolean isToday = false;
+		for(int i=18;i<=18; i++) {
+			for(int j=1; j<=12; j++) {
+				for(int k=1; k<=31; k++) {
+					if(j < 10 && 10 <= k) {
+						if((i+"-0"+j+"-"+k).equals(today)) {
+							String sales = aDao.getSales("20"+i+"-0"+j+"-"+k);
+							if(sales != null) {
+								FuelAndSizeVo fasVo = new FuelAndSizeVo();
+								fasVo.setName(i+"-0"+j+"-"+k);
+								fasVo.setCount(Integer.parseInt(sales)/10);
+								fas.add(fasVo);
+								sum = sum + Integer.parseInt(sales)/10;
+							}
+							isToday = true;
+							break;
+						}else {
+							String sales = aDao.getSales("20"+i+"-0"+j+"-"+k);
+							if(sales != null) {
+								FuelAndSizeVo fasVo = new FuelAndSizeVo();
+								fasVo.setName(i+"-0"+j+"-"+k);
+								fasVo.setCount(Integer.parseInt(sales)/10);
+								fas.add(fasVo);
+								sum = sum + Integer.parseInt(sales)/10;
+							}
+						}
+					}else if(10 <= j && k < 10) {
+						if((i+"-"+j+"-0"+k).equals(today)) {
+							String sales = aDao.getSales("20"+i+"-"+j+"-0"+k);
+							if(sales != null) {
+								FuelAndSizeVo fasVo = new FuelAndSizeVo();
+								fasVo.setName(i+"-"+j+"-0"+k);
+								fasVo.setCount(Integer.parseInt(sales)/10);
+								fas.add(fasVo);
+								sum = sum + Integer.parseInt(sales)/10;
+							}
+							isToday = true;
+							break;
+						}else {
+							String sales = aDao.getSales("20"+i+"-"+j+"-0"+k);
+							if(sales != null) {
+								FuelAndSizeVo fasVo = new FuelAndSizeVo();
+								fasVo.setName(i+"-"+j+"-0"+k);
+								fasVo.setCount(Integer.parseInt(sales)/10);
+								fas.add(fasVo);
+								sum = sum + Integer.parseInt(sales)/10;
+							}
+						}
+					}else if(j < 10 && k < 10) {
+						if((i+"-0"+j+"-0"+k).equals(today)) {
+							String sales = aDao.getSales("20"+i+"-0"+j+"-0"+k);
+							if(sales != null) {
+								FuelAndSizeVo fasVo = new FuelAndSizeVo();
+								fasVo.setName(i+"-0"+j+"-0"+k);
+								fasVo.setCount(Integer.parseInt(sales)/10);
+								fas.add(fasVo);
+								sum = sum + Integer.parseInt(sales)/10;
+							}
+							isToday = true;
+							break;
+						}else {
+							String sales = aDao.getSales("20"+i+"-0"+j+"-0"+k);
+							if(sales != null) {
+								FuelAndSizeVo fasVo = new FuelAndSizeVo();
+								fasVo.setName(i+"-0"+j+"-0"+k);
+								fasVo.setCount(Integer.parseInt(sales)/10);
+								fas.add(fasVo);
+								sum = sum + Integer.parseInt(sales)/10;
+							}
+						}
+					}else if(10 <= j && 10 <= k){
+						if((i+"-"+j+"-"+k).equals(today)) {
+							String sales = aDao.getSales("20"+i+"-"+j+"-"+k);
+							if(sales != null) {
+								FuelAndSizeVo fasVo = new FuelAndSizeVo();
+								fasVo.setName(i+"-"+j+"-"+k);
+								fasVo.setCount(Integer.parseInt(sales)/10);
+								fas.add(fasVo);
+								sum = sum + Integer.parseInt(sales)/10;
+							}
+							isToday = true;
+							break;
+						}else {
+							String sales = aDao.getSales("20"+i+"-"+j+"-"+k);
+							if(sales != null) {
+								FuelAndSizeVo fasVo = new FuelAndSizeVo();
+								fasVo.setName(i+"-"+j+"-"+k);
+								fasVo.setCount(Integer.parseInt(sales)/10);
+								fas.add(fasVo);
+								sum = sum + Integer.parseInt(sales)/10000;
+							}
+						}
+					}
+				}
+				if(isToday == true) {
+					break;
+				}
+			}
+			if(isToday == true) {
+				break;
+			}
+		}
+		
+		/*if(session.getAttribute("sum") != null) {
+			session.removeAttribute("sum");
+			session.invalidate();
+			session.setAttribute("sum", sum);
+		}else {
+			session.setAttribute("sum", sum);
+		}*/
+		
+		return fas;
 	}
 
 }
