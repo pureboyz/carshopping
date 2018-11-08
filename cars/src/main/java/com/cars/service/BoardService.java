@@ -12,4 +12,6 @@ public interface BoardService {
 
 	void viewCntUp(int bno) throws Exception;
 
+	void writeBoard(BoardVo vo) throws Exception;
+
 }

@@ -24,12 +24,16 @@
 	<beans:bean id="loginInterceptor" class="com.cars.interceptor.LoginInterceptor"></beans:bean>
 	<beans:bean id="cookieInterceptor" class="com.cars.interceptor.CookieInterceptor"></beans:bean>
 	<beans:bean id="joinInterceptor" class="com.cars.interceptor.JoinInterceptor"></beans:bean>
+	<beans:bean id="badInterceptor" class="com.cars.interceptor.BadInterceptor"></beans:bean>
+	<beans:bean id="adminInterceptor" class="com.cars.interceptor.AdminInterceptor"></beans:bean>
 	
 	<interceptors>
 		<interceptor>
 			<mapping path="/member/loginPost"/>
 			<mapping path="/car/buyInfo"/>
 			<mapping path="/member/memberInfo"/>
+			<mapping path="/admin/*"/>
+			<mapping path="/board/*"/>
 			<beans:ref bean="loginInterceptor"/>			
 		</interceptor>
 	</interceptors>	
@@ -45,6 +49,22 @@
 		<interceptor>
 			<mapping path="/member/joinPOST"/>
 			<beans:ref bean="joinInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/board/readPage"/>
+			<mapping path="/board/readDetail"/>
+			<mapping path="/car/buyCar"/>
+			<beans:ref bean="badInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/*"/>			
+			<beans:ref bean="adminInterceptor"/>
 		</interceptor>
 	</interceptors>
 	

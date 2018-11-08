@@ -3,6 +3,8 @@ package com.cars.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cars.service.BoardService;
+import com.cars.service.MemberService;
 import com.cars.vo.BoardVo;
+import com.cars.vo.MemberVo;
 
 @Controller
 @RequestMapping("/board/*")
@@ -22,6 +26,9 @@ public class BoardController {
 	
 	@Inject
 	BoardService service;
+	
+	@Inject
+	MemberService mService;
 	
 	@RequestMapping(value="/boardList",method=RequestMethod.GET)
 	public String boardList(Model model) throws Exception {
@@ -82,6 +89,25 @@ public class BoardController {
 		System.out.println("readDetail" + boardVo);//boardVo 확인
 		
 		return "/board/readPage";
+	}
+	
+	@RequestMapping(value="/write")
+	public String write(Model model, HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		MemberVo vo = (MemberVo)session.getAttribute("loginMember");
+		MemberVo memberVo = mService.getMember(vo);
+		model.addAttribute("memberVo", memberVo);
+		return "board/writeBoard";
+	}
+	
+	@RequestMapping(value="/writeBoard",method=RequestMethod.POST)
+	public String writeBoard(@ModelAttribute("boardVo")BoardVo vo,
+							RedirectAttributes rttr) throws Exception {
+		System.out.println("writeBoard 확인 : " + vo);
+		service.writeBoard(vo);
+		rttr.addFlashAttribute("message", "글 작성 완료");
+		
+		return "redirect:/board/boardList";
 	}
 	
 	

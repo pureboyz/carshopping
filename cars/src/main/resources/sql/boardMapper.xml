@@ -20,5 +20,10 @@
 		update board set viewCnt=viewCnt+1
 		where bNo=#{bNo};
 	</update>
+	
+	<insert id="writeBoard">
+		insert into board(bGrade, writer, title, content, mNo)
+		values(#{bGrade},#{writer},#{title},#{content},#{mNo});		
+	</insert>	
 
 </mapper>

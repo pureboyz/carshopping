@@ -31,6 +31,13 @@ public class BoardServiceImpl implements BoardService{
 		dao.viewCntUp(bno);		
 	}
 
+	@Override
+	public void writeBoard(BoardVo vo) throws Exception {
+		dao.writeBoard(vo);		
+	}
+	
+	
+
 	
 	
 	

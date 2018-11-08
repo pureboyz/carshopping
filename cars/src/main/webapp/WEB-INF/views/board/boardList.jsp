@@ -38,6 +38,19 @@ td a{
 	text-decoration: none;
 	color: black;	
 }
+
+.btn_set{
+	text-align : center;
+	width:760px;
+}
+
+.btn_set input{
+	float: right;
+	padding: 4px;
+	border-radius:4px;	
+	margin: 10px 30px;
+}
+
 </style>
 <title>게시판입니다.</title>
 
@@ -83,7 +96,19 @@ td a{
 
 
 	</table>
-
+	
+	<div class="btn_set">
+		<input type="button" onclick="location.href='/board/write'" value="글쓰기">
+	</div>
 </body>
+
+<script>
+	var message = "${message}";
+	
+	if(message != null && message != ""){
+		alert(message);
+	}
+</script>
+
 
 <%@include file="../include/footer.jsp"%>
