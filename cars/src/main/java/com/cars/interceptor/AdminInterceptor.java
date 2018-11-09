@@ -23,12 +23,20 @@ public class AdminInterceptor extends HandlerInterceptorAdapter{
 		
 		HttpSession session = request.getSession();
 		MemberVo vo = (MemberVo) session.getAttribute("loginMember");
-		if(vo.getmGrade()<2) {
-			System.out.println("AdminInterceptor : " + vo);
-			RequestDispatcher rd = request.getRequestDispatcher("/");
-			request.setAttribute("message","관리자만 접근 가능한 페이지입니다.");
-			rd.forward(request, response);			
+		
+		if(vo ==null) {
+			RequestDispatcher rd =request.getRequestDispatcher("/member/login");
+			request.setAttribute("message", "로그인이 필요합니다.");
+			rd.forward(request, response);
+		}else {
+			if(vo.getmGrade()<2) {
+				System.out.println("AdminInterceptor : " + vo);
+				RequestDispatcher rd = request.getRequestDispatcher("/");
+				request.setAttribute("message","관리자만 접근 가능한 페이지입니다.");
+				rd.forward(request, response);			
+			}	
 		}
+		
 	}
 	
 	

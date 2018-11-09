@@ -32,7 +32,6 @@
 			<mapping path="/member/loginPost"/>
 			<mapping path="/car/buyInfo"/>
 			<mapping path="/member/memberInfo"/>
-			<mapping path="/admin/*"/>
 			<mapping path="/board/*"/>
 			<beans:ref bean="loginInterceptor"/>			
 		</interceptor>
