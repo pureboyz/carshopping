@@ -17,7 +17,7 @@ public interface MemberDao {
 
 	void modify(MemberVo memberVo) throws Exception;
 
-	MemberVo getMember(MemberVo vo) throws Exception;
+	MemberVo getMember(int mNo) throws Exception;
 
 	void modifyMember(MemberVo memberVo) throws Exception;//관리자의 회원등급수정
 	//void modifyMember(int mNo, int mGrade) throws Exception;

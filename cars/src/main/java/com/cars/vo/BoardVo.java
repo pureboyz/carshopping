@@ -12,6 +12,7 @@ public class BoardVo {
 	Date regDate;
 	int viewCnt;
 	int bGrade;	
+	Date updateDate;
 	
 	
 	public int getbNo() {
@@ -68,6 +69,12 @@ public class BoardVo {
 	}
 	public void setbGrade(int bGrade) {
 		this.bGrade = bGrade;
+	}
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 	
 	@Override

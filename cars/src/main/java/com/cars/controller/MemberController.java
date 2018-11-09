@@ -79,7 +79,7 @@ public class MemberController {
 	public void memberInfo(Model model,HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		MemberVo vo = (MemberVo)session.getAttribute("loginMember");
-		MemberVo memberVo = mService.getMember(vo);
+		MemberVo memberVo = mService.getMember(vo.getmNo());
 		model.addAttribute("memberVo", memberVo);
 	}
 	

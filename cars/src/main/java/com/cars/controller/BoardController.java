@@ -35,7 +35,7 @@ public class BoardController {
 		List<BoardVo> boardList = service.boardList();
 		
 		model.addAttribute("boardList", boardList);
-		return "/board/boardList";
+		return "/board/listPage";
 	}
 	
 	/*
@@ -95,7 +95,7 @@ public class BoardController {
 	public String write(Model model, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		MemberVo vo = (MemberVo)session.getAttribute("loginMember");
-		MemberVo memberVo = mService.getMember(vo);
+		MemberVo memberVo = mService.getMember(vo.getmNo());
 		model.addAttribute("memberVo", memberVo);
 		return "board/writeBoard";
 	}
@@ -109,6 +109,28 @@ public class BoardController {
 		
 		return "redirect:/board/boardList";
 	}
+	
+	@RequestMapping(value="/modify")
+	public String modify(@RequestParam("bNo")int bNo, Model model) throws Exception {
+		System.out.println("modify : " + bNo);
+		model.addAttribute("boardVo", service.readPage(bNo));
+		return "/board/modifyPage";
+	}
+	
+	@RequestMapping(value="/modifyComplete",method=RequestMethod.POST)
+	public String modifyComplete(BoardVo vo) throws Exception {
+		System.out.println("수정된 내용" + vo);
+		service.modify(vo);
+		return "redirect:/board/boardList";
+	}
+	
+	@RequestMapping(value="/delete")
+	public String delete(@RequestParam("bNo")int bNo) throws Exception{		
+		service.delete(bNo);
+		return "redirect:/board/boardList";
+	}
+	
+	
 	
 	
 	

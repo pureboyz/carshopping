@@ -35,6 +35,18 @@ public class BoardServiceImpl implements BoardService{
 	public void writeBoard(BoardVo vo) throws Exception {
 		dao.writeBoard(vo);		
 	}
+
+	@Override
+	public void modify(BoardVo vo) throws Exception {
+		dao.modify(vo);		
+	}
+
+	@Override
+	public void delete(int bNo) throws Exception {
+		dao.delete(bNo);
+	}
+	
+	
 	
 	
 

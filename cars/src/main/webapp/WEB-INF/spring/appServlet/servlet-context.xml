@@ -26,6 +26,7 @@
 	<beans:bean id="joinInterceptor" class="com.cars.interceptor.JoinInterceptor"></beans:bean>
 	<beans:bean id="badInterceptor" class="com.cars.interceptor.BadInterceptor"></beans:bean>
 	<beans:bean id="adminInterceptor" class="com.cars.interceptor.AdminInterceptor"></beans:bean>
+	<beans:bean id="writerInterceptor" class="com.cars.interceptor.WriterInterceptor"></beans:bean>
 	
 	<interceptors>
 		<interceptor>
@@ -64,6 +65,14 @@
 		<interceptor>
 			<mapping path="/admin/*"/>			
 			<beans:ref bean="adminInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/board/modify"/>
+			<mapping path="/board/delete"/>			
+			<beans:ref bean="writerInterceptor"/>
 		</interceptor>
 	</interceptors>
 	

@@ -20,7 +20,7 @@ public interface MemberService {
 
 	void modify(MemberVo memberVo) throws Exception;
 
-	MemberVo getMember(MemberVo vo) throws Exception;
+	MemberVo getMember(int mNo) throws Exception;
 
 	
 }

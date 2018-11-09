@@ -59,9 +59,9 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public MemberVo getMember(MemberVo vo) throws Exception {
+	public MemberVo getMember(int mNo) throws Exception {
 		
-		return dao.getMember(vo);
+		return dao.getMember(mNo);
 	}
 	
 	

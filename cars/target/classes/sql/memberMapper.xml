@@ -21,7 +21,7 @@
 	
 	<select id="getMember" resultType="memberVo">
 		select * from member
-		where mId=#{mId}
+		where mNo=#{mNo}
 	</select>	
 	
 	<select id="getMemberList" resultType="memberVo">

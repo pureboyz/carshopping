@@ -24,6 +24,15 @@
 	<insert id="writeBoard">
 		insert into board(bGrade, writer, title, content, mNo)
 		values(#{bGrade},#{writer},#{title},#{content},#{mNo});		
-	</insert>	
-
+	</insert>
+	
+	<update id="modify">
+		update board set bGrade=#{bGrade}, title=#{title}, content=#{content}, updateDate=now()
+		where bNo=#{bNo}
+	</update>	
+	
+	<delete id="delete">
+		delete from board
+		where bNo=#{bNo}
+	</delete>
 </mapper>

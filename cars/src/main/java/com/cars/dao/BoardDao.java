@@ -14,4 +14,8 @@ public interface BoardDao {
 
 	void writeBoard(BoardVo vo) throws Exception;
 
+	void modify(BoardVo vo) throws Exception;
+
+	void delete(int bNo) throws Exception;
+
 }

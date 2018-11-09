@@ -76,7 +76,7 @@ td a{
 						<td><a href="/board/readPage?bno=${boardVo.bNo}">${boardVo.bNo}</a></td>
 						<td><a href="/board/readPage?bno=${boardVo.bNo}">${boardVo.title}</a></td>
 						<td>${boardVo.writer}</td>
-						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${boardVo.regDate}" /></td>
+						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${boardVo.updateDate}" /></td>
 						<td>${boardVo.viewCnt}</td>
 					</tr>
 				</c:when>
@@ -87,7 +87,7 @@ td a{
 						<td><a href="/board/readPage?bno=${boardVo.bNo}">${boardVo.title}</a></td>
 						<td>${boardVo.writer}</td>
 						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss"
-								value="${boardVo.regDate}" /></td>
+								value="${boardVo.updateDate}" /></td>
 						<td>${boardVo.viewCnt}</td>
 					</tr>
 				</c:when>
