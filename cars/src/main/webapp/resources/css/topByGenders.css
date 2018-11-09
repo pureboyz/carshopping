@@ -16,13 +16,13 @@
   stroke: #000;
   shape-rendering: crispEdges;
 }
-article{
+.chartByGender{
 	width: 1300px;
 	height: 650px;
-	border: 1px solid #ccc;
+	/* border: 1px solid #ccc; */
 }
 
-article h2{
+.chartByGender h2{
 	text-align: center;
 	margin: 40px 0 10px 0;
 }
@@ -32,7 +32,7 @@ article h2{
 	height: 500px;
 }
 
-article label{
+.chartByGender label{
 	float: left;
 	font-size: 20px;
 	margin: 0 0 0 400px;

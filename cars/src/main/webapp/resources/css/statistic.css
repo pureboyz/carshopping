@@ -4,7 +4,7 @@ article{
 .age-comp{
 	width: 1300px;
 	height: 410px;
-	border: 1px solid #ccc;
+	/* border: 1px solid #ccc; */
 }
 h2{
 	width: 235px;

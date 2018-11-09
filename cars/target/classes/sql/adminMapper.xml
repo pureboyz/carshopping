@@ -89,12 +89,17 @@
 	</select>
 	
 	<select id="genderCompany" resultType="carVo">
-		SELECT A.* FROM (SELECT car.* FROM buy, car, member
+		<!-- SELECT A.* FROM (SELECT car.* FROM buy, car, member
 		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
 		AND buy.carNo = car.carNo
 		AND buy.mNo = member.mNo AND member.mGender = #{i}) A
 		GROUP BY carNo
 		ORDER BY A.carsale DESC, A.carName DESC
+		limit 4 -->
+		select count(buy.orderNo) as carsale,car.carName from car, buy, member
+		where buy.carNo = car.carNo
+		AND buy.mNo = member.mNo AND mGender = #{i}
+		GROUP BY car.carNo ORDER BY count(buy.orderNo) DESC
 		limit 4
 	</select>
 	
@@ -138,6 +143,16 @@
 		FROM car, buy
 		WHERE car.carNo = buy.carNo
 		AND buy.orderDate like CONCAT(#{string},'%')) A
+	</select>
+	
+	<select id="getTotalSales" resultType="int">
+		SELECT sum(B.total) FROM
+		(SELECT A.sale*A.price as total FROM
+		(SELECT count(buy.orderNo) as sale, car.carName, car.carPrice/10 as price
+		FROM car, buy, member
+		WHERE buy.carNo = car.carNo
+		AND buy.mNo = member.mNo
+		GROUP BY car.carNo ORDER BY count(buy.orderNo) DESC) A) B
 	</select>
 	
 </mapper>

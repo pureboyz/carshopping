@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
+<%@include file="../include/categoryadmin.jsp"%>
 <script src="//d3js.org/d3.v3.min.js"></script>
 <link href="${pageContext.request.contextPath}/resources/css/topByGenders.css" rel="stylesheet">
 
-<article>
+<div class="chartByGender">
 	<h2>성별에 따른 판매량 TOP4</h2>
 	<div class="wrap-chart"></div>
 	<label>남성</label>
 	<label>여성</label>
-</article>
+</div>
 
 <script>
 var margin = {top: 20, right: 30, bottom: 40, left: 30},

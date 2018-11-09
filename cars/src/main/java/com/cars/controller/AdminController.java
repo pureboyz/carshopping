@@ -3,6 +3,7 @@ package com.cars.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -92,6 +93,9 @@ public class AdminController {
 		return fas;
 	}
 	
+	@RequestMapping(value="/statisticBySize")
+	public void statisticBySize() throws Exception{}
+	
 	@RequestMapping(value="/getCountByEff")
 	@ResponseBody
 	public List<FuelAndSizeVo> getCountByEff() throws Exception{
@@ -107,7 +111,11 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/sales", method=RequestMethod.GET)
-	public void sales() {}
+	public void sales(HttpServletRequest request) throws Exception{
+		int totalSales = service.getTotalSales();
+		System.out.println(totalSales);
+		request.setAttribute("totalSales",totalSales);
+	}
 	
 	@RequestMapping(value="/getSales")
 	@ResponseBody

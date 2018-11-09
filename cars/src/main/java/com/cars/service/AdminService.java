@@ -28,4 +28,6 @@ public interface AdminService {
 
 	List<FuelAndSizeVo> getSales(HttpSession session) throws Exception;
 
+	int getTotalSales() throws Exception;
+
 }

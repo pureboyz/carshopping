@@ -8,10 +8,10 @@
 <script src="${pageContext.request.contextPath}/resources/js/fuelAndSize.js"></script>
 
 <div class="wrap-piechart">
-	<h2>연료별 차량 구매 수</h2>
-	<h2>연비별 차량 구매 수</h2>
-	<div id="piechart_3d1"></div>
-	<div id="piechart_3d2"></div>
+	<h2>크기별 차량 구매 수</h2>
+	<h2>외형별 차량 구매 수</h2>
+	<div id="piechart_3d3"></div>
+	<div id="piechart_3d4"></div>
 </div>
 
 <%@include file="../include/footer.jsp"%>

@@ -1,0 +1,46 @@
+.wrapper{
+	/* width: 1300px; */
+	margin: 50px auto;
+	border-top: 1px solid #dfdfdf;
+	border-bottom: 1px solid #bbb;
+	/* background-color: pink; */
+}
+
+.wrap-category{
+}
+
+.category{
+	width: 900px;
+	height: 142px;
+	margin: 0px auto;
+	padding-left: 17px;
+	/* text-align: center; */
+	/* border: 1px solid green;
+}
+
+.company{
+	float: left;
+	margin: 20px;
+	/* border: 1px solid red; */
+}
+
+.company li{
+	list-style: none;
+	float: left;
+	margin: 21px 10px 20px 10px;
+	height: 80px;
+	width: 130px;
+	line-height: 100%;
+	background-color: white;
+	text-align: center;
+	/* border: 1px solid blue; */
+}
+
+.company li:hover{
+	cursor: pointer;
+}
+
+span{
+	line-height: 80px;
+	font-size: 1.2em;
+}

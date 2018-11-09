@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
-<%@include file="../include/category.jsp"%>
+<%@include file="../include/categoryadmin.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -12,18 +12,14 @@
 	height: 500px;
 }
 
-h2{
-	text-align: center;
-}
-
-h3{
+h2, h3{
 	text-align: center;
 }
 </style>
 
 <h2>날짜별 판매액</h2>
 <div id="chart_div"></div>
-<%-- <h3>총 판매액 : <fmt:formatNumber value="${sum}" type="currency"/></h3> --%>
+<h3>총 판매액 : <fmt:formatNumber value="${totalSales}" type="currency"/> 만원</h3>
 
 <script>
 google.charts.load('current', {packages: ['corechart', 'line']});
@@ -33,9 +29,10 @@ function drawBasic() {
 
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'X');
-      data.addColumn('number', '단위 : 만원');
+      data.addColumn('number', '판매액');
       
 	$.getJSON("/admin/getSales",function(list){
+		console.log(list);
    	    var array = new Array(list.length);
   		for(var i=0; i< list.length; i++){
   			array[i] = new Array(2);
@@ -54,10 +51,10 @@ function drawBasic() {
   		
   		var options = {
 	        hAxis: {
-	          title: '날짜'
+	          title: '단위 : 만원'
 	        },
 	        vAxis: {
-	          title: '판매액'
+	          title: ''
 	        }
   		};
   		

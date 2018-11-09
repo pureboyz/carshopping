@@ -44,4 +44,6 @@ public interface AdminDao {
 
 	String getSales(String string) throws Exception;
 
+	int getTotalSales() throws Exception;
+
 }

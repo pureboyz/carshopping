@@ -16,7 +16,6 @@
 	</div>
 	<div class="wrap-goods">
 		<ul class="goods">
-		<%-- <c:forEach begin="0" end="7" var="carVo" items="${carList}"> --%>
 			<c:forEach var="carVo" items="${carList}">
 				<li onclick="location.href='/car/carInfo?carNo=${carVo.carNo}&currentPage=1'">
 					<div class="wrap-img">
@@ -33,7 +32,6 @@
 					</div>
 				</li>
 			</c:forEach>
-				
 		</ul>
 	</div>
 </article>
@@ -44,6 +42,5 @@
 		alert(message);
 	}
 </script>
-
 
 <%@include file="include/footer.jsp"%>
