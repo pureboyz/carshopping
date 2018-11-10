@@ -27,13 +27,11 @@
 	<beans:bean id="badInterceptor" class="com.cars.interceptor.BadInterceptor"></beans:bean>
 	<beans:bean id="adminInterceptor" class="com.cars.interceptor.AdminInterceptor"></beans:bean>
 	<beans:bean id="writerInterceptor" class="com.cars.interceptor.WriterInterceptor"></beans:bean>
+	<beans:bean id="notLoginInterceptor" class="com.cars.interceptor.NotLoginInterceptor"></beans:bean>
 	
 	<interceptors>
 		<interceptor>
 			<mapping path="/member/loginPost"/>
-			<mapping path="/car/buyInfo"/>
-			<mapping path="/member/memberInfo"/>
-			<mapping path="/board/*"/>
 			<beans:ref bean="loginInterceptor"/>			
 		</interceptor>
 	</interceptors>	
@@ -75,6 +73,16 @@
 			<beans:ref bean="writerInterceptor"/>
 		</interceptor>
 	</interceptors>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/board/*"/>
+			<mapping path="/member/memberInfo"/>
+			<mapping path="/car/buyInfo"/>
+			<exclude-mapping path="/board/boardList"/>
+			<beans:ref bean="notLoginInterceptor"/>			
+		</interceptor>
+	</interceptors>	
 	
 	<context:component-scan base-package="com.cars.controller" />
 			

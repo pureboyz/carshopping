@@ -43,6 +43,8 @@
 				<td colspan="6">
 				<form id="readForm">
 					<input type="hidden" name="bNo" value="${boardVo.bNo}">
+					<input type="hidden" name="mNo" value="${boardVo.mNo}">
+					<input type="hidden" name="bGrade" value="${boardVo.bGrade}">
 					<input type="button" id="modifyBtn" value="수정하기"> 
 					<input type="button" id="deleteBtn" value="글 삭제">
 					<input type="button" id="listBtn" value="목록으로">
@@ -52,6 +54,13 @@
 		</table>
 	
 <script>
+
+	var message = "${message}";
+	
+	if(message != null && message != ""){
+		alert(message);
+	}
+	
 
 	var form = $("#readForm");
 	

@@ -50,10 +50,6 @@ public class AdminServiceImpl implements AdminService{
 		list.add(4, d3DataByCompany("TOYOTA"));
 		list.add(5, d3DataByCompany("HYUNDAI"));
 		
-		for(int i=0; i<list.size(); i++) {
-			System.out.println(list.get(i));
-		}
-		
 		return list;
 	}
 	
