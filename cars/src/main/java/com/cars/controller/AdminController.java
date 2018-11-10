@@ -58,26 +58,24 @@ public class AdminController {
 		return "redirect:/admin/memberManagement";
 	}*/
 	
-	@RequestMapping(value="/statistic")
-	public void statistic(Model model,@RequestParam("comp") String comp) {
-		model.addAttribute("comp", comp);
-	}
+	@RequestMapping(value="/statisticByAges")
+	public void statisticByAges() {}
 	
 	
-	@RequestMapping(value="/statisticList")
+	@RequestMapping(value="/statisticByAgesList")
 	@ResponseBody
-	public List<D3Data> statisticList() throws Exception{
+	public List<D3Data> statisticByAgesList() throws Exception{
 		List<D3Data> list = service.getD3Data();
 		return list;
 	}
 	
-	@RequestMapping(value="/topByGenders")
-	public void topByGenders() throws Exception{
-		service.topByGenders();
+	@RequestMapping(value="/statisticByGenders")
+	public void statisticByGenders() throws Exception{
+		service.statisticByGenders();
 	}
 	
-	@RequestMapping(value="/fuelAndSize", method=RequestMethod.GET)
-	public void fuelAndSize() {}
+	@RequestMapping(value="/statisticByFuel", method=RequestMethod.GET)
+	public void statisticByFuel() {}
 	
 	@RequestMapping(value="/getCountByFuel")
 	@ResponseBody
@@ -110,8 +108,8 @@ public class AdminController {
 		return fas;
 	}
 	
-	@RequestMapping(value="/sales", method=RequestMethod.GET)
-	public void sales(HttpServletRequest request) throws Exception{
+	@RequestMapping(value="/statisticBySales", method=RequestMethod.GET)
+	public void statisticBySales(HttpServletRequest request) throws Exception{
 		int totalSales = service.getTotalSales();
 		System.out.println(totalSales);
 		request.setAttribute("totalSales",totalSales);

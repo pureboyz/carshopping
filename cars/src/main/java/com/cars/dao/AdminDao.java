@@ -3,6 +3,7 @@ package com.cars.dao;
 import java.util.List;
 
 import com.cars.vo.CarVo;
+import com.cars.vo.SearchVo;
 
 public interface AdminDao {
 
@@ -45,5 +46,9 @@ public interface AdminDao {
 	String getSales(String string) throws Exception;
 
 	int getTotalSales() throws Exception;
+
+	int companyTotal(String company) throws Exception;
+
+	int countBySearchVo(SearchVo searchVo) throws Exception;
 
 }

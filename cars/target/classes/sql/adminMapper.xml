@@ -4,98 +4,22 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.cars.dao.AdminDao">
-	<select id="lamborghiniByAges" resultType="int">
+	
+	<select id="companyTotal" resultType="int">
+		SELECT count(buy.orderNo) FROM buy, car
+		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
+		AND buy.carNo = car.carNo AND car.carComp = #{company}
+	</select>
+	
+	<select id="countBySearchVo" resultType="int">
 		SELECT count(A.orderNo) FROM
 		(SELECT buy.orderNo FROM buy, member, car
 		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
-		AND buy.carNo = car.carNo AND car.carComp = 'lamborghini'
-		AND buy.mNo = member.mNo AND member.mAge LIKE CONCAT(#{i},'%')) A
+		AND buy.carNo = car.carNo AND car.carComp = #{company}
+		AND buy.mNo = member.mNo AND member.mAge LIKE CONCAT(#{ages},'%')) A
 	</select>
-	
-	<select id="lambirghiniTotal" resultType="int">
-		SELECT count(buy.orderNo) FROM buy, car
-		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
-		AND buy.carNo = car.carNo AND car.carComp = 'lamborghini'
-	</select>
-	
-	<select id="benzByAges" resultType="int">
-		SELECT count(A.orderNo) FROM
-		(SELECT buy.orderNo FROM buy, member, car
-		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
-		AND buy.carNo = car.carNo AND car.carComp = 'benz'
-		AND buy.mNo = member.mNo AND member.mAge LIKE CONCAT(#{i},'%')) A
-	</select>
-	
-	<select id="benzTotal" resultType="int">
-		SELECT count(buy.orderNo) FROM buy, car
-		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
-		AND buy.carNo = car.carNo AND car.carComp = 'benz'
-	</select>
-	
-	<select id="audiByAges" resultType="int">
-		SELECT count(A.orderNo) FROM
-		(SELECT buy.orderNo FROM buy, member, car
-		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
-		AND buy.carNo = car.carNo AND car.carComp = 'audi'
-		AND buy.mNo = member.mNo AND member.mAge LIKE CONCAT(#{i},'%')) A
-	</select>
-	
-	<select id="audiTotal" resultType="int">
-		SELECT count(buy.orderNo) FROM buy, car
-		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
-		AND buy.carNo = car.carNo AND car.carComp = 'audi'
-	</select>
-	
-	<select id="bmwByAges" resultType="int">
-		SELECT count(A.orderNo) FROM
-		(SELECT buy.orderNo FROM buy, member, car
-		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
-		AND buy.carNo = car.carNo AND car.carComp = 'bmw'
-		AND buy.mNo = member.mNo AND member.mAge LIKE CONCAT(#{i},'%')) A
-	</select>
-	
-	<select id="bmwTotal" resultType="int">
-		SELECT count(buy.orderNo) FROM buy, car
-		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
-		AND buy.carNo = car.carNo AND car.carComp = 'bmw'
-	</select>
-	
-	<select id="toyotaByAges" resultType="int">
-		SELECT count(A.orderNo) FROM
-		(SELECT buy.orderNo FROM buy, member, car
-		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
-		AND buy.carNo = car.carNo AND car.carComp = 'toyota'
-		AND buy.mNo = member.mNo AND member.mAge LIKE CONCAT(#{i},'%')) A
-	</select>
-	
-	<select id="toyotaTotal" resultType="int">
-		SELECT count(buy.orderNo) FROM buy, car
-		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
-		AND buy.carNo = car.carNo AND car.carComp = 'toyota'
-	</select>
-	
-	<select id="hyundaiByAges" resultType="int">
-		SELECT count(A.orderNo) FROM
-		(SELECT buy.orderNo FROM buy, member, car
-		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
-		AND buy.carNo = car.carNo AND car.carComp = 'hyundai'
-		AND buy.mNo = member.mNo AND member.mAge LIKE CONCAT(#{i},'%')) A
-	</select>
-	
-	<select id="hyundaiTotal" resultType="int">
-		SELECT count(buy.orderNo) FROM buy, car
-		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
-		AND buy.carNo = car.carNo AND car.carComp = 'hyundai'
-	</select>
-	
+
 	<select id="genderCompany" resultType="carVo">
-		<!-- SELECT A.* FROM (SELECT car.* FROM buy, car, member
-		WHERE (buy.isBuy = 1 OR buy.isBuy = 2)
-		AND buy.carNo = car.carNo
-		AND buy.mNo = member.mNo AND member.mGender = #{i}) A
-		GROUP BY carNo
-		ORDER BY A.carsale DESC, A.carName DESC
-		limit 4 -->
 		select count(buy.orderNo) as carsale,car.carName from car, buy, member
 		where buy.carNo = car.carNo
 		AND buy.mNo = member.mNo AND mGender = #{i}

@@ -16,7 +16,7 @@ public interface AdminService {
 
 	List<D3Data> getD3Data() throws Exception;
 
-	void topByGenders() throws Exception;
+	void statisticByGenders() throws Exception;
 
 	List<FuelAndSizeVo> getCountByFuel() throws Exception;
 

@@ -3,7 +3,7 @@
 <%@include file="../include/header.jsp"%>
 <%@include file="../include/categoryadmin.jsp"%>
 <script src="//d3js.org/d3.v3.min.js"></script>
-<link href="${pageContext.request.contextPath}/resources/css/topByGenders.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/statisticByGenders.css" rel="stylesheet">
 
 <div class="chartByGender">
 	<h2>성별에 따른 판매량 TOP4</h2>

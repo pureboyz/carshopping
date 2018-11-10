@@ -17,11 +17,11 @@
 
 
 <div class="menuDiv" onclick="location.href='/admin/memberManagement'">회원관리</div>
-<div class="menuDiv" onclick="location.href='/admin/statistic?comp=all'">통계</div>
-<div class="menuDiv" onclick="location.href='/admin/topByGenders'">성별top4</div>
-<div class="menuDiv" onclick="location.href='/admin/fuelAndSize'">연료별 통계</div>
+<div class="menuDiv" onclick="location.href='/admin/statisticByAges'">연령별통계</div>
+<div class="menuDiv" onclick="location.href='/admin/statisticByGenders'">성별top4</div>
+<div class="menuDiv" onclick="location.href='/admin/statisticByFuel'">연료별 통계</div>
 <div class="menuDiv" onclick="location.href='/admin/statisticBySize'">크기별 통계</div>
-<div class="menuDiv" onclick="location.href='/admin/sales'">매출</div>
+<div class="menuDiv" onclick="location.href='/admin/statisticBySales'">매출</div>
 
 
 

@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
@@ -20,6 +19,7 @@ import com.cars.vo.D3Data;
 import com.cars.vo.FreqData;
 import com.cars.vo.FuelAndSizeVo;
 import com.cars.vo.MemberVo;
+import com.cars.vo.SearchVo;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -31,7 +31,6 @@ public class AdminServiceImpl implements AdminService{
 	
 	@Override
 	public List<MemberVo> getMemberList() throws Exception{
-		
 		return dao.getMemberList();
 	}
 
@@ -43,84 +42,13 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public List<D3Data> getD3Data() throws Exception {
 		ArrayList<D3Data> list = new ArrayList<>();
-		D3Data lamborghini = new D3Data();
-		D3Data benz = new D3Data();
-		D3Data audi = new D3Data();
-		D3Data bmw = new D3Data();
-		D3Data toyota = new D3Data();
-		D3Data hyundai = new D3Data();
 		
-		FreqData freqLam = new FreqData();
-		FreqData freqBenz = new FreqData();
-		FreqData freqAudi = new FreqData();
-		FreqData freqBMW = new FreqData();
-		FreqData freqTo = new FreqData();
-		FreqData freqHyun = new FreqData();
-		
-		for(int i=2; i<=5; i++) {
-			if(i == 2) {
-				freqLam.setTwenties(aDao.lamborghiniByAges(i));
-				freqBenz.setTwenties(aDao.benzByAges(i));
-				freqAudi.setTwenties(aDao.audiByAges(i));
-				freqBMW.setTwenties(aDao.bmwByAges(i));
-				freqTo.setTwenties(aDao.toyotaByAges(i));
-				freqHyun.setTwenties(aDao.hyundaiByAges(i));
-			}else if(i == 3) {
-				freqLam.setThirties(aDao.lamborghiniByAges(i));
-				freqBenz.setThirties(aDao.benzByAges(i));
-				freqAudi.setThirties(aDao.audiByAges(i));
-				freqBMW.setThirties(aDao.bmwByAges(i));
-				freqTo.setThirties(aDao.toyotaByAges(i));
-				freqHyun.setThirties(aDao.hyundaiByAges(i));
-			}else if(i == 4) {
-				freqLam.setForties(aDao.lamborghiniByAges(i));
-				freqBenz.setForties(aDao.benzByAges(i));
-				freqAudi.setForties(aDao.audiByAges(i));
-				freqBMW.setForties(aDao.bmwByAges(i));
-				freqTo.setForties(aDao.toyotaByAges(i));
-				freqHyun.setForties(aDao.hyundaiByAges(i));
-			}else if(i == 5) {
-				freqLam.setFifties(aDao.lamborghiniByAges(i));
-				freqBenz.setFifties(aDao.benzByAges(i));
-				freqAudi.setFifties(aDao.audiByAges(i));
-				freqBMW.setFifties(aDao.bmwByAges(i));
-				freqTo.setFifties(aDao.toyotaByAges(i));
-				freqHyun.setFifties(aDao.hyundaiByAges(i));
-			}
-		}
-		
-		int overSixtyLam = aDao.lambirghiniTotal() - (freqLam.getTwenties()+freqLam.getThirties()+freqLam.getForties()+freqLam.getFifties());
-		int overSixtyBenz = aDao.benzTotal() - (freqBenz.getTwenties()+freqBenz.getThirties()+freqBenz.getForties()+freqBenz.getFifties());
-		int overSixtyAudi = aDao.audiTotal() - (freqAudi.getTwenties()+freqAudi.getThirties()+freqAudi.getForties()+freqAudi.getFifties());
-		int overSixtyBMW = aDao.bmwTotal() - (freqBMW.getTwenties()+freqBMW.getThirties()+freqBMW.getForties()+freqBMW.getFifties());
-		int overSixtyTo = aDao.toyotaTotal() - (freqTo.getTwenties()+freqTo.getThirties()+freqTo.getForties()+freqTo.getFifties());
-		int overSixtyHyun = aDao.hyundaiTotal() - (freqHyun.getTwenties()+freqHyun.getThirties()+freqHyun.getForties()+freqHyun.getFifties());
-		freqLam.setOverSixty(overSixtyLam);
-		freqBenz.setOverSixty(overSixtyBenz);
-		freqAudi.setOverSixty(overSixtyAudi);
-		freqBMW.setOverSixty(overSixtyBMW);
-		freqTo.setOverSixty(overSixtyTo);
-		freqHyun.setOverSixty(overSixtyHyun);
-		
-		lamborghini.setFreq(freqLam);
-		lamborghini.setState("LAMBORGHINI");
-		benz.setFreq(freqBenz);
-		benz.setState("BENZ");
-		audi.setFreq(freqAudi);
-		audi.setState("AUDI");
-		bmw.setFreq(freqBMW);
-		bmw.setState("BMW");
-		toyota.setFreq(freqTo);
-		toyota.setState("TOYOTA");
-		hyundai.setFreq(freqHyun);
-		hyundai.setState("HYUNDAI");
-		
-		list.add(0, lamborghini);
-		list.add(1, benz);
-		list.add(2, audi);
-		list.add(3, bmw);
-		list.add(4, toyota);
-		list.add(5, hyundai);
+		list.add(0, d3DataByCompany("LAMBORGHINI"));
+		list.add(1, d3DataByCompany("BENZ"));
+		list.add(2, d3DataByCompany("AUDI"));
+		list.add(3, d3DataByCompany("BMW"));
+		list.add(4, d3DataByCompany("TOYOTA"));
+		list.add(5, d3DataByCompany("HYUNDAI"));
 		
 		for(int i=0; i<list.size(); i++) {
 			System.out.println(list.get(i));
@@ -129,9 +57,44 @@ public class AdminServiceImpl implements AdminService{
 		return list;
 	}
 	
+	public D3Data d3DataByCompany(String company) throws Exception{
+		D3Data d3data = new D3Data();
+		d3data.setState(company);
+		d3data.setFreq(freqByCompany(company));
+		
+		return d3data;
+	}
+	
+	public FreqData freqByCompany(String company) throws Exception {
+		FreqData freq = new FreqData();
+		
+		SearchVo searchVo = new SearchVo();
+		searchVo.setCompany(company);
+		
+		for(int i=2; i<=5; i++) {
+			if(i == 2) {
+				searchVo.setAges(i);
+				freq.setTwenties(aDao.countBySearchVo(searchVo));
+			}else if(i == 3) {
+				searchVo.setAges(i);
+				freq.setThirties(aDao.countBySearchVo(searchVo));
+			}else if(i == 4) {
+				searchVo.setAges(i);
+				freq.setForties(aDao.countBySearchVo(searchVo));
+			}else if(i == 5) {
+				searchVo.setAges(i);
+				freq.setFifties(aDao.countBySearchVo(searchVo));
+			}
+		}
+		
+		int overSixty = aDao.companyTotal(company) - (freq.getTwenties()+freq.getThirties()+freq.getForties()+freq.getFifties());
+		freq.setOverSixty(overSixty);
+		
+		return freq;
+	}
 
 	@Override
-	public void topByGenders() throws Exception {
+	public void statisticByGenders() throws Exception {
 		List<CarVo> cv1 = new ArrayList<>();
 		List<CarVo> cv2 = new ArrayList<>();
 		
@@ -169,9 +132,9 @@ public class AdminServiceImpl implements AdminService{
 	public List<FuelAndSizeVo> getCountByFuel() throws Exception {
 		List<FuelAndSizeVo> fasList = new ArrayList<>();
 		
-		fasList.add(getFasByFuel("디젤"));
-		fasList.add(getFasByFuel("휘발유"));
-		fasList.add(getFasByFuel("하이브리드"));
+		fasList.add(fasByFuel("디젤"));
+		fasList.add(fasByFuel("휘발유"));
+		fasList.add(fasByFuel("하이브리드"));
 		
 		FuelAndSizeVo fasEtc = new FuelAndSizeVo();
 		int allCount = aDao.allCount();
@@ -183,7 +146,7 @@ public class AdminServiceImpl implements AdminService{
 		return fasList;
 	}
 	
-	public FuelAndSizeVo getFasByFuel(String str) throws Exception{
+	public FuelAndSizeVo fasByFuel(String str) throws Exception{
 		FuelAndSizeVo fas = new FuelAndSizeVo();
 		fas.setName(str);
 		fas.setCount(aDao.getCountByFuel(str));
@@ -194,15 +157,15 @@ public class AdminServiceImpl implements AdminService{
 	public List<FuelAndSizeVo> getCountBySize() throws Exception {
 		List<FuelAndSizeVo> fasList = new ArrayList<>();
 		
-		fasList.add(getFasBySize("대"));
-		fasList.add(getFasBySize("중"));
-		fasList.add(getFasBySize("소"));
-		fasList.add(getFasBySize("스포츠"));
+		fasList.add(fasBySize("대"));
+		fasList.add(fasBySize("중"));
+		fasList.add(fasBySize("소"));
+		fasList.add(fasBySize("스포츠"));
 		
 		return fasList;
 	}
 	
-	public FuelAndSizeVo getFasBySize(String str) throws Exception{
+	public FuelAndSizeVo fasBySize(String str) throws Exception{
 		FuelAndSizeVo fas = new FuelAndSizeVo();
 		fas.setName(str+"형");
 		fas.setCount(aDao.getCountBySize(str));
@@ -245,14 +208,14 @@ public class AdminServiceImpl implements AdminService{
 	public List<FuelAndSizeVo> getCountByLook() throws Exception {
 		List<FuelAndSizeVo> fasList = new ArrayList<>();
 		
-		fasList.add(getFasByLook("세단"));
-		fasList.add(getFasByLook("SUV"));
-		fasList.add(getFasByLook("스포츠카"));
+		fasList.add(fasByLook("세단"));
+		fasList.add(fasByLook("SUV"));
+		fasList.add(fasByLook("스포츠카"));
 		
 		return fasList;
 	}
 	
-	public FuelAndSizeVo getFasByLook(String str) throws Exception{
+	public FuelAndSizeVo fasByLook(String str) throws Exception{
 		FuelAndSizeVo fas = new FuelAndSizeVo();
 		fas.setName(str);
 		fas.setCount(aDao.getCountByLook(str));

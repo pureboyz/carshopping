@@ -3,8 +3,8 @@
 <%@include file="../include/header.jsp"%>
 <%@include file="../include/categoryadmin.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link href="${pageContext.request.contextPath}/resources/css/statistic.css" rel="stylesheet">
-<script src="${pageContext.request.contextPath}/resources/js/statistic.js"></script>
+<link href="${pageContext.request.contextPath}/resources/css/statisticByAges.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/resources/js/statisticByAges.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 
@@ -17,7 +17,7 @@
 </article>
 <script>
 
-$.getJSON("/admin/statisticList",function(list){
+$.getJSON("/admin/statisticByAgesList",function(list){
 	console.log(list);
 	dashboard('#dashboard',list);
 });
