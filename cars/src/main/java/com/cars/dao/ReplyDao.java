@@ -13,4 +13,8 @@ public interface ReplyDao {
 
 	int getTotalCount(int cno) throws Exception;
 
+	void deleteReply(int rno) throws Exception;
+
+	void modifyReply(ReplyVo replyVo) throws Exception;
+
 }

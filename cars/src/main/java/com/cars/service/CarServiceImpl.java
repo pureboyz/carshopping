@@ -119,7 +119,6 @@ public class CarServiceImpl implements CarService{
 			totalCount = replyDao.getTotalCount(cno);
 			pageMaker.setTotalCount(totalCount);
 		}
-		System.out.println("cno : "+cno + "mno : "+mno);
 		
 		pageMaker.setCountPerPage(countPerPage);
 		pageMaker.setCurrentPage(currentPage);

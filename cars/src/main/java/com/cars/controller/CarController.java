@@ -29,12 +29,11 @@ public class CarController {
 	
 	@RequestMapping(value="/carInfo", method=RequestMethod.GET)
 	public void carInfo(@RequestParam("currentPage") int currentPage, @RequestParam("carNo") int carNo, Model model, HttpServletRequest request) throws Exception{
-		System.out.println(currentPage);
-		int countPerPage = 10;
+		int countPerPage = 5;
 		request.setAttribute("carNo", carNo);
 		PageMaker pageMaker = service.getPageMaker(currentPage,countPerPage,request);
 		pageMaker.setCno(carNo);
-		System.out.println("replyPageMaker : "+pageMaker);
+		/*System.out.println("replyPageMaker : "+pageMaker);*/
 		HttpSession session = request.getSession();
 		session.setAttribute("replyPageMaker", pageMaker);
 		
@@ -93,7 +92,7 @@ public class CarController {
 			
 			PageMaker pageMaker = service.getPageMaker(currentPage,countPerPage,request);
 			pageMaker.setMno(mno);
-			System.out.println("pageMaker : "+pageMaker);
+			/*System.out.println("pageMaker : "+pageMaker);*/
 			session.setAttribute("pageMaker", pageMaker);
 			List<BuyInfoVo> cList = service.getBuyCar(pageMaker);
 			session.setAttribute("cList", cList);

@@ -64,7 +64,6 @@ input[type=submit]{
 				<div class="joinFormGroup ">
 					<label>성별</label>
 					<select name="mGender">
-						성별을 선택해주세요
 						<option value=1>남</option>
 						<option value=2>여</option>
 					</select>

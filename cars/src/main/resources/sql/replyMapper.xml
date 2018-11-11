@@ -11,12 +11,22 @@
 	</select>
 	
 	<insert id="register">
-		insert into carreply(cno, auth, comment)
-		values(#{cno}, #{auth}, #{comment})
+		insert into carreply(cno, auth, comment, mno)
+		values(#{cno}, #{auth}, #{comment}, #{mno})
 	</insert>
 	
 	<select id="getTotalCount" resultType="int">
 		SELECT count(*) FROM carreply WHERE cno = #{cno}
 	</select>
+	
+	<delete id="deleteReply">
+		DELETE FROM carreply
+		WHERE rno = #{rno}
+	</delete>
+	
+	<update id="modifyReply">
+		UPDATE carreply SET comment = #{comment}
+		WHERE rno = #{rno}
+	</update>
 	
 </mapper>

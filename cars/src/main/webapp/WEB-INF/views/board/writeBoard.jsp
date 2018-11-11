@@ -4,7 +4,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@include file="../include/header.jsp"%>
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/writeBoard.js"></script>
 <style>
 
 #inputTitle{
@@ -26,7 +27,7 @@ tr td:nth-child(3) label{
 
 <body>
 	<div class="wrap">
-	<form method="post" action="/board/writeBoard">
+	<form id="writeBoard" method="post">
 		<input type="hidden" name="mNo" value="${memberVo.mNo}">		
 		<table>
 		<tr>
@@ -59,7 +60,7 @@ tr td:nth-child(3) label{
 			</td>
 		</tr>
 		<tr>
-		<td colspan="4"><input type="submit" id="sub" value="글 작성"></td>
+		<td colspan="4"><input type="button" id="sub" value="글 작성"></td>
 		</tr>			
 		</table>		
 		

@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/carInfo.js"></script>
 <%@include file="../include/header.jsp"%>
 <%@include file="../include/category.jsp"%>
 
@@ -49,7 +50,7 @@ function loginToBuy(){
 				<div id="tab1">
 					<table class="tbl1">
 						<tr>
-							<th>구매 & 배송</th>
+							<th>구매 &amp; 배송</th>
 							<th>안내사항</th>
 						</tr>
 						<tr>
@@ -91,7 +92,7 @@ function loginToBuy(){
 			<h2>구매 후기</h2>
 			<div class="replyBox">
 				<c:if test="${!empty loginMember}">
-					<form action="/reply/register" method="post">
+					<form method="post">
 						<input type="hidden" name=carNo value="${car.carNo}"/>
 						<div class="replyRegist">
 							<h3 class="replyAuth">${loginMember.mName}</h3>
@@ -126,6 +127,8 @@ function loginToBuy(){
 			<div class="comments">
 				{{comment}}
 			</div>
+			<label class="modify" onclick="modifyReply('{{mno}}','{{rno}}','{{comment}}');">수정</label>
+			<label class="delete" onclick="deleteReply('{{mno}}','{{rno}}');">삭제</label>
 		</div>
 	{{/each}}
 </script>
@@ -142,28 +145,96 @@ function loginToBuy(){
 		});
 	});
 	
+	function modifyReply(mno, rno, comment){
+		var membermno = "${loginMember.mNo}";
+		
+		if(mno == membermno){
+			var input = prompt('수정 할 내용을 입력하세요.',comment);
+			
+			if(input != null){
+				$.ajax({
+					type: 'put',
+					url : '/reply/modifyReply/'+rno,
+					headers : {
+						"Content-Type" : "application/json",
+						"X-HTTP-Method-Override": "PUT"
+					},
+					dataType : "text",
+					data : JSON.stringify({comment:input}),
+					success : function(result){
+						if(result == "SUCCESS"){
+							alert("수정 완료");
+							location.href="/car/carInfo?currentPage="+${replyPageMaker.currentPage}+"&carNo="+${car.carNo};
+						}				
+					}
+				});
+			}else{
+				alert('취소되었습니다.');
+			}
+		}else{
+			alert('후기 작성자가 아닙니다.');
+		}
+	}
+	
+	function deleteReply(mno, rno){
+		var membermno = "${loginMember.mNo}";
+		
+		if(mno == membermno){
+			var conf = confirm('후기를 삭제하시겠습니까?');
+			
+			if(conf == true){
+				$.ajax({
+					type: 'delete',
+					url : '/reply/deleteReply/'+rno,
+					headers : {
+						"Content-Type" : "application/json",
+						"X-HTTP-Method-Override": "DELETE"
+					},
+					dataType : "text",
+					success : function(result){
+						if(result == "SUCCESS"){
+							alert("삭제 완료");
+							location.href="/car/carInfo?currentPage="+${replyPageMaker.currentPage}+"&carNo="+${car.carNo};
+						}				
+					}
+				});
+			}else{
+				return;
+			}
+		}else{
+			alert('후기 작성자가 아닙니다.');
+		}
+	}
+	
 	$(".btnReply").on("click",function(){
 		var auth = "${loginMember.mName}";
 		var comment = $(".replyComments").val();
 		var cno = "${car.carNo}";
+		var mno = "${loginMember.mNo}";
 		
-		$.ajax({
-			type: 'post',
-			url : '/reply/register',
-			headers : {
-				"Content-Type" : "application/json",
-				"X-HTTP-Method-Override": "POST"
-			},
-			dataType : "text",
-			data : JSON.stringify({cno:cno,comment:comment,auth:auth}),
-			success : function(result){
-				if(result == "SUCCESS"){
-					alert("댓글 등록 완료");
-					location.href="/car/carInfo?currentPage="+${replyPageMaker.currentPage}+"&carNo="+${car.carNo};
-				}				
-			}
-		});
+		if(comment == null || comment == ""){
+			alert('내용을 작성해주세요.');
+			$(".replyComments").focus();
+		}else{
+			$.ajax({
+				type: 'post',
+				url : '/reply/register',
+				headers : {
+					"Content-Type" : "application/json",
+					"X-HTTP-Method-Override": "POST"
+				},
+				dataType : "text",
+				data : JSON.stringify({cno:cno,comment:comment,auth:auth,mno:mno}),
+				success : function(result){
+					if(result == "SUCCESS"){
+						alert("후기 등록 완료");
+						location.href="/car/carInfo?currentPage="+${replyPageMaker.currentPage}+"&carNo="+${car.carNo};
+					}				
+				}
+			});
+		}
 	});
+	
 </script>
 
 <%@include file="../include/footer.jsp"%>

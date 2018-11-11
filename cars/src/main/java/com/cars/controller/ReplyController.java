@@ -37,7 +37,6 @@ public class ReplyController {
 	
 	@RequestMapping(value="/register", method= RequestMethod.POST)
 	public ResponseEntity<String> register(@RequestBody ReplyVo replyVo){
-		
 		ResponseEntity<String> entity = null;
 		
 		try {
@@ -51,5 +50,36 @@ public class ReplyController {
 		return entity;
 	}
 	
+	@RequestMapping(value="/deleteReply/{rno}", method= RequestMethod.DELETE)
+	public ResponseEntity<String> deleteReply(@PathVariable("rno") int rno) throws Exception{
+		ResponseEntity<String> entity = null;
+		
+		try {
+			service.deleteReply(rno);
+			entity = new ResponseEntity<String>("SUCCESS",HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
+	
+	@RequestMapping(value="/modifyReply/{rno}", method= RequestMethod.PUT)
+	public ResponseEntity<String> modifyReply(@PathVariable("rno") int rno, @RequestBody ReplyVo replyVo) throws Exception{
+		ResponseEntity<String> entity = null;
+		
+		replyVo.setRno(rno);
+		
+		try {
+			service.modifyReply(replyVo);
+			entity = new ResponseEntity<String>("SUCCESS",HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
 
 }

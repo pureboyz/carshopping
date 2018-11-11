@@ -128,19 +128,6 @@ h2{
 	font-size: 1.1em;
 }
 
-.templateBox{
-	width: 1200px;
-	height: 30px;
-	padding-top: 4px;
-	padding-left: 20px;
-	border: 1px solid #ccc;
-	border-top: none;
-}
-
-.templateBox:first-child{
-	border-top: 1px solid #ccc;
-}
-
 .replyRegist{
 	width: 1200px;
 	height: 30px;
@@ -168,13 +155,41 @@ h2{
 	height: 31px;
 }
 
+.templateBox{
+	width: 1200px;
+	height: 30px;
+	padding-top: 4px;
+	padding-left: 20px;
+	border: 1px solid #ccc;
+	border-top: none;
+}
+
+.templateBox:first-child{
+	border-top: 1px solid #ccc;
+}
+
 .auth{
 	float: left;
 	width: 150px;
 }
 
 .comments{
-	floaf: left;
+	float: left;
+	width: 950px;
+}
+
+.modify, .delete{
+	float: left;
+	width: 50px;
+	cursor: pointer;
+	color: black;
+}
+
+.modify:hover, .delete:hover{
+	float: left;
+	width: 50px;
+	cursor: pointer;
+	color: gray;
 }
 
 .pagination{

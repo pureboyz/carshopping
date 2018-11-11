@@ -11,6 +11,10 @@ public interface ReplyService {
 
 	void register(ReplyVo replyVo) throws Exception;
 
+	void deleteReply(int rno) throws Exception;
+
+	void modifyReply(ReplyVo replyVo) throws Exception;
+
 	
 
 }

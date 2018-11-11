@@ -6,6 +6,7 @@ public class ReplyVo {
 	String auth;
 	String comment;
 	int cno;
+	int mno;
 	
 	public int getRno() {
 		return rno;
@@ -31,12 +32,17 @@ public class ReplyVo {
 	public void setCno(int cno) {
 		this.cno = cno;
 	}
+	public int getMno() {
+		return mno;
+	}
+	public void setMno(int mno) {
+		this.mno = mno;
+	}
 	
 	@Override
 	public String toString() {
-		return "ReplyVo [rno=" + rno + ", auth=" + auth + ", comment=" + comment + ", cno=" + cno + "]";
+		return "ReplyVo [rno=" + rno + ", auth=" + auth + ", comment=" + comment + ", cno=" + cno + ", mno=" + mno
+				+ "]";
 	}
 	
-	
-
 }
