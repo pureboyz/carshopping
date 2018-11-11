@@ -7,9 +7,14 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 
 <style>
+article{
+	width: 1580px;
+}
+
 #chart_div{
 	width: 900px;
 	height: 500px;
+	margin: 0 auto;
 }
 
 h2, h3{
@@ -17,9 +22,11 @@ h2, h3{
 }
 </style>
 
-<h2>날짜별 판매액</h2>
-<div id="chart_div"></div>
-<h3>총 판매액 : <fmt:formatNumber value="${totalSales}" type="currency"/> 만원</h3>
+<article>
+	<h2>날짜별 판매액</h2>
+	<div id="chart_div"></div>
+	<h3>총 판매액 : <fmt:formatNumber value="${totalSales}" type="currency"/> 만원</h3>
+</article>
 
 <script>
 google.charts.load('current', {packages: ['corechart', 'line']});

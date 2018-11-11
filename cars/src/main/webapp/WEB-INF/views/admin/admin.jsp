@@ -6,6 +6,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <style>
+article{
+	width: 1580px;
+}
 .menuDiv{
 	width: 100px;
 	height: 30px;
@@ -15,14 +18,14 @@
 }
 </style>
 
-
-<div class="menuDiv" onclick="location.href='/admin/memberManagement'">회원관리</div>
-<div class="menuDiv" onclick="location.href='/admin/statisticByAges'">연령별통계</div>
-<div class="menuDiv" onclick="location.href='/admin/statisticByGenders'">성별top4</div>
-<div class="menuDiv" onclick="location.href='/admin/statisticByFuel'">연료별 통계</div>
-<div class="menuDiv" onclick="location.href='/admin/statisticBySize'">크기별 통계</div>
-<div class="menuDiv" onclick="location.href='/admin/statisticBySales'">매출</div>
-
+<article>
+	<div class="menuDiv" onclick="location.href='/admin/memberManagement'">회원관리</div>
+	<div class="menuDiv" onclick="location.href='/admin/statisticByAges'">연령별통계</div>
+	<div class="menuDiv" onclick="location.href='/admin/statisticByGenders'">성별top4</div>
+	<div class="menuDiv" onclick="location.href='/admin/statisticByFuel'">연료별 통계</div>
+	<div class="menuDiv" onclick="location.href='/admin/statisticBySize'">크기별 통계</div>
+	<div class="menuDiv" onclick="location.href='/admin/statisticBySales'">매출</div>
+</article>
 
 
 

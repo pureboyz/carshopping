@@ -8,6 +8,10 @@
 
 
 <style>
+article{
+	width: 1580px;
+}
+
 .wrap_table {
 	border: 1px solid skyblue;
 	width: 650px;
@@ -57,7 +61,7 @@ input[type="text"] {
 		<div class="titleMenu memberGrade"></div>
 	</div>
  -->
-<div>
+<article>
 	<div class="wrap_table">
 		<form id="modifyMember" action="/admin/modifyMemberPOST" method="post">
 			<!-- <form id="modifyMember" action="/admin/modifyMember" method="get"> -->
@@ -143,7 +147,7 @@ input[type="text"] {
 			</table>
 		
 	</div>
-</div>
+</article>
 
 <script>
 	function formSubmit(mNo){		

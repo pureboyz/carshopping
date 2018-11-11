@@ -33,7 +33,7 @@ public class CarController {
 		request.setAttribute("carNo", carNo);
 		PageMaker pageMaker = service.getPageMaker(currentPage,countPerPage,request);
 		pageMaker.setCno(carNo);
-		/*System.out.println("replyPageMaker : "+pageMaker);*/
+		
 		HttpSession session = request.getSession();
 		session.setAttribute("replyPageMaker", pageMaker);
 		

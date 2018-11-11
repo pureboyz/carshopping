@@ -1,9 +1,10 @@
 article{
-	width: 1302px;
+	width: 1580px;
 }
 .age-comp{
 	width: 1300px;
 	height: 410px;
+	margin: 0 auto;
 	/* border: 1px solid #ccc; */
 }
 h2{

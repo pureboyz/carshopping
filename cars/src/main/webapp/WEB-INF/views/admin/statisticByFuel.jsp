@@ -7,11 +7,13 @@
 <link href="${pageContext.request.contextPath}/resources/css/fuelAndSize.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/resources/js/fuelAndSize.js"></script>
 
-<div class="wrap-piechart">
-	<h2>연료별 차량 구매 수</h2>
-	<h2>연비별 차량 구매 수</h2>
-	<div id="piechart_3d1"></div>
-	<div id="piechart_3d2"></div>
-</div>
+<article>
+	<div class="wrap-piechart">
+		<h2>연료별 차량 구매 수</h2>
+		<h2>연비별 차량 구매 수</h2>
+		<div id="piechart_3d1"></div>
+		<div id="piechart_3d2"></div>
+	</div>
+</article>
 
 <%@include file="../include/footer.jsp"%>

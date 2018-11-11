@@ -11,7 +11,7 @@ header{
 }
 
 .wrap-header{
-	width: 1300px;
+	width: 1580px;
 	height: 150px;
 	text-align: center;
 	/* border: 1px solid black; */
@@ -21,7 +21,7 @@ header{
 	width: 496px;
 	height: 148px;
 	margin: 0px auto;
-	margin-left: 400px;
+	margin-left: 540px;
 	float: left;
 	text-align: center;
 	/* border: 1px solid blue; */
