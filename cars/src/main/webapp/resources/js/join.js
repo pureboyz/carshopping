@@ -12,6 +12,8 @@ $(document).ready(function(){
 	var formObj = $("#joinPOST");
 	
 	$("#btnJoin").on("click",function(){
+		var age = $("#mAge").val();
+		
 		if(boolId == false){
 			alert('올바른 아이디가 아닙니다.');
 			$("#mId").focus();
@@ -24,8 +26,11 @@ $(document).ready(function(){
 		}else if(boolName == false){
 			alert('올바른 이름이 아닙니다.');
 			$("#mName").focus();
-		}else if($("#mAge").val() == "" || $("#mAge").val() == null || $("#mAge").val() == 0){
+		}else if(age == "" || age == null || age == 0){
 			alert('나이를 선택해주세요.');
+		}else if(age < 20 || 80 < age){
+			alert('가입가능한 나이가 아닙니다.');
+			$("#mAge").focus();
 		}else{
 			formObj.attr("action","/member/joinPOST");
 			formObj.attr("method","post");
