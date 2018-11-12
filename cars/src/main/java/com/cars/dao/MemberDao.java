@@ -22,6 +22,8 @@ public interface MemberDao {
 	void modifyMember(MemberVo memberVo) throws Exception;//관리자의 회원등급수정
 	//void modifyMember(int mNo, int mGrade) throws Exception;
 
+	void exitMember(int mNo) throws Exception;
+
 	
 	
 }

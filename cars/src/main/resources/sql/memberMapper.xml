@@ -39,4 +39,9 @@
 		where mNo=#{mNo}	
 	</update>
 	
+	<delete id="exitMember">
+		delete from member
+		where mNo = #{mNo}
+	</delete>
+	
 </mapper>

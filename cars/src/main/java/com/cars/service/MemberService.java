@@ -3,8 +3,6 @@ package com.cars.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.ui.Model;
-
 import com.cars.dto.LoginDTO;
 import com.cars.vo.MemberVo;
 
@@ -21,6 +19,8 @@ public interface MemberService {
 	void modify(MemberVo memberVo) throws Exception;
 
 	MemberVo getMember(int mNo) throws Exception;
+
+	void exitMember(int mNo) throws Exception;
 
 	
 }

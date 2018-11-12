@@ -128,8 +128,8 @@ public class AdminServiceImpl implements AdminService{
 	public List<FuelAndSizeVo> getCountByFuel() throws Exception {
 		List<FuelAndSizeVo> fasList = new ArrayList<>();
 		
+		fasList.add(fasByFuel("가솔린"));
 		fasList.add(fasByFuel("디젤"));
-		fasList.add(fasByFuel("휘발유"));
 		fasList.add(fasByFuel("하이브리드"));
 		
 		FuelAndSizeVo fasEtc = new FuelAndSizeVo();
@@ -206,7 +206,7 @@ public class AdminServiceImpl implements AdminService{
 		
 		fasList.add(fasByLook("세단"));
 		fasList.add(fasByLook("SUV"));
-		fasList.add(fasByLook("스포츠카"));
+		fasList.add(fasByLook("스포츠"));
 		
 		return fasList;
 	}

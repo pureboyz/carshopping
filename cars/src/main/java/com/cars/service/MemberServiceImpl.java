@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.springframework.web.util.WebUtils;
 
 import com.cars.dao.MemberDao;
@@ -62,6 +61,11 @@ public class MemberServiceImpl implements MemberService{
 	public MemberVo getMember(int mNo) throws Exception {
 		
 		return dao.getMember(mNo);
+	}
+
+	@Override
+	public void exitMember(int mNo) throws Exception {
+		dao.exitMember(mNo);
 	}
 	
 	

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <link href="${pageContext.request.contextPath}/resources/css/memberInfo.css" rel="stylesheet">
 
 <article>
@@ -11,7 +11,7 @@
 			<div class="wrap-profile">
 				<div class="profile">
 					<h2>나의 정보 수정</h2>
-					<input type="hidden" name="mNo" value="${memberVo.mNo }"/>
+					<input type="hidden" name="mNo" value="${memberVo.mNo}"/>
 					<div>						
 						<div><label>등급</label></div>
 						<div><input type="text" name="mGrade" value="${memberVo.mGrade}" readonly/></div>
@@ -53,7 +53,7 @@
 					</div>					
 				</div>
 				<div class="wrap-btn">
-					<input type="button" class="exit" value="회원 탈퇴" onclick="location.href=''"/>
+					<input type="button" class="exit" value="회원 탈퇴"/>
 					<input type="button" class="cancel" value="취소" onclick="location.href='/'"/>
 					<input type="submit" class="finish" value="수정 완료"/>
 				</div>
@@ -61,5 +61,18 @@
 		</form>
 	</div>
 </article>
+
+<script>
+	$(document).ready(function(){
+		$(".exit").on("click",function(){
+			var conf = confirm('정말 탈퇴하시겠습니까?');
+			if(conf == true){
+				location.href='/member/exitMember?mNo=${memberVo.mNo}';
+			}else{
+				return;
+			}
+		});
+	});
+</script>
 
 <%@include file="../include/footer.jsp"%>

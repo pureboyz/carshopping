@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cars.dto.LoginDTO;
@@ -83,8 +84,7 @@ public class MemberController {
 	
 	@RequestMapping(value="/modifyInfo")
 	public String modifyInfo(MemberVo memberVo,Model model) throws Exception {
-		
-		System.out.println("컨트롤러 테스트 : " + memberVo);
+		//System.out.println("컨트롤러 테스트 : " + memberVo);
 		mService.modify(memberVo);		
 		model.addAttribute("message", "회원 정보 수정 완료");
 		List<CarVo> carList = cService.allCar();
@@ -93,5 +93,11 @@ public class MemberController {
 		return "home";
 	}
 	
+	@RequestMapping(value="/exitMember")
+	public String exitMember(@RequestParam("mNo") int mNo, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		mService.exitMember(mNo);
+		mService.logout(request, response);
+		return "redirect:/";
+	}
 	
 }
