@@ -33,19 +33,34 @@ public class WriterInterceptor extends HandlerInterceptorAdapter{
 			request.setAttribute("message", "로그인이 필요합니다.");
 			rd.forward(request, response);
 		}else {
-			if(memberVo.getmNo() != mNo) {
-				RequestDispatcher rd = request.getRequestDispatcher("/board/readPage?bno="+bNo);
-				request.setAttribute("message", "작성자가 아니면 수정과 삭제가 불가능합니다.");
-				rd.forward(request, response);
-				return false;
-			}else {
-				if(memberVo.getmGrade() != 2 && bGrade == 2) {
+			if(memberVo.getmGrade() !=2) {//관리자가 아닐때
+				if(bGrade==2) {//공지
 					RequestDispatcher rd = request.getRequestDispatcher("/board/readPage?bno="+bNo);
-					request.setAttribute("message", "관리자가 아니면 수정과 삭제가 불가능합니다.");
+					request.setAttribute("message", "공지사항은 관리자만 수정과 삭제가 가능합니다.");
 					rd.forward(request, response);
 					return false;
-				}	
+				}else if(bGrade!=2){//일반글
+					if(memberVo.getmNo() != mNo) {//사용자와 작성자 불일치
+						RequestDispatcher rd = request.getRequestDispatcher("/board/readPage?bno="+bNo);
+						request.setAttribute("message", "작성자가 아니면 수정과 삭제가 불가능합니다.");
+						rd.forward(request, response);
+						return false;
+					}					
+				}
 			}
+			/*if(memberVo.getmGrade() != 2 && bGrade == 2) {
+				RequestDispatcher rd = request.getRequestDispatcher("/board/readPage?bno="+bNo);
+				request.setAttribute("message", "관리자가 아니면 수정과 삭제가 불가능합니다.");
+				rd.forward(request, response);
+				return false;
+			}else{
+			 	if(memberVo.getmNo() != mNo && memberVo.getmGrade() !=2) {
+					RequestDispatcher rd = request.getRequestDispatcher("/board/readPage?bno="+bNo);
+					request.setAttribute("message", "작성자가 아니면 수정과 삭제가 불가능합니다.");
+					rd.forward(request, response);
+					return false;
+				}
+			}*/
 		}
 		
 		request.setAttribute("bNo", bNo);
