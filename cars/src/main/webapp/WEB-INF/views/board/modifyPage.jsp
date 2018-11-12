@@ -32,14 +32,30 @@ tr:nth-child(4) td input{
 		<tr>
 			<td>구분</td>
 			<td><select name="bGrade">
-					<option value="1">일반</option>
-					<c:choose>
-						<c:when test="${memberVo.mGrade>=2}">
-							<option value="2">공지</option>
-						</c:when>
-						<c:otherwise>
-							<option value="2" disabled="disabled">공지</option>
-						</c:otherwise>
+				<c:choose>
+					<c:when test="${boardVo.bGrade == 1}">
+						<option value="1" selected>일반</option>
+						<c:choose>
+							<c:when test="${loginMember.mGrade>=2}">
+								<option value="2">공지</option>
+							</c:when>
+							<c:otherwise>
+								<option value="2" disabled="disabled">공지</option>
+							</c:otherwise>
+						</c:choose>
+					</c:when>
+					<c:when test="${boardVo.bGrade == 2}">
+						<option value="1">일반</option>
+						<c:choose>
+							<c:when test="${loginMember.mGrade>=2}">
+								<option value="2" selected>공지</option>
+							</c:when>
+							<c:otherwise>
+								<option value="2" disabled="disabled" selected>공지</option>
+							</c:otherwise>
+						</c:choose>
+					</c:when>	
+						
 					</c:choose>
 				</select>
 			</td>
