@@ -5,13 +5,17 @@
 
 <mapper namespace="com.cars.dao.MemberDao">
 	<select id="login" resultType="memberVo">
+		<!-- select * from member
+		where mId=#{uid} and mPass=#{upw} -->
 		select * from member
-		where mId=#{uid} and mPass=#{upw}
+		where mId=#{uid} and mPass=#{upw} and isOut=0
 	</select>
 	
 	<select id="getUser" resultType="memberVo">
+		<!-- select * from member
+		where mId=#{mId} -->
 		select * from member
-		where mId=#{mId}
+		where mId=#{mId} and isOut=0
 	</select>
 	
 	<insert id="join">
@@ -20,28 +24,42 @@
 	</insert>
 	
 	<select id="getMember" resultType="memberVo">
+		<!-- select * from member
+		where mNo=#{mNo} -->
 		select * from member
-		where mNo=#{mNo}
+		where mNo=#{mNo} and isOut=0
 	</select>	
 	
 	<select id="getMemberList" resultType="memberVo">
-		select * from member;			
+		<!-- select * from member -->
+		select * from member
+		where isOut=0		
 	</select>
 	
 	<update id="modify">
+		<!-- update member set mPass=#{mPass}, mName=#{mName},
+		mAge=#{mAge}, mGender=#{mGender}
+		where mNo = #{mNo} -->
 		update member set mPass=#{mPass}, mName=#{mName},
 		mAge=#{mAge}, mGender=#{mGender}
-		where mNo = #{mNo}
+		where mNo = #{mNo} and isOut=0
 	</update>
 	
 	<update id="modifyMember">
+		<!-- update member set mGrade=#{mGrade}
+		where mNo=#{mNo} -->
 		update member set mGrade=#{mGrade}
-		where mNo=#{mNo}	
+		where mNo=#{mNo} and isOut=0
 	</update>
 	
-	<delete id="exitMember">
+	<!-- <delete id="exitMember">
 		delete from member
 		where mNo = #{mNo}
-	</delete>
+	</delete> -->
+	
+	<update id="exitMember">
+		update member set isOut=1
+		where mNo = #{mNo}
+	</update>
 	
 </mapper>

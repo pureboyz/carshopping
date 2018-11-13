@@ -9,9 +9,15 @@ public class MemberVo {
 	int mAge;
 	int mGender;
 	int mGrade;
+	int isOut;
 	
 	
-	
+	public int getIsOut() {
+		return isOut;
+	}
+	public void setIsOut(int isOut) {
+		this.isOut = isOut;
+	}
 	public int getmNo() {
 		return mNo;
 	}
@@ -59,11 +65,8 @@ public class MemberVo {
 	@Override
 	public String toString() {
 		return "MemberVo [mNo=" + mNo + ", mId=" + mId + ", mPass=" + mPass + ", mName=" + mName + ", mAge=" + mAge
-				+ ", mGender=" + mGender + ", mGrade=" + mGrade + "]";
+				+ ", mGender=" + mGender + ", mGrade=" + mGrade + ", isOut=" + isOut + "]";
 	}
-	
-	
-	
 	
 
 }
