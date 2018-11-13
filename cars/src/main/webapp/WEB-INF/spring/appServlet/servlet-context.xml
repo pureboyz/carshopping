@@ -54,6 +54,8 @@
 		<interceptor>
 			<mapping path="/board/readPage"/>
 			<mapping path="/board/readDetail"/>
+			<mapping path="/board/write"/>
+			<mapping path="/board/writeBoard"/>
 			<mapping path="/car/buyCar"/>
 			<beans:ref bean="badInterceptor"/>
 		</interceptor>

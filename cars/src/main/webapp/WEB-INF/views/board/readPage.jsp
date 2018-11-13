@@ -6,9 +6,70 @@
 <%@include file="../include/header.jsp"%>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style>
+
+table{
+	width:600px;
+	border : 1px solid skyblue;
+	border-collapse: collapse;
+}
+
+tr:nth-child(2) td{
+	border-bottom: 1px solid skyblue;
+}
+
+#contents{
+	width:100%;
+	height:500px;
+	border:1px solid skyblue;
+}
+
+#contents textarea{
+	padding: 5px 0px;
+	height:490px;
+	width:100%;
+	resize: none;
+	border-style: none;
+}
+
+.wrap{
+	width:760px;
+	height:1000px;
+}
+
+.part{
+	width:100%;
+}
+
 </style>
 
 <body>
+		<!-- 
+		<div class="wrap">
+			<div class="part 1stLine">
+				<div class="bno"></div>
+				<div class="date"></div>
+				<div class="readcnt"></div>	
+			</div>
+			<div class="part 2ndLine">
+				<div class="title"></div>
+				<div class="writer"></div>
+			</div>
+			<div class="part 3rdContent">
+				
+			</div>
+			<div class="part 4thBtnLine">
+				<form id="readForm">
+					<input type="hidden" name="bNo" value="${boardVo.bNo}">
+					<input type="hidden" name="mNo" value="${boardVo.mNo}">
+					<input type="hidden" name="bGrade" value="${boardVo.bGrade}">
+					<input type="button" id="modifyBtn" value="수정하기"> 
+					<input type="button" id="deleteBtn" value="글 삭제">
+					<input type="button" id="listBtn" value="목록으로">
+				</form>
+			</div>			
+		</div> 
+		-->
+
 	
 		<table>
 			<tr>
@@ -25,22 +86,22 @@
 				</c:choose>
 
 				<td>작성/수정일</td>
-				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss"
+				<td colspan="2"><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss"
 						value="${boardVo.updateDate}" /></td>
 				<td>조회수 : ${boardVo.viewCnt}</td>
 			</tr>
 			<tr>
 				<td>제목</td>
-				<td colspan="2">${boardVo.title}</td>
-				<td></td>
+				<td colspan="4" id="titleTd">${boardVo.title}</td>
+				
 				<td>작성자</td>
 				<td>${boardVo.writer}</td>
 			</tr>
 			<tr>
-				<td>${boardVo.content}</td>
+				<td colspan="7" id="contents"><textarea>${boardVo.content}</textarea></td>
 			</tr>
 			<tr>
-				<td colspan="6">
+				<td colspan="7">
 				<form id="readForm">
 					<input type="hidden" name="bNo" value="${boardVo.bNo}">
 					<input type="hidden" name="mNo" value="${boardVo.mNo}">
