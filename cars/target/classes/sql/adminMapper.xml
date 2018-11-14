@@ -23,6 +23,7 @@
 		select count(buy.orderNo) as carsale,car.carName from car, buy, member
 		where buy.carNo = car.carNo
 		AND buy.mNo = member.mNo AND mGender = #{i}
+		AND isBuy > 0
 		GROUP BY car.carNo ORDER BY count(buy.orderNo) DESC
 		limit 4
 	</select>

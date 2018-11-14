@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cars.service.BoardService;
+import com.cars.service.CarService;
 import com.cars.service.MemberService;
 import com.cars.vo.BoardVo;
 import com.cars.vo.MemberVo;
+import com.cars.vo.PageMaker;
 
 @Controller
 @RequestMapping("/board/*")
@@ -29,11 +31,21 @@ public class BoardController {
 	@Inject
 	MemberService mService;
 	
+	@Inject
+	CarService cService;
+	
 	@RequestMapping(value="/boardList",method=RequestMethod.GET)
-	public String boardList(Model model) throws Exception {
+	public String boardList(Model model, @RequestParam("currentPage") int currentPage, HttpServletRequest request) throws Exception {
 		List<BoardVo> boardList = service.boardList();
-		
 		model.addAttribute("boardList", boardList);
+		
+		int countPerPage = 10;
+		request.setAttribute("board", "board");
+		PageMaker pageMaker = cService.getPageMaker(currentPage,countPerPage,request);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("boardPageMaker", pageMaker);
+		
 		return "/board/listPage";
 	}
 	
@@ -111,7 +123,7 @@ public class BoardController {
 		service.writeBoard(vo);
 		rttr.addFlashAttribute("message", "글 작성 완료");
 		
-		return "redirect:/board/boardList";
+		return "redirect:/board/boardList?currentPage=1";
 	}
 	
 	@RequestMapping(value="/modify")
@@ -125,13 +137,13 @@ public class BoardController {
 	public String modifyComplete(BoardVo vo) throws Exception {
 		System.out.println("수정된 내용" + vo);
 		service.modify(vo);
-		return "redirect:/board/boardList";
+		return "redirect:/board/boardList?currentPage=1";
 	}
 	
 	@RequestMapping(value="/delete")
 	public String delete(@RequestParam("bNo")int bNo) throws Exception{		
 		service.delete(bNo);
-		return "redirect:/board/boardList";
+		return "redirect:/board/boardList?currentPage=1";
 	}
 	
 	

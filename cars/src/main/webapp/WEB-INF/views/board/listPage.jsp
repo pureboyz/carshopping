@@ -59,6 +59,35 @@ img{
 	margin:0 auto;
 }
 
+.pagination{
+	clear: both;
+	width: 1580px;
+	height: 30px;
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 10px;
+}
+
+.pageUl{
+	width: 500px;
+	height: 40px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.pageLi{
+	position: relative;
+	float: left;
+	padding: 6px 12px;
+	margin-left: -1px;
+	line-height: 1.4;
+	color: #337ab7;
+	text-decoration: none;
+	border: 1px solid #ddd;
+	list-style: none;
+	cursor: pointer;
+}
+
 </style>
 <title>게시판입니다.</title>
 
@@ -108,6 +137,20 @@ img{
 	
 	<div class="btn_set">
 		<input type="button" onclick="location.href='/board/write'" value="글쓰기">
+	</div>
+	<br/>
+	<div id="pagination">
+		<ul class="pageUl">
+			<c:if test="${boardPageMaker.prev}">
+				<li class="pageLi"onclick="location.href='/car/buyInfo?currentPage=1&basketCurrentPage=${boardPageMaker.currentPage-1}'">이전</li>
+			</c:if>
+			<c:forEach var="i" begin="${boardPageMaker.startPage}" end="${boardPageMaker.endPage}">
+				<li onclick="location.href='/car/buyInfo?currentPage=1&basketCurrentPage=${i}'" class="pageLi">${i}</li>
+			</c:forEach>
+			<c:if test="${boardPageMaker.next}">
+				<li class="pageLi" onclick="location.href='/car/buyInfo?currentPage=1&basketCurrentPage=${boardPageMaker.currentPage+1}'">다음</li>
+			</c:if>
+		</ul>
 	</div>
 </body>
 

@@ -25,7 +25,7 @@
 						<a href="/member/logout" style="color:black">로그아웃</a>
 						<a>${loginMember.mName}님</a>
 						<c:if test="${loginMember.mGrade == '2'}">
-							<a href="/admin/admin" style="color:black">management&nbsp;&nbsp;&nbsp;</a>
+							<a href="/admin/admin" style="color:black">관리페이지&nbsp;&nbsp;&nbsp;</a>
 						</c:if>
 					</div>
 				</c:when>
@@ -37,7 +37,7 @@
 				</c:otherwise>
 			</c:choose>
 			<div class="member-info">
-				<a href="/board/boardList" style="color:black">게시판</a>
+				<a href="/board/boardList?currentPage=1" style="color:black">게시판</a>
 				<a href="/car/buyInfo?basketCurrentPage=1&currentPage=1" style="color:black">구매내역</a>
 				<a href="/member/memberInfo" style="color:black">정보수정</a>
 			</div>

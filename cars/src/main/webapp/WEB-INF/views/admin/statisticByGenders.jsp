@@ -3,14 +3,22 @@
 <%@include file="../include/header.jsp"%>
 <%@include file="../include/categoryadmin.jsp"%>
 <script src="//d3js.org/d3.v3.min.js"></script>
-<link href="${pageContext.request.contextPath}/resources/css/statisticByGenders.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/statisticByGenders.css?ver=1" rel="stylesheet">
 
 <article>
 	<div class="chartByGender">
-		<h2>성별에 따른 판매량 TOP4</h2>
+		<h2>성별 자동차 구매선호도 TOP4</h2>
 		<div class="wrap-chart"></div>
-		<label>남성</label>
-		<label>여성</label>
+		<div class="gender">
+			<div class="male">
+				<div class="male_bar"></div>
+				<div class="genderName">남성</div>
+			</div>
+			<div class="female">
+				<div class="female_bar"></div>
+				<div class="genderName">여성</div>
+			</div>
+		</div>
 	</div>
 </article>
 

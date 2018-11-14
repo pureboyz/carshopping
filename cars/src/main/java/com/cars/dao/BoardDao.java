@@ -18,4 +18,6 @@ public interface BoardDao {
 
 	void delete(int bNo) throws Exception;
 
+	int getTotalCount() throws Exception;
+
 }

@@ -31,6 +31,7 @@ public class CarController {
 	public void carInfo(@RequestParam("currentPage") int currentPage, @RequestParam("carNo") int carNo, Model model, HttpServletRequest request) throws Exception{
 		int countPerPage = 5;
 		request.setAttribute("carNo", carNo);
+		request.setAttribute("reply", "reply");
 		PageMaker pageMaker = service.getPageMaker(currentPage,countPerPage,request);
 		pageMaker.setCno(carNo);
 		
@@ -84,12 +85,14 @@ public class CarController {
 			int mno = memberVo.getmNo();
 			int countPerPage = 5;
 			
+			request.setAttribute("basket", "basket");
 			PageMaker basketPageMaker = service.getBasketPageMaker(basketCurrentPage,countPerPage,request);
 			basketPageMaker.setMno(mno);
 			List<BuyInfoVo> basketList = service.getBasketCar(basketPageMaker);
 			session.setAttribute("basketList", basketList);
 			session.setAttribute("basketPageMaker", basketPageMaker);
 			
+			request.setAttribute("buy", "buy");
 			PageMaker pageMaker = service.getPageMaker(currentPage,countPerPage,request);
 			pageMaker.setMno(mno);
 			/*System.out.println("pageMaker : "+pageMaker);*/

@@ -10,7 +10,7 @@
 
 <article>
 <div class="age-comp">
-	<h2>연령별 제조사 선호도</h2>
+	<h2>연령별 브랜드 선호도</h2>
 	<div id='dashboard'>
 	</div>
 </div>

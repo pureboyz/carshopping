@@ -76,7 +76,7 @@ tr:nth-child(4) td input{
 		</tr>
 		<tr>
 		<td colspan="5">
-			<input type="button" id="cancel" onclick="location.href='/board/boardList'" value="취소">
+			<input type="button" id="cancel" onclick="location.href='/board/boardList?currentPage=1'" value="취소">
 			<input type="submit" id="sub" value="글 수정">
 		</td>
 		

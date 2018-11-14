@@ -195,7 +195,7 @@ label{
 		
 	});
 	$("#listBtn").click(function(){
-		location.href="/board/boardList";
+		location.href="/board/boardList?currentPage=1";
 	});
 
 </script>

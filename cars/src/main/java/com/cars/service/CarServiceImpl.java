@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
+import com.cars.dao.BoardDao;
 import com.cars.dao.CarDao;
 import com.cars.dao.ReplyDao;
 import com.cars.vo.BuyInfoVo;
@@ -25,6 +26,8 @@ public class CarServiceImpl implements CarService{
 	CarDao dao;
 	@Inject
 	ReplyDao replyDao;
+	@Inject
+	BoardDao boardDao;
 	
 	@Override
 	public List<CarVo> getCar() throws Exception {
@@ -106,13 +109,18 @@ public class CarServiceImpl implements CarService{
 			cno = (int) request.getAttribute("carNo");
 		}
 		
+		String isBoard = (String) request.getAttribute("board");
+		
 		int displayPageNum = 10;
 		
 		PageMaker pageMaker = new PageMaker();
 		
 		
 		int totalCount = 0;
-		if(cno == 0) {
+		if(isBoard != null) {
+			totalCount = boardDao.getTotalCount();
+			pageMaker.setTotalCount(totalCount);
+		}else if(cno == 0) {
 			totalCount = dao.getTotalCount(mno);
 			pageMaker.setTotalCount(totalCount);
 		}else{

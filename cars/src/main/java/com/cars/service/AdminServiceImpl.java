@@ -107,7 +107,8 @@ public class AdminServiceImpl implements AdminService{
 		FileOutputStream fos;
 		PrintStream ps;
 		
-		fos = new FileOutputStream("C:\\Users\\user\\git\\carshopping\\cars\\src\\main\\webapp\\resources\\data\\topByGenders.tsv");
+		/*fos = new FileOutputStream("C:\\Users\\user\\git\\carshopping\\cars\\src\\main\\webapp\\resources\\data\\topByGenders.tsv");*/
+		fos = new FileOutputStream("C:\\Users\\User\\Desktop\\spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\cars\\resources\\data\\topByGenders.tsv");
 		ps = new PrintStream(fos);
 		ps.println("name\tvalue");
 		ps.println(cv1.get(0).getCarName()+"\t"+((-1)*cv1.get(0).getCarsale()));
