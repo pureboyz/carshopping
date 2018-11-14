@@ -7,6 +7,10 @@
 
 <style>
 
+body{
+	text-align:center;
+}
+
 h1{
 	text-align:center;
 	margin:50px 0;
@@ -51,11 +55,16 @@ td a{
 	margin: 10px 30px;
 }
 
+img{
+	margin:0 auto;
+}
+
 </style>
 <title>게시판입니다.</title>
 
 <body>
 	<h1>게시판</h1>
+	<!-- <img src="../../resources/img/람보르기니.gif" /> -->
 
 	<table>
 		<tr>

@@ -7,7 +7,205 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style>
 
-table{
+.wrap{
+	width:700px;
+	min-height:780px;
+		
+	margin:0 auto;
+	margin-top : 30px;
+		
+}
+
+.part{
+	float:left;
+	width:100%;	
+			
+}
+
+.part1st,.part2nd,.part3rd{
+	border-bottom:2px solid #ccc;
+}
+
+.part3rd{
+	border-left:1px solid #ddd;
+	border-right:1px solid #ddd;	
+}
+
+.part4th{
+	border : none;
+	padding-bottom:20px;
+	
+}
+
+.btnGroup{	
+	margin-top:10px;
+	margin-right:30px;
+	
+}
+
+.btnGroup input{
+	margin: 4px 10px;
+	padding: 8px;	
+	float: right;
+	
+	border-style: none;
+	border-radius: 4px;	
+}
+
+#modifyBtn{
+	background-color: #D6FFFF;
+}
+
+#deleteBtn{
+	background-color: #B2EBF4;
+}
+
+#listBtn{
+	background-color: #8EC7D0;
+}
+
+.contents{
+	min-height: 600px;
+	width:760px;	
+	margin:20px 20px;
+}
+
+pre{
+	font-size:large;
+}
+
+.item{
+	margin: 5px;
+	float:left;
+}
+
+label{
+	font-style: italic;
+	font-size: small;
+}
+
+.writer{
+	margin-left: 20px;
+}
+
+.item span{
+	font-weight: bold;
+	margin-left:15px;
+}
+
+.title span{
+	font-size:large;	
+}
+
+.dateandcnt{
+	float:right;
+}
+
+.date{
+	margin-right: 20px;
+}
+
+
+</style>
+
+<body>
+		
+		<div class="wrap">
+			<div class="part part1st">
+				<div class="bgrade item">
+					<c:choose>
+						<c:when test="${boardVo.bGrade==2}">
+							공지
+						</c:when>
+						<c:when test="${boardVo.bGrade==1}">
+							일반
+						</c:when>
+					</c:choose>
+				</div>
+				<div class="bno item">
+					<label>No</label>&nbsp;${boardVo.bNo}</div>
+				<div class="writer item">
+					<label>Writer</label><span>${boardVo.writer}</span>
+				</div>
+				<div class="dateandcnt">				
+					<div class="date item">
+						<label>Date</label>&nbsp;
+						<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${boardVo.updateDate}" />
+					</div>
+					<div class="readcnt item"><label>view</label>&nbsp;${boardVo.viewCnt}</div>
+				</div>					
+			</div>
+			<!--part1 종료-->
+			
+			<div class="part part2nd">
+				<div class="title item">
+					<label>Title</label><span>${boardVo.title}</span>
+				</div>
+				
+			</div>
+			<!--part2 종료-->
+			
+			<div class="part part3rd">
+				<div class="contents">
+					<pre>${boardVo.content}</pre>
+				</div>
+			</div>
+			<!--part3 종료-->
+			
+			<div class="part part4th">
+				<div class="btnGroup">
+					<form id="readForm">
+						<input type="hidden" name="bNo" value="${boardVo.bNo}">
+						<input type="hidden" name="mNo" value="${boardVo.mNo}">
+						<input type="hidden" name="bGrade" value="${boardVo.bGrade}">
+						<input type="button" id="modifyBtn" value="수정하기"> 
+						<input type="button" id="deleteBtn" value="글 삭제">
+						<input type="button" id="listBtn" value="목록으로">
+					</form>
+				</div>
+			</div> 
+			<!--part4 종료-->	
+					
+		</div> <!--wrap 종료-->
+	
+<script>
+
+	var message = "${message}";
+	
+	if(message != null && message != ""){
+		alert(message);
+	}
+	
+
+	var form = $("#readForm");
+	
+	$("#modifyBtn").click(function(){
+		form.attr("action", "/board/modify");
+		form.submit();	
+	});
+	$("#deleteBtn").click(function(){
+		var a = confirm("게시물을 삭제하시겠습니까?")
+		if(a==true){
+			form.attr("action", "/board/delete");
+			form.submit();		
+		}else{
+			return;
+		}
+		
+		
+	});
+	$("#listBtn").click(function(){
+		location.href="/board/boardList";
+	});
+
+</script>
+
+</body>
+
+
+
+<%-- 
+/* table{
 	width:600px;
 	border : 1px solid skyblue;
 	border-collapse: collapse;
@@ -29,48 +227,8 @@ tr:nth-child(2) td{
 	width:100%;
 	resize: none;
 	border-style: none;
-}
+} */
 
-.wrap{
-	width:760px;
-	height:1000px;
-}
-
-.part{
-	width:100%;
-}
-
-</style>
-
-<body>
-		<!-- 
-		<div class="wrap">
-			<div class="part 1stLine">
-				<div class="bno"></div>
-				<div class="date"></div>
-				<div class="readcnt"></div>	
-			</div>
-			<div class="part 2ndLine">
-				<div class="title"></div>
-				<div class="writer"></div>
-			</div>
-			<div class="part 3rdContent">
-				
-			</div>
-			<div class="part 4thBtnLine">
-				<form id="readForm">
-					<input type="hidden" name="bNo" value="${boardVo.bNo}">
-					<input type="hidden" name="mNo" value="${boardVo.mNo}">
-					<input type="hidden" name="bGrade" value="${boardVo.bGrade}">
-					<input type="button" id="modifyBtn" value="수정하기"> 
-					<input type="button" id="deleteBtn" value="글 삭제">
-					<input type="button" id="listBtn" value="목록으로">
-				</form>
-			</div>			
-		</div> 
-		-->
-
-	
 		<table>
 			<tr>
 				<td>글번호</td>
@@ -112,38 +270,4 @@ tr:nth-child(2) td{
 				</form>
 				</td>
 			</tr>
-		</table>
-	
-<script>
-
-	var message = "${message}";
-	
-	if(message != null && message != ""){
-		alert(message);
-	}
-	
-
-	var form = $("#readForm");
-	
-	$("#modifyBtn").click(function(){
-		form.attr("action", "/board/modify");
-		form.submit();	
-	});
-	$("#deleteBtn").click(function(){
-		var a = confirm("게시물을 삭제하시겠습니까?")
-		if(a==true){
-			form.attr("action", "/board/delete");
-			form.submit();		
-		}else{
-			return;
-		}
-		
-		
-	});
-	$("#listBtn").click(function(){
-		location.href="/board/boardList";
-	});
-
-</script>
-
-</body>
+		</table> --%>
