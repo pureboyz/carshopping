@@ -142,13 +142,13 @@ img{
 	<div id="pagination">
 		<ul class="pageUl">
 			<c:if test="${boardPageMaker.prev}">
-				<li class="pageLi"onclick="location.href='/car/buyInfo?currentPage=1&basketCurrentPage=${boardPageMaker.currentPage-1}'">이전</li>
+				<li class="pageLi"onclick="location.href='/board/boardList?currentPage=${boardPageMaker.currentPage-1}'">이전</li>
 			</c:if>
 			<c:forEach var="i" begin="${boardPageMaker.startPage}" end="${boardPageMaker.endPage}">
-				<li onclick="location.href='/car/buyInfo?currentPage=1&basketCurrentPage=${i}'" class="pageLi">${i}</li>
+				<li onclick="location.href='/board/boardList?currentPage=${i}'" class="pageLi">${i}</li>
 			</c:forEach>
 			<c:if test="${boardPageMaker.next}">
-				<li class="pageLi" onclick="location.href='/car/buyInfo?currentPage=1&basketCurrentPage=${boardPageMaker.currentPage+1}'">다음</li>
+				<li class="pageLi" onclick="location.href='/board/boardList?currentPage=${boardPageMaker.currentPage+1}'">다음</li>
 			</c:if>
 		</ul>
 	</div>
