@@ -29,5 +29,12 @@ $(document).ready(function(){
 		}
 		
 	});
+	
+	$("#listBtn").on("click",function(){
+		/*formObj.attr("action","/board/boardList?currentPage=1");
+		formObj.attr("method","get");*/
+		location.href="/board/boardList?currentPage=1";
+	});
+
 		
 });

@@ -190,8 +190,7 @@ label{
 			form.submit();		
 		}else{
 			return;
-		}
-		
+		}		
 		
 	});
 	$("#listBtn").click(function(){
