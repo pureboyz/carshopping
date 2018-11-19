@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<link href="${pageContext.request.contextPath}/resources/css/buyInfo.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/buyInfo.css?ver=1" rel="stylesheet">
 
 <article>
 	<c:if test="${empty basketList && empty cList}">
@@ -13,7 +13,7 @@
 	</c:if>
 	<c:if test="${!empty basketList}">
 		<div id="buyListBox">
-			<h1>장바구니</h1>
+			<h1 id="basket">장바구니</h1>
 			<c:forEach var="bvo" items="${basketList}">
 				<div class="buyList">
 					<div class="imgBox">
@@ -40,13 +40,13 @@
 			<div id="pagination">
 				<ul class="pageUl">
 					<c:if test="${basketPageMaker.prev}">
-						<li class="pageLi"onclick="location.href='/car/buyInfo?currentPage=1&basketCurrentPage=${basketPageMaker.currentPage-1}'">이전</li>
+						<li class="pageLi"onclick="location.href='/car/buyInfo?currentPage=1&basketCurrentPage=${basketPageMaker.currentPage-1}#basket'">이전</li>
 					</c:if>
 					<c:forEach var="i" begin="${basketPageMaker.startPage}" end="${basketPageMaker.endPage}">
-						<li onclick="location.href='/car/buyInfo?currentPage=1&basketCurrentPage=${i}'" class="pageLi">${i}</li>
+						<li onclick="location.href='/car/buyInfo?currentPage=1&basketCurrentPage=${i}#basket'" class="pageLi">${i}</li>
 					</c:forEach>
 					<c:if test="${basketPageMaker.next}">
-						<li class="pageLi" onclick="location.href='/car/buyInfo?currentPage=1&basketCurrentPage=${basketPageMaker.currentPage+1}'">다음</li>
+						<li class="pageLi" onclick="location.href='/car/buyInfo?currentPage=1&basketCurrentPage=${basketPageMaker.currentPage+1}#basket'">다음</li>
 					</c:if>
 				</ul>
 			</div>
@@ -54,7 +54,7 @@
 	</c:if>
 	<c:if test="${!empty cList}">
 		<div id="buyListBox">
-			<h1>구매 내역</h1>
+			<h1 id="buy">구매 내역</h1>
 			<c:forEach var="vo" items="${cList}">
 				<div class="buyList">
 					<div class="imgBox">
@@ -80,19 +80,22 @@
 			<div id="pagination">
 				<ul class="pageUl">
 					<c:if test="${pageMaker.prev}">
-						<li class="pageLi"onclick="location.href='/car/buyInfo?basketCurrentPage=1&currentPage=${pageMaker.currentPage-1}'">이전</li>
+						<li class="pageLi"onclick="location.href='/car/buyInfo?basketCurrentPage=1&currentPage=${pageMaker.currentPage-1}#buy'">이전</li>
 					</c:if>
 					<c:forEach var="i" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-						<li onclick="location.href='/car/buyInfo?basketCurrentPage=1&currentPage=${i}'" class="pageLi">${i}</li>
+						<li onclick="location.href='/car/buyInfo?basketCurrentPage=1&currentPage=${i}#buy'" class="pageLi">${i}</li>
 					</c:forEach>
 					<c:if test="${pageMaker.next}">
-						<li class="pageLi" onclick="location.href='/car/buyInfo?basketCurrentPage=1&currentPage=${pageMaker.currentPage+1}'">다음</li>
+						<li class="pageLi" onclick="location.href='/car/buyInfo?basketCurrentPage=1&currentPage=${pageMaker.currentPage+1}#buy'">다음</li>
 					</c:if>
 				</ul>
 			</div>
 		</div>
 	</c:if>
 </article>
+<aside onclick="location.href='#'">
+	top
+</aside>
 
 <script>
 	var message = "${message}";

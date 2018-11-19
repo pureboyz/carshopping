@@ -32,8 +32,8 @@ function loginToBuy(){
 			<div class="info-row">
 				<c:choose>
 					<c:when test="${!empty loginMember.mNo}">
-						<input onclick="location.href='/car/buyCar?carNo=${car.carNo}&mNo=${loginMember.mNo}'" type="submit" value="구매하기"/>
-						<input onclick="location.href='/car/basketCar?carNo=${car.carNo}&mNo=${loginMember.mNo}'" type="button" value="장바구니"/>
+						<input onclick="location.href='/car/buyCar?carNo=${car.carNo}&mNo=${loginMember.mNo}#buy'" type="submit" value="구매하기"/>
+						<input onclick="location.href='/car/basketCar?carNo=${car.carNo}&mNo=${loginMember.mNo}#basket'" type="button" value="장바구니"/>
 					</c:when>
 					<c:otherwise>
 						<input onclick="loginToBuy()" id="btnBuy" type="button" value="구매하기"/>

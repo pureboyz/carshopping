@@ -5,6 +5,16 @@ article{
 	border: 1px solid #ccc;
 }
 
+aside{
+	position: fixed;
+	top: 750px;
+	right: 100px;
+}
+
+aside{
+	cursor: pointer;
+}
+
 .emptyList{
 	width: 350px;
 	margin: 0 auto;
