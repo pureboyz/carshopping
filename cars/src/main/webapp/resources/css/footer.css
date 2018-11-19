@@ -1,12 +1,12 @@
 footer{
-	/* width: 1300px; */
+	/* width: 100%; */
 	padding: 20px 0;	
 	margin: 10px auto;		
 	border-top: 1px solid #ccc;
 	clear: both;
 }
 
-footer address{
+.address{
 	width: 1580px;
 	height: 70px;
 	margin: 10px auto;	
@@ -14,3 +14,52 @@ footer address{
 	font-style: normal;
 	line-height: 1.8em;
 }
+
+/* .addTop{
+	clear: both;
+	margin: 10px auto;
+	text-align: center;
+}
+
+.addBottom{
+	clear: left;
+} */
+
+.btnKTE{
+	position: relative;
+	right: 200px;
+	width: 200px;
+	margin-bottom: -20px;
+	/* float: left; */
+}
+
+.btnKTE:hover{
+	cursor: pointer;
+}
+
+.address1{
+	display:inline;
+	padding-right: 150px;
+}
+
+.btnTop{
+	position: relative;
+	left: 200px;
+	width: 25px;
+	margin-bottom: -20px;
+	/* float: left; */
+}
+
+.btnTop:hover{
+	cursor: pointer;
+}
+
+/* footer span{
+	position: relative;
+	left: 250px;
+}
+
+footer span:hover{
+	cursor: pointer;
+	background-image: url("${pageContext.request.contextPath}/resources/img/topbutton.JPG");
+} */
