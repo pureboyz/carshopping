@@ -93,9 +93,10 @@
 		</div>
 	</c:if>
 </article>
-<aside onclick="location.href='#'">
+
+<!-- <aside onclick="location.href='#'">
 	top
-</aside>
+</aside> -->
 
 <script>
 	var message = "${message}";
