@@ -121,7 +121,7 @@ label{
 		</div>
 		<div class="part part3rd">
 			<div class="contents">
-				<textarea></textarea>
+				<textarea id="inputContent" name="content"></textarea>
 				<!-- <textarea id="inputContent" name="content" cols="72" rows="25" style="resize:none;">
 				</textarea> -->
 			</div>
